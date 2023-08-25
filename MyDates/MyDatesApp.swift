@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+import os
+
 @main
 struct MyDatesApp: App {
 
@@ -15,6 +17,23 @@ struct MyDatesApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Item.self)
+        .modelContainer(container)
     }
+    
+    let container: ModelContainer = {
+            // Don't force unwrap for real 👀
+//            ModelContainer(
+            try! ModelContainer(
+                for: Item.self
+//                .init(
+//                    "iCloud.us.jsy.MyDates"
+//                )
+            )
+        }()
 }
+
+extension Logger {
+    static let main = Logger(subsystem: "us.jsy", category: "main")
+}
+
+let logger = Logger.main

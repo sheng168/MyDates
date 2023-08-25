@@ -24,6 +24,14 @@ final class MyDatesTests: XCTestCase {
         // Any test you write for XCTest can be annotated as throws and async.
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        
+        let fmt = ISO8601DateFormatter()
+
+        let date1 = fmt.date(from: "2017-08-06T19:20:42+0000")!
+        let date2 = fmt.date(from: "2020-08-06T19:20:46+0000")!
+
+        let diffs = Calendar.current.dateComponents([.year, .month, .day], from: date1, to: date2)
+        print(diffs)
     }
 
     func testPerformanceExample() throws {

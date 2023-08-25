@@ -10,20 +10,42 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Query(sort: \Item.name, order: .forward) private var items: [Item]
+    
+    @State var currentTime = Date()
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         NavigationSplitView {
             List {
                 ForEach(items) { item in
+                    let d = diffs(item.timestamp, currentTime)
+                    
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+//                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        ItemDetail(item: item)
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        LabeledContent {
+                            VStack {
+                                Text(d.year ?? 0, format: .number)
+                                Text("Year")
+                            }
+                        } label: {
+                            Text(item.name)
+                            Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                            Text(d.description)
+                        }
+
+                        
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
+            .onReceive(timer, perform: { date in
+                logger.notice("\(date)")
+                currentTime = date
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -56,6 +78,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+    ContentView()    
+        .modelContainer(previewContainer)
 }

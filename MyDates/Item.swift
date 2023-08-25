@@ -9,10 +9,19 @@ import Foundation
 import SwiftData
 
 @Model
-final class Item {
-    var timestamp: Date
+class Item {
+    var timestamp = Date()
+    var name: String = "New Event"
+//    var count: Int
+//    var icon: String?
+//    var stalls: Int?
     
-    init(timestamp: Date) {
+    @Transient var distance: Double = 0
+    
+    init(timestamp: Date = Date(), name: String = "New Event") {
         self.timestamp = timestamp
+//        self.count = count
+        self.name = name
+//        self.icon = "-"
     }
 }

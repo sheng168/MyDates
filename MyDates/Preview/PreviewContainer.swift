@@ -10,17 +10,14 @@ import SwiftData
 
 // https://www.andrewcbancroft.com/blog/ios-development/data-persistence/pre-populate-swiftdata-persistent-store/
 
-let item = Item()
-
 @MainActor
 let previewContainer: ModelContainer = {
     do {
         let container = try ModelContainer(
-            for: Item.self, ModelConfiguration(inMemory: true)
+            for: Item.self//, ModelConfiguration(inMemory: true)
         )
         
         let items = [
-            item,
             Item(timestamp: Date()),
             Item(timestamp: Date()),
 //            Item(timestamp: Date()),
