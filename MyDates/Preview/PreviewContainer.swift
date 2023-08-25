@@ -14,13 +14,13 @@ import SwiftData
 let previewContainer: ModelContainer = {
     do {
         let container = try ModelContainer(
-            for: Item.self//, ModelConfiguration(inMemory: true)
+            for: Item.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true)
         )
         
         let items = [
             Item(timestamp: Date()),
             Item(timestamp: Date()),
-//            Item(timestamp: Date()),
+            Item(timestamp: Date()),
         ]
         
         for item in items {

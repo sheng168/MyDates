@@ -30,7 +30,7 @@ func diffs(_ date: Date, _ date2: Date) -> DateComponents {
 //    let date1 = fmt.date(from: "2017-08-06T19:20:42+0000")!
 //    let date2 = fmt.date(from: "2020-08-06T19:20:46+0000")!
 
-    let diffs = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: date2)
+    let diffs = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date, to: date2)
     logger.warning("\(diffs)")
     
     return diffs

@@ -14,7 +14,7 @@ struct ContentView: View {
     
     @State var currentTime = Date()
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
     var body: some View {
         NavigationSplitView {
