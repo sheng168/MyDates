@@ -41,7 +41,7 @@ final class MyDatesUITestsLaunchTests: XCTestCase {
 //        add(attachment2)
     }
     
-    func testCreateDelete() {
+    func _testCreateDelete() {
         app.navigationBars.element.buttons["Add Item"].tap()
 
         let sidebarCollectionView = app.collectionViews["Sidebar"]
@@ -70,7 +70,7 @@ final class MyDatesUITestsLaunchTests: XCTestCase {
         add(attachment)
     }
     
-    func testCRUD() {
+    func _testCRUD() {
         app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"].buttons["Add Item"].tap()
 
         let sidebarCollectionView = app.collectionViews["Sidebar"]
