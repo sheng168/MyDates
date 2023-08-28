@@ -14,7 +14,7 @@ struct ContentView: View {
     
     @State var currentTime = Date()
     
-    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         NavigationSplitView {
@@ -34,7 +34,7 @@ struct ContentView: View {
                         } label: {
                             Text(item.name)
                             Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                            Text(d.description)
+                            Text(d.description).lineLimit(1)
                         }
 
                         
