@@ -18,7 +18,8 @@ struct ItemDetail: View {
                 Text("Select a date")
             }
 //            .datePickerStyle(.graphical)
-            Text(diffs(item.timestamp, .now).description)
+//            Text(diffs(item.timestamp, .now).description)
+//            Text("\(item.timestamp - 60*60*23, style: .timer)")
         }
     }
     

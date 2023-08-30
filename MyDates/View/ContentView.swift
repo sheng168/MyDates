@@ -9,27 +9,25 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Item.name, order: .forward) private var items: [Item]
+    enum Tabs: String {
+        case List, About
+    }
     
-    @State var currentTime = Date()
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @SceneStorage("tab") var tab = Tabs.About
 
     var body: some View {
-        TabView { //}(selection: $viewModel.state.value.selectedTab) {
+        TabView (selection: $tab) {
             ListView()
                 .tabItem {
-                    Image(systemName: "list.bullet")
-                    Text("Reviews")
+                    Label(Tabs.List.rawValue, systemImage: "list.bullet")
                 }
+                .tag(Tabs.List)
             
-            Text("TODO")
+            AboutView()
                 .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
+                    Label(Tabs.About.rawValue, systemImage: "gear")
                 }
-                .tag(3)
+                .tag(Tabs.About)
 
         }
     }

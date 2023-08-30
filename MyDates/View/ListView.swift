@@ -23,7 +23,6 @@ struct ListView: View {
                     let d = diffs(item.timestamp, currentTime)
                     
                     NavigationLink {
-//                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
                         ItemDetail(item: item)
                     } label: {
                         LabeledContent {

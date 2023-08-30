@@ -20,6 +20,7 @@
 		3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD52A978C88002F2779 /* ModelPreview.swift */; };
 		3C6BBCD02A9AB9D500E0AB0F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3C6BBCCF2A9AB9D500E0AB0F /* Then */; };
 		3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777E82A9F793900BC8FF2 /* ListView.swift */; };
+		3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		3C0D8DD22A977DE4002F2779 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
 		3C0D8DD52A978C88002F2779 /* ModelPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreview.swift; sourceTree = "<group>"; };
 		3CA777E82A9F793900BC8FF2 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				3C0D8D9F2A954099002F2779 /* ContentView.swift */,
 				3CA777E82A9F793900BC8FF2 /* ListView.swift */,
 				3C0D8DD02A96DD04002F2779 /* ItemDetail.swift */,
+				3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */,
 				3C0D8DA02A954099002F2779 /* ContentView.swift in Sources */,
 				3C0D8DD12A96DD04002F2779 /* ItemDetail.swift in Sources */,
 				3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */,
