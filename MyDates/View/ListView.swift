@@ -1,14 +1,14 @@
 //
-//  ContentView.swift
+//  ListView.swift
 //  MyDates
 //
-//  Created by Jin on 8/22/23.
+//  Created by Jin on 8/30/23.
 //
 
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct ListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Item.name, order: .forward) private var items: [Item]
     
@@ -78,6 +78,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()    
+    ListView()
         .modelContainer(previewContainer)
 }

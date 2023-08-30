@@ -12,7 +12,8 @@ import os
 
 @main
 struct MyDatesApp: App {
-
+    static let testArg = "enable-testing"
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -21,9 +22,15 @@ struct MyDatesApp: App {
     }
     
     let container: ModelContainer = {
+#if DEBUG
+            if CommandLine.arguments.contains(testArg) {
+            //    configureAppForTesting()
+                logger.info("testing mode")
+            }
+#endif
             // Don't force unwrap for real 👀
 //            ModelContainer(
-            try! ModelContainer(
+            return try! ModelContainer(
                 for: Item.self
 //                .init(
 //                    "iCloud.us.jsy.MyDates"

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import MyDates
 
 final class MyDatesUITestsLaunchTests: XCTestCase {
     let app = XCUIApplication()
@@ -17,7 +18,7 @@ final class MyDatesUITestsLaunchTests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         
-        app.launchArguments = ["enable-testing"]
+        app.launchArguments = [MyDatesApp.testArg]
         app.launch()
     }
 
