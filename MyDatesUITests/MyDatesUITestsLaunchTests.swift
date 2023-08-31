@@ -58,6 +58,8 @@ final class MyDatesUITestsLaunchTests: XCTestCase {
     
     func testAddItem() {
         app.navigationBars.element.buttons["Add Item"].tap()
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["List"].tap()
         attachScreenshot(name: "Added item")
     }
     
