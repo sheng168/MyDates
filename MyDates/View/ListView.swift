@@ -44,7 +44,7 @@ struct ListView: View {
                 .onDelete(perform: deleteItems)
             }
             .onReceive(timer, perform: { date in
-                logger.notice("\(date)")
+                logger.notice("timer \(date)")
                 currentTime = date
             })
             .toolbar {
@@ -56,7 +56,7 @@ struct ListView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
-#if DEBUG
+#if DEBUG_
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         stateManager.selection = "Alex"
