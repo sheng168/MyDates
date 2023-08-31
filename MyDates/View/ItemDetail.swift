@@ -9,17 +9,41 @@ import SwiftUI
 import os
 
 struct ItemDetail: View {
+    @EnvironmentObject var stateManager: StateManager
     @Bindable var item: Item
     
     var body: some View {
         Form {
-            TextField("Name", text: $item.name)
-            DatePicker(selection: $item.timestamp, displayedComponents: [.date, .hourAndMinute]) {
-                Text("Select a date")
+            Section("Edit") {
+                TextField("Name", text: $item.name)
+                DatePicker(selection: $item.timestamp, displayedComponents: [.date, .hourAndMinute]) {
+                    Text("Select a date")
+                }
+//                .datePickerStyle(.compact)
             }
-//            .datePickerStyle(.graphical)
-//            Text(diffs(item.timestamp, .now).description)
-//            Text("\(item.timestamp - 60*60*23, style: .timer)")
+            #if DEBUG
+            Section("Debug") {
+                Text(diffs(item.timestamp, .now).description)
+                Text("\(item.timestamp - 60*60*23, style: .timer)")
+                Text("Debug ID: \(item.id.storeIdentifier ?? "-")")
+                Button {
+                    stateManager.selection = nil
+                } label: {
+                    Text("Go Back")
+                }
+                Button {
+                    stateManager.selection = "Alex"
+                } label: {
+                    Text("Alex")
+                }
+
+                Button {
+                    stateManager.tab = .About
+                } label: {
+                    Text("About")
+                }
+            }
+            #endif
         }
     }
     
@@ -56,6 +80,7 @@ func diffs(_ date: Date, _ date2: Date) -> DateComponents {
     ModelPreview { item in
         ItemDetail(item: item)
             .modelContainer(previewContainer)
+            .environmentObject(StateManager())
     }
 //    Text("TODO")
 }

@@ -12,11 +12,11 @@ struct ContentView: View {
     enum Tabs: String {
         case List, About
     }
-    
-    @SceneStorage("tab") var tab = Tabs.About
+    @EnvironmentObject var stateManager: StateManager
+//    @SceneStorage("tab") var tab = Tabs.About
 
     var body: some View {
-        TabView (selection: $tab) {
+        TabView (selection: $stateManager.tab) {
             ListView()
                 .tabItem {
                     Label(Tabs.List.rawValue, systemImage: "list.bullet")
@@ -28,14 +28,13 @@ struct ContentView: View {
                     Label(Tabs.About.rawValue, systemImage: "gear")
                 }
                 .tag(Tabs.About)
-
         }
     }
-
-    
 }
 
 #Preview {
     ContentView()    
         .modelContainer(previewContainer)
+        .environmentObject(StateManager())
+
 }

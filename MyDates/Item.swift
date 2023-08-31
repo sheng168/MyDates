@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Item {
+class Item { 
     var timestamp = Date()
     var name: String = "New Event"
 //    var count: Int

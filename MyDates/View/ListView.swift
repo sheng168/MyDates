@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct ListView: View {
+    @EnvironmentObject var stateManager: StateManager
+
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Item.name, order: .forward) private var items: [Item]
     
@@ -17,12 +19,12 @@ struct ListView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        NavigationSplitView {
+        NavigationView {
             List {
                 ForEach(items) { item in
                     let d = diffs(item.timestamp, currentTime)
                     
-                    NavigationLink {
+                    NavigationLink(tag: item.name, selection: $stateManager.selection) {
                         ItemDetail(item: item)
                     } label: {
                         LabeledContent {
@@ -31,11 +33,11 @@ struct ListView: View {
                                 Text("Year")
                             }
                         } label: {
-                            Text(item.name)
+                            Text(item.name) 
                             Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
                             Text(d.description).lineLimit(1)
                         }
-
+                        
                         
                     }
                 }
@@ -54,10 +56,21 @@ struct ListView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
+#if DEBUG
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        stateManager.selection = "Alex"
+                    } label: {
+                        Text("Alex")
+                    }
+                    
+                }
+#endif
             }
-        } detail: {
-            Text("Select an item")
         }
+//        } detail: {
+//            Text("Select an item")
+//        }
     }
 
     private func addItem() {
@@ -79,4 +92,6 @@ struct ListView: View {
 #Preview {
     ListView()
         .modelContainer(previewContainer)
+        .environmentObject(StateManager())
+
 }

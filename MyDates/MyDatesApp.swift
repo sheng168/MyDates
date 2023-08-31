@@ -19,6 +19,7 @@ struct MyDatesApp: App {
             ContentView()
         }
         .modelContainer(container)
+        .environmentObject(StateManager())
     }
     
     let container: ModelContainer = {

@@ -21,6 +21,7 @@
 		3C6BBCD02A9AB9D500E0AB0F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3C6BBCCF2A9AB9D500E0AB0F /* Then */; };
 		3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777E82A9F793900BC8FF2 /* ListView.swift */; };
 		3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */; };
+		3CA777ED2AA0183200BC8FF2 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EC2AA0183200BC8FF2 /* StateManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		3C0D8DD52A978C88002F2779 /* ModelPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreview.swift; sourceTree = "<group>"; };
 		3CA777E82A9F793900BC8FF2 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		3CA777EC2AA0183200BC8FF2 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				3C0D8D9D2A954099002F2779 /* MyDatesApp.swift */,
+				3CA777EC2AA0183200BC8FF2 /* StateManager.swift */,
 				3C0D8DA12A954099002F2779 /* Item.swift */,
 				3CA777E72A9F790200BC8FF2 /* View */,
 				3C0D8DD42A978C5E002F2779 /* Preview */,
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CA777ED2AA0183200BC8FF2 /* StateManager.swift in Sources */,
 				3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */,
 				3C0D8DA02A954099002F2779 /* ContentView.swift in Sources */,
 				3C0D8DD12A96DD04002F2779 /* ItemDetail.swift in Sources */,
