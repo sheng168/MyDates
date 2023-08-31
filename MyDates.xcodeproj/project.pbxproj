@@ -18,7 +18,6 @@
 		3C0D8DD12A96DD04002F2779 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD02A96DD04002F2779 /* ItemDetail.swift */; };
 		3C0D8DD32A977DE4002F2779 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD22A977DE4002F2779 /* PreviewContainer.swift */; };
 		3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD52A978C88002F2779 /* ModelPreview.swift */; };
-		3C6BBCD02A9AB9D500E0AB0F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3C6BBCCF2A9AB9D500E0AB0F /* Then */; };
 		3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777E82A9F793900BC8FF2 /* ListView.swift */; };
 		3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */; };
 		3CA777ED2AA0183200BC8FF2 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EC2AA0183200BC8FF2 /* StateManager.swift */; };
@@ -68,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C6BBCD02A9AB9D500E0AB0F /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +185,6 @@
 			);
 			name = MyDates;
 			packageProductDependencies = (
-				3C6BBCCF2A9AB9D500E0AB0F /* Then */,
 			);
 			productName = MyDates;
 			productReference = 3C0D8D9A2A954099002F2779 /* MyDates.app */;
@@ -262,7 +259,6 @@
 			);
 			mainGroup = 3C0D8D912A954099002F2779;
 			packageReferences = (
-				3C6BBCCE2A9AB9D500E0AB0F /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 3C0D8D9B2A954099002F2779 /* Products */;
 			projectDirPath = "";
@@ -648,25 +644,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		3C6BBCCE2A9AB9D500E0AB0F /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3C6BBCCF2A9AB9D500E0AB0F /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3C6BBCCE2A9AB9D500E0AB0F /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3C0D8D922A954099002F2779 /* Project object */;
 }

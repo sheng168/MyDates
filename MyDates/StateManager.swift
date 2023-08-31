@@ -8,10 +8,15 @@
 import Foundation
 
 class StateManager: ObservableObject {
-    @Published var selection: String? = "Alex" {
+    @Published var selection: String? = nil {
         didSet {
             logger.info("selection: \(self.selection ?? "nil")")
         }
     }
     @Published var tab: ContentView.Tabs = .List
+    
+    func openItem(name: String) {
+        tab = .List
+        selection = name
+    }
 }
