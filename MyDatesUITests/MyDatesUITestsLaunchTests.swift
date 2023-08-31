@@ -22,6 +22,13 @@ final class MyDatesUITestsLaunchTests: XCTestCase {
         app.launch()
     }
 
+    func attachScreenshot(name: String) {
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+    
     func testLaunch() throws {
         // Insert steps here to perform after app launch but before taking a screenshot,
         // such as logging into a test account or navigating somewhere in the app
@@ -31,7 +38,6 @@ final class MyDatesUITestsLaunchTests: XCTestCase {
         attachment.lifetime = .keepAlways
         add(attachment)
         
-        
 //        let app = XCUIApplication()
 //        app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"].buttons["Add Item"].tap()
 //        app.collectionViews["Sidebar"].staticTexts["New Event"].tap()
@@ -40,6 +46,19 @@ final class MyDatesUITestsLaunchTests: XCTestCase {
 //        attachment2.name = "Edit Screen"
 //        attachment2.lifetime = .keepAlways
 //        add(attachment2)
+        
+    }
+    
+    func testAbout() {
+        let tabBar = app.tabBars["Tab Bar"]
+        tabBar.buttons["About"].tap()
+        attachScreenshot(name: "About tab")
+        tabBar.buttons["List"].tap()
+    }
+    
+    func testAddItem() {
+        app.navigationBars.element.buttons["Add Item"].tap()
+        attachScreenshot(name: "Added item")
     }
     
     func _testCreateDelete() {
@@ -62,13 +81,6 @@ final class MyDatesUITestsLaunchTests: XCTestCase {
         sidebarCollectionView.buttons["Delete"].tap()
         navigationBar/*@START_MENU_TOKEN@*/.buttons["Done"]/*[[".otherElements[\"Done\"].buttons[\"Done\"]",".buttons[\"Done\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 
-    }
-    
-    func attachScreenshot(name: String) {
-        let attachment = XCTAttachment(screenshot: app.screenshot())
-        attachment.name = name
-        attachment.lifetime = .keepAlways
-        add(attachment)
     }
     
     func _testCRUD() {
