@@ -17,7 +17,15 @@ struct ListView: View {
     @State var currentTime = Date()
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+    
+    let componentFormatter = {
+        let f = DateComponentsFormatter()
+        f.unitsStyle = .short
+//        f.allowedUnits = [.hour]
+        f.allowsFractionalUnits = true
+        return f
+    }()
+    
     var body: some View {
         NavigationView {
             List {
@@ -35,7 +43,7 @@ struct ListView: View {
                         } label: {
                             Text(item.name) 
                             Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                            Text(d.description).lineLimit(1)
+                            Text(componentFormatter.string(from: d) ?? d.description).lineLimit(1)
                         }
                         
                         

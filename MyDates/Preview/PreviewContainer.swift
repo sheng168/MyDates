@@ -18,8 +18,8 @@ let previewContainer: ModelContainer = {
         )
         
         let items = [
-            Item(timestamp: Date()),
-            Item(timestamp: Date()),
+            Item(name: "Son's Birthday", timestamp: Date() - 60*60*24*365*6.23),
+            Item(name: "Almost a Year", timestamp: Date() - 60*60*24*360),
             Item(timestamp: Date()),
         ]
         

@@ -61,16 +61,16 @@ func diffs(_ date: Date, _ date2: Date) -> DateComponents {
     var diffs = Calendar.current.dateComponents(calComp, from: date, to: date2)
     logger.debug("\(diffs)")
     
-    if diffs.year == 0 {
-        diffs.year = nil
-        
-        if diffs.month == 0 {
-            diffs.month = nil
-        }
-    } else {
-        diffs.second = nil
-        diffs.minute = nil
-    }
+//    if diffs.year == 0 {
+//        diffs.year = nil
+//        
+//        if diffs.month == 0 {
+//            diffs.month = nil
+//        }
+//    } else {
+//        diffs.second = nil
+//        diffs.minute = nil
+//    }
     
 
     return diffs

@@ -18,7 +18,7 @@ class Item {
     
     @Transient var distance: Double = 0
     
-    init(timestamp: Date = Date(), name: String = "New Event") {
+    init(name: String = "New Event", timestamp: Date = Date()) {
         self.timestamp = timestamp
 //        self.count = count
         self.name = name
