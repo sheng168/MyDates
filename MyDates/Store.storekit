@@ -1,0 +1,158 @@
+{
+  "identifier" : "D0655CA4",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6463448697",
+    "_developerTeamID" : "6GW2SW5L9X",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 715872386.94749296,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21385947",
+      "localizations" : [
+
+      ],
+      "name" : "group",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+            {
+              "internalID" : "DD789D21",
+              "numberOfPeriods" : 1,
+              "offerID" : "promo_id",
+              "paymentMode" : "free",
+              "referenceName" : "promo name",
+              "subscriptionPeriod" : "P1W"
+            }
+          ],
+          "codeOffers" : [
+            {
+              "eligibility" : [
+                "new",
+                "expired",
+                "existing"
+              ],
+              "internalID" : "49AA69BA",
+              "isStackable" : true,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "referenceName" : "offer code",
+              "subscriptionPeriod" : "P2M"
+            }
+          ],
+          "displayPrice" : "1.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6465032685",
+          "introductoryOffer" : {
+            "internalID" : "24D6B97D",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P2W"
+          },
+          "localizations" : [
+            {
+              "description" : "Description",
+              "displayName" : "Display Name",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "product1",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "sub1",
+          "subscriptionGroupID" : "21385947",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6465032869",
+          "introductoryOffer" : {
+            "internalID" : "616792F1",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "basic",
+              "displayName" : "3 month",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "product2",
+          "recurringSubscriptionPeriod" : "P3M",
+          "referenceName" : "sub2",
+          "subscriptionGroupID" : "21385947",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

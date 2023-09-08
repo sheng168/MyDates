@@ -10,7 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     enum Tabs: String {
-        case List, About
+        case List, About, Buy
     }
     @EnvironmentObject var stateManager: StateManager
 //    @SceneStorage("tab") var tab = Tabs.About
@@ -28,6 +28,12 @@ struct ContentView: View {
                     Label(Tabs.About.rawValue, systemImage: "gear")
                 }
                 .tag(Tabs.About)
+
+            MyStoreView()
+                .tabItem {
+                    Label(Tabs.Buy.rawValue, systemImage: "cart")
+                }
+                .tag(Tabs.Buy)
         }
     }
 }
