@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import KeweApp
 
 struct ContentView: View {
     enum Tabs: String {
