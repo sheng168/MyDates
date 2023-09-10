@@ -25,7 +25,7 @@ let previewContainer: ModelContainer = {
         
         for item in items {
             let id = item.id
-            logger.info("\(id.storeIdentifier ?? "")")
+            logger.info("\(id )")
             
             container.mainContext.insert(item)
         }

@@ -9,7 +9,8 @@ import Foundation
 import SwiftData
 
 @Model
-class Item { 
+class Item: Identifiable { 
+    var id = UUID().uuidString
     var timestamp = Date()
     var name: String = "New Event"
 //    var count: Int
@@ -23,5 +24,7 @@ class Item {
 //        self.count = count
         self.name = name
 //        self.icon = "-"
+        
+        logger.info("id \(self.id)")
     }
 }

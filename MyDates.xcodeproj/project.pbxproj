@@ -19,6 +19,10 @@
 		3C0D8DD32A977DE4002F2779 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD22A977DE4002F2779 /* PreviewContainer.swift */; };
 		3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD52A978C88002F2779 /* ModelPreview.swift */; };
 		3C56FD492AAAB3700026A2D2 /* MyStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */; };
+		3C56FD512AABDCD80026A2D2 /* KeweSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD502AABDCD70026A2D2 /* KeweSymbols.swift */; };
+		3C7F844F2AAE4B61002B68B8 /* Umbrella in Frameworks */ = {isa = PBXBuildFile; productRef = 3C7F844E2AAE4B61002B68B8 /* Umbrella */; };
+		3C7F84512AAE4B61002B68B8 /* UmbrellaFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = 3C7F84502AAE4B61002B68B8 /* UmbrellaFirebase */; };
+		3C7F84532AAE4B61002B68B8 /* UmbrellaMixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 3C7F84522AAE4B61002B68B8 /* UmbrellaMixpanel */; };
 		3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777E82A9F793900BC8FF2 /* ListView.swift */; };
 		3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */; };
 		3CA777ED2AA0183200BC8FF2 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EC2AA0183200BC8FF2 /* StateManager.swift */; };
@@ -60,6 +64,7 @@
 		3C0D8DD52A978C88002F2779 /* ModelPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreview.swift; sourceTree = "<group>"; };
 		3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoreView.swift; sourceTree = "<group>"; };
 		3C56FD4A2AAAB9160026A2D2 /* Store.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Store.storekit; sourceTree = "<group>"; };
+		3C56FD502AABDCD70026A2D2 /* KeweSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeweSymbols.swift; sourceTree = "<group>"; };
 		3CA777E82A9F793900BC8FF2 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3CA777EC2AA0183200BC8FF2 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
@@ -70,6 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7F84532AAE4B61002B68B8 /* UmbrellaMixpanel in Frameworks */,
+				3C7F844F2AAE4B61002B68B8 /* Umbrella in Frameworks */,
+				3C7F84512AAE4B61002B68B8 /* UmbrellaFirebase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +105,7 @@
 				3C0D8DB12A95409C002F2779 /* MyDatesTests */,
 				3C0D8DBB2A95409C002F2779 /* MyDatesUITests */,
 				3C0D8D9B2A954099002F2779 /* Products */,
+				3C56FD592AABE3800026A2D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +122,7 @@
 		3C0D8D9C2A954099002F2779 /* MyDates */ = {
 			isa = PBXGroup;
 			children = (
+				3C56FD502AABDCD70026A2D2 /* KeweSymbols.swift */,
 				3C0D8D9D2A954099002F2779 /* MyDatesApp.swift */,
 				3CA777EC2AA0183200BC8FF2 /* StateManager.swift */,
 				3C0D8DA12A954099002F2779 /* Item.swift */,
@@ -161,6 +171,13 @@
 			path = Preview;
 			sourceTree = "<group>";
 		};
+		3C56FD592AABE3800026A2D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3CA777E72A9F790200BC8FF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +207,9 @@
 			);
 			name = MyDates;
 			packageProductDependencies = (
+				3C7F844E2AAE4B61002B68B8 /* Umbrella */,
+				3C7F84502AAE4B61002B68B8 /* UmbrellaFirebase */,
+				3C7F84522AAE4B61002B68B8 /* UmbrellaMixpanel */,
 			);
 			productName = MyDates;
 			productReference = 3C0D8D9A2A954099002F2779 /* MyDates.app */;
@@ -264,6 +284,7 @@
 			);
 			mainGroup = 3C0D8D912A954099002F2779;
 			packageReferences = (
+				3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */,
 			);
 			productRefGroup = 3C0D8D9B2A954099002F2779 /* Products */;
 			projectDirPath = "";
@@ -310,6 +331,7 @@
 				3CA777ED2AA0183200BC8FF2 /* StateManager.swift in Sources */,
 				3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */,
 				3C0D8DA02A954099002F2779 /* ContentView.swift in Sources */,
+				3C56FD512AABDCD80026A2D2 /* KeweSymbols.swift in Sources */,
 				3C0D8DD12A96DD04002F2779 /* ItemDetail.swift in Sources */,
 				3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */,
 				3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */,
@@ -654,6 +676,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Umbrella";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C7F844E2AAE4B61002B68B8 /* Umbrella */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */;
+			productName = Umbrella;
+		};
+		3C7F84502AAE4B61002B68B8 /* UmbrellaFirebase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */;
+			productName = UmbrellaFirebase;
+		};
+		3C7F84522AAE4B61002B68B8 /* UmbrellaMixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */;
+			productName = UmbrellaMixpanel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3C0D8D922A954099002F2779 /* Project object */;
 }

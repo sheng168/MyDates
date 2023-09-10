@@ -32,7 +32,7 @@ struct ListView: View {
                 ForEach(items) { item in
                     let d = diffs(item.timestamp, currentTime)
                     
-                    NavigationLink(tag: item.name, selection: $stateManager.selection) {
+                    NavigationLink(tag: item.id, selection: $stateManager.selection) {
                         ItemDetail(item: item)
                     } label: {
                         LabeledContent {
@@ -41,7 +41,7 @@ struct ListView: View {
                                 Text("Year")
                             }
                         } label: {
-                            Text(item.name) 
+                            Text(item.name)
                             Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
                             Text(componentFormatter.string(from: d) ?? d.description).lineLimit(1)
                         }

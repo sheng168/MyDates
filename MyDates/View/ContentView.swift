@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import KeweApp
 
 struct ContentView: View {
     enum Tabs: String {
@@ -19,19 +20,19 @@ struct ContentView: View {
         TabView (selection: $stateManager.tab) {
             ListView()
                 .tabItem {
-                    Label(Tabs.List.rawValue, systemImage: "list.bullet")
+                    Label(Tabs.List.rawValue, systemImage: KeweSymbols.list)
                 }
                 .tag(Tabs.List)
             
             AboutView()
                 .tabItem {
-                    Label(Tabs.About.rawValue, systemImage: "gear")
+                    Label(Tabs.About.rawValue, systemImage: KeweSymbols.setting)
                 }
                 .tag(Tabs.About)
 
             MyStoreView()
                 .tabItem {
-                    Label(Tabs.Buy.rawValue, systemImage: "cart")
+                    Label(Tabs.Buy.rawValue, systemImage: KeweSymbols.shop)
                 }
                 .tag(Tabs.Buy)
         }
