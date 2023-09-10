@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "umbrella",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/devxoul/Umbrella",
+      "state" : {
+        "revision" : "9f7999ca085519b0a8c1d06ef6a05bd53639fb4b",
+        "version" : "0.12.0"
+      }
+    }
+  ],
+  "version" : 2
+}
