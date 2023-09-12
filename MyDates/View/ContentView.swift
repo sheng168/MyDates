@@ -13,7 +13,6 @@ struct ContentView: View {
         case List, About, Buy
     }
     @EnvironmentObject var stateManager: StateManager
-//    @SceneStorage("tab") var tab = Tabs.About
 
     var body: some View {
         TabView (selection: $stateManager.tab) {
