@@ -59,7 +59,7 @@ func diffs(_ date: Date, _ date2: Date) -> DateComponents {
     let calComp: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
     
     var diffs = Calendar.current.dateComponents(calComp, from: date, to: date2)
-    logger.debug("\(diffs)")
+//    logger.trace("\(diffs)")
     
 //    if diffs.year == 0 {
 //        diffs.year = nil

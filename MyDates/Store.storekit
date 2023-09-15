@@ -10,7 +10,7 @@
     "_applicationInternalID" : "6463448697",
     "_developerTeamID" : "6GW2SW5L9X",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 715872386.94749296,
+    "_lastSynchronizedDate" : 716394457.42468703,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -72,7 +72,7 @@
         {
           "adHocOffers" : [
             {
-              "internalID" : "DD789D21",
+              "internalID" : "38DBD9C5",
               "numberOfPeriods" : 1,
               "offerID" : "promo_id",
               "paymentMode" : "free",
@@ -83,11 +83,11 @@
           "codeOffers" : [
             {
               "eligibility" : [
+                "existing",
                 "new",
-                "expired",
-                "existing"
+                "expired"
               ],
-              "internalID" : "49AA69BA",
+              "internalID" : "2D237A53",
               "isStackable" : true,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -96,19 +96,19 @@
             }
           ],
           "displayPrice" : "1.99",
-          "familyShareable" : false,
+          "familyShareable" : true,
           "groupNumber" : 1,
           "internalID" : "6465032685",
           "introductoryOffer" : {
-            "internalID" : "24D6B97D",
+            "internalID" : "F975F92C",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P2W"
           },
           "localizations" : [
             {
-              "description" : "Description",
-              "displayName" : "Display Name",
+              "description" : "Support development and maintenance",
+              "displayName" : "1 Year",
               "locale" : "en_US"
             }
           ],
@@ -125,19 +125,19 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "0.99",
-          "familyShareable" : false,
+          "displayPrice" : "0.69",
+          "familyShareable" : true,
           "groupNumber" : 2,
           "internalID" : "6465032869",
           "introductoryOffer" : {
-            "internalID" : "616792F1",
+            "internalID" : "985B68AF",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
           },
           "localizations" : [
             {
-              "description" : "basic",
+              "description" : "Support development and maintenance",
               "displayName" : "3 month",
               "locale" : "en_US"
             }

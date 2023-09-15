@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct ListView: View {
     @EnvironmentObject var stateManager: StateManager
@@ -15,6 +16,15 @@ struct ListView: View {
     @Query(sort: \Item.name, order: .forward) private var items: [Item]
     
     @State var currentTime = Date()
+    @AppStorage("isPro") private var isPro = false
+    
+    private var maxItems: Int {
+        if isPro {
+            800
+        } else {
+            8
+        }
+    }
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -51,8 +61,25 @@ struct ListView: View {
                 }
                 .onDelete(perform: deleteItems)
             }
+            .navigationTitle("\(items.count) Events")
+            .onInAppPurchaseCompletion { (product: Product, result: Result<Product.PurchaseResult, Error>) in
+                if case .success(.success(let transaction)) = result {
+                    logger.info("iap: \(transaction.debugDescription)")
+                }
+            }
+            .subscriptionStatusTask(for: "21385947", action: { taskState in
+                logger.info("sub: \(taskState.value?.count ?? 0)")
+                
+                if let value = taskState.value {
+                    isPro = !value
+                        .filter { $0.state != .revoked && $0.state != .expired }
+                        .isEmpty
+                } else {
+                    isPro = false
+                }
+            })
             .onReceive(timer, perform: { date in
-                logger.notice("timer \(date)")
+//                logger.notice("timer \(date)")
                 currentTime = date
             })
             .toolbar {
@@ -63,6 +90,7 @@ struct ListView: View {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }
+                    .disabled(items.count >= maxItems)
                 }
 #if DEBUG_
                 ToolbarItem(placement: .navigationBarLeading) {
