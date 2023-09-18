@@ -20,6 +20,7 @@
 		3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD52A978C88002F2779 /* ModelPreview.swift */; };
 		3C56FD492AAAB3700026A2D2 /* MyStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */; };
 		3C56FD512AABDCD80026A2D2 /* KeweSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD502AABDCD70026A2D2 /* KeweSymbols.swift */; };
+		3C6F71FE2AB892390013844F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3C6F71FD2AB892390013844F /* Then */; };
 		3C7F844F2AAE4B61002B68B8 /* Umbrella in Frameworks */ = {isa = PBXBuildFile; productRef = 3C7F844E2AAE4B61002B68B8 /* Umbrella */; };
 		3C7F84512AAE4B61002B68B8 /* UmbrellaFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = 3C7F84502AAE4B61002B68B8 /* UmbrellaFirebase */; };
 		3C7F84532AAE4B61002B68B8 /* UmbrellaMixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 3C7F84522AAE4B61002B68B8 /* UmbrellaMixpanel */; };
@@ -78,6 +79,7 @@
 				3C7F84532AAE4B61002B68B8 /* UmbrellaMixpanel in Frameworks */,
 				3C7F844F2AAE4B61002B68B8 /* Umbrella in Frameworks */,
 				3C7F84512AAE4B61002B68B8 /* UmbrellaFirebase in Frameworks */,
+				3C6F71FE2AB892390013844F /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +212,7 @@
 				3C7F844E2AAE4B61002B68B8 /* Umbrella */,
 				3C7F84502AAE4B61002B68B8 /* UmbrellaFirebase */,
 				3C7F84522AAE4B61002B68B8 /* UmbrellaMixpanel */,
+				3C6F71FD2AB892390013844F /* Then */,
 			);
 			productName = MyDates;
 			productReference = 3C0D8D9A2A954099002F2779 /* MyDates.app */;
@@ -285,6 +288,7 @@
 			mainGroup = 3C0D8D912A954099002F2779;
 			packageReferences = (
 				3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */,
+				3C6F71FC2AB892390013844F /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 3C0D8D9B2A954099002F2779 /* Products */;
 			projectDirPath = "";
@@ -678,6 +682,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3C6F71FC2AB892390013844F /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Umbrella";
@@ -689,6 +701,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3C6F71FD2AB892390013844F /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C6F71FC2AB892390013844F /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
 		3C7F844E2AAE4B61002B68B8 /* Umbrella */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */;

@@ -10,7 +10,7 @@
     "_applicationInternalID" : "6463448697",
     "_developerTeamID" : "6GW2SW5L9X",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 716394457.42468703,
+    "_lastSynchronizedDate" : 716759039.54942799,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -72,7 +72,7 @@
         {
           "adHocOffers" : [
             {
-              "internalID" : "38DBD9C5",
+              "internalID" : "700857FA",
               "numberOfPeriods" : 1,
               "offerID" : "promo_id",
               "paymentMode" : "free",
@@ -83,11 +83,11 @@
           "codeOffers" : [
             {
               "eligibility" : [
-                "existing",
                 "new",
-                "expired"
+                "expired",
+                "existing"
               ],
-              "internalID" : "2D237A53",
+              "internalID" : "90FBB8C2",
               "isStackable" : true,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -100,14 +100,14 @@
           "groupNumber" : 1,
           "internalID" : "6465032685",
           "introductoryOffer" : {
-            "internalID" : "F975F92C",
+            "internalID" : "380D3AF3",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P2W"
           },
           "localizations" : [
             {
-              "description" : "Support development and maintenance",
+              "description" : "Enable creating more than 8 items",
               "displayName" : "1 Year",
               "locale" : "en_US"
             }
@@ -130,14 +130,14 @@
           "groupNumber" : 2,
           "internalID" : "6465032869",
           "introductoryOffer" : {
-            "internalID" : "985B68AF",
+            "internalID" : "E217AF9D",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
           },
           "localizations" : [
             {
-              "description" : "Support development and maintenance",
+              "description" : "Enable creating more than 8 items",
               "displayName" : "3 month",
               "locale" : "en_US"
             }

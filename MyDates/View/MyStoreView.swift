@@ -14,7 +14,7 @@ struct MyStoreView: View {
     var body: some View {
         SubscriptionStoreView(groupID: "21385947")
             .subscriptionStoreButtonLabel(.multiline)
-            .storeButton(.visible, for: .redeemCode)
+            .storeButton(.visible, for: .policies)
     }
 }
 
