@@ -8,15 +8,19 @@
 import SwiftUI
 import SwiftData
 import os
+import KeweApp
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseInit.config()
+        MyTracking.action("load")
         
         return true
     }
 }
+
+let MyTracking = KeweAnalytics.self
 
 @main
 struct MyDatesApp: App {
