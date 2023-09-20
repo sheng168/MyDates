@@ -14,13 +14,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseInit.config()
-        MyTracking.action("load")
+        MyAnalytics.action("load")
         
         return true
     }
 }
 
-let MyTracking = KeweAnalytics.self
+let MyAnalytics = KeweAnalytics.self
 
 @main
 struct MyDatesApp: App {
