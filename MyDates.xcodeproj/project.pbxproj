@@ -67,7 +67,6 @@
 		3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3CA777EC2AA0183200BC8FF2 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		3CC79CD22ABAA40E00A734CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3CC79CF22ABB7C9E00A734CB /* KeweApp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = KeweApp; path = ../KeweApp; sourceTree = "<group>"; };
 		3CC79CF42ABBAC2C00A734CB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,7 +99,6 @@
 		3C0D8D912A954099002F2779 = {
 			isa = PBXGroup;
 			children = (
-				3CC79CF22ABB7C9E00A734CB /* KeweApp */,
 				3C0D8D9C2A954099002F2779 /* MyDates */,
 				3C0D8DB12A95409C002F2779 /* MyDatesTests */,
 				3C0D8DBB2A95409C002F2779 /* MyDatesUITests */,
