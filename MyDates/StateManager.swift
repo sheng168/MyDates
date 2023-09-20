@@ -13,7 +13,7 @@ class StateManager: ObservableObject {
             logger.info("selection: \(self.selection ?? "nil")")
         }
     }
-    @Published var tab: ContentView.Tabs = .List
+    @Published var tab: Tabs = .List
     
     func openItem(name: String) {
         tab = .List

@@ -10,6 +10,8 @@ import SwiftData
 import os
 import KeweApp
 
+typealias MyAnalytics = KeweAnalytics
+
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -20,7 +22,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
-let MyAnalytics = KeweAnalytics.self
 
 @main
 struct MyDatesApp: App {

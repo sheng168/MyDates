@@ -10,6 +10,12 @@ import SwiftUI
 struct AboutView: View {
     var body: some View {
         Form  {
+            ForEach(Config.shared.about) { section in
+                Section(section.id) {
+                    Text(section.detail)
+                }
+            }
+            /*
             Section("Features") {
                 Text("""
                 - Save list of name and date
@@ -33,6 +39,7 @@ struct AboutView: View {
                 While my app is currently free, I plan to charge $1 per year so that it can be maintained and enhanced.       
                 """)
             }
+             */
         }
         .onAppear {
             MyAnalytics.view(self)

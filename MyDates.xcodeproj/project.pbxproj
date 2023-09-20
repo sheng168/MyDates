@@ -19,13 +19,12 @@
 		3C0D8DD32A977DE4002F2779 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD22A977DE4002F2779 /* PreviewContainer.swift */; };
 		3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD52A978C88002F2779 /* ModelPreview.swift */; };
 		3C56FD492AAAB3700026A2D2 /* MyStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */; };
-		3C56FD512AABDCD80026A2D2 /* KeweSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD502AABDCD70026A2D2 /* KeweSymbols.swift */; };
 		3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777E82A9F793900BC8FF2 /* ListView.swift */; };
 		3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */; };
 		3CA777ED2AA0183200BC8FF2 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EC2AA0183200BC8FF2 /* StateManager.swift */; };
 		3CC79CD32ABAA40E00A734CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC79CD22ABAA40E00A734CB /* GoogleService-Info.plist */; };
-		3CC79CDB2ABB432800A734CB /* KeweApp in Resources */ = {isa = PBXBuildFile; fileRef = 3CC79CDA2ABB432800A734CB /* KeweApp */; };
-		3CC79CDD2ABB49A300A734CB /* KeweApp in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC79CDC2ABB49A300A734CB /* KeweApp */; };
+		3CC79CF12ABB7C7A00A734CB /* KeweApp in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC79CF02ABB7C7A00A734CB /* KeweApp */; };
+		3CC79CF52ABBAC2C00A734CB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC79CF42ABBAC2C00A734CB /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,12 +63,12 @@
 		3C0D8DD52A978C88002F2779 /* ModelPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreview.swift; sourceTree = "<group>"; };
 		3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoreView.swift; sourceTree = "<group>"; };
 		3C56FD4A2AAAB9160026A2D2 /* Store.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Store.storekit; sourceTree = "<group>"; };
-		3C56FD502AABDCD70026A2D2 /* KeweSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeweSymbols.swift; sourceTree = "<group>"; };
 		3CA777E82A9F793900BC8FF2 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3CA777EC2AA0183200BC8FF2 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		3CC79CD22ABAA40E00A734CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3CC79CDA2ABB432800A734CB /* KeweApp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KeweApp; sourceTree = "<group>"; };
+		3CC79CF22ABB7C9E00A734CB /* KeweApp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = KeweApp; path = ../KeweApp; sourceTree = "<group>"; };
+		3CC79CF42ABBAC2C00A734CB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CC79CDD2ABB49A300A734CB /* KeweApp in Frameworks */,
+				3CC79CF12ABB7C7A00A734CB /* KeweApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +100,7 @@
 		3C0D8D912A954099002F2779 = {
 			isa = PBXGroup;
 			children = (
-				3CC79CDA2ABB432800A734CB /* KeweApp */,
+				3CC79CF22ABB7C9E00A734CB /* KeweApp */,
 				3C0D8D9C2A954099002F2779 /* MyDates */,
 				3C0D8DB12A95409C002F2779 /* MyDatesTests */,
 				3C0D8DBB2A95409C002F2779 /* MyDatesUITests */,
@@ -123,8 +122,8 @@
 		3C0D8D9C2A954099002F2779 /* MyDates */ = {
 			isa = PBXGroup;
 			children = (
-				3C56FD502AABDCD70026A2D2 /* KeweSymbols.swift */,
 				3C0D8D9D2A954099002F2779 /* MyDatesApp.swift */,
+				3CC79CF42ABBAC2C00A734CB /* Config.swift */,
 				3CA777EC2AA0183200BC8FF2 /* StateManager.swift */,
 				3C0D8DA12A954099002F2779 /* Item.swift */,
 				3CA777E72A9F790200BC8FF2 /* View */,
@@ -209,7 +208,7 @@
 			);
 			name = MyDates;
 			packageProductDependencies = (
-				3CC79CDC2ABB49A300A734CB /* KeweApp */,
+				3CC79CF02ABB7C7A00A734CB /* KeweApp */,
 			);
 			productName = MyDates;
 			productReference = 3C0D8D9A2A954099002F2779 /* MyDates.app */;
@@ -284,6 +283,7 @@
 			);
 			mainGroup = 3C0D8D912A954099002F2779;
 			packageReferences = (
+				3CC79CEF2ABB7C7A00A734CB /* XCRemoteSwiftPackageReference "KeweApp" */,
 			);
 			productRefGroup = 3C0D8D9B2A954099002F2779 /* Products */;
 			projectDirPath = "";
@@ -301,7 +301,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CC79CDB2ABB432800A734CB /* KeweApp in Resources */,
 				3C0D8DA72A95409C002F2779 /* Preview Assets.xcassets in Resources */,
 				3CC79CD32ABAA40E00A734CB /* GoogleService-Info.plist in Resources */,
 				3C0D8DA42A95409C002F2779 /* Assets.xcassets in Resources */,
@@ -332,8 +331,8 @@
 				3CA777ED2AA0183200BC8FF2 /* StateManager.swift in Sources */,
 				3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */,
 				3C0D8DA02A954099002F2779 /* ContentView.swift in Sources */,
-				3C56FD512AABDCD80026A2D2 /* KeweSymbols.swift in Sources */,
 				3C0D8DD12A96DD04002F2779 /* ItemDetail.swift in Sources */,
+				3CC79CF52ABBAC2C00A734CB /* Config.swift in Sources */,
 				3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */,
 				3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */,
 				3C0D8DA22A954099002F2779 /* Item.swift in Sources */,
@@ -680,9 +679,21 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		3CC79CEF2ABB7C7A00A734CB /* XCRemoteSwiftPackageReference "KeweApp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sheng168/KeweApp.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		3CC79CDC2ABB49A300A734CB /* KeweApp */ = {
+		3CC79CF02ABB7C7A00A734CB /* KeweApp */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 3CC79CEF2ABB7C7A00A734CB /* XCRemoteSwiftPackageReference "KeweApp" */;
 			productName = KeweApp;
 		};
 /* End XCSwiftPackageProductDependency section */
