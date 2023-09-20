@@ -7,8 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import Umbrella
-
 import os
 
 @main
@@ -48,33 +46,3 @@ extension Logger {
 }
 
 let logger = Logger.main
-let analytics = Analytics<MyAppEvent>()
-
-enum MyAppEvent {
-  case signup(username: String)
-  case viewContent(productID: Int)
-  case purchase(productID: Int, price: Float)
-}
-
-extension MyAppEvent: EventType {
-  /// An event name to be logged
-  func name(for provider: ProviderType) -> String? {
-    switch self {
-    case .signup: return "signup"
-    case .viewContent: return "view_content"
-    case .purchase: return "purchase"
-    }
-  }
-
-  /// Parameters to be logged
-  func parameters(for provider: ProviderType) -> [String: Any]? {
-    switch self {
-    case let .signup(username):
-      return ["username": username]
-    case let .viewContent(productID):
-      return ["product_id": productID]
-    case let .purchase(productID, price):
-      return ["product_id": productID, "price": price]
-    }
-  }
-}
