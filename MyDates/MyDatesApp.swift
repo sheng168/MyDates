@@ -9,8 +9,19 @@ import SwiftUI
 import SwiftData
 import os
 
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseInit.config()
+        
+        return true
+    }
+}
+
 @main
 struct MyDatesApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     static let testArg = "enable-testing"
     
     var body: some Scene {

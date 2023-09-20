@@ -34,6 +34,9 @@ struct AboutView: View {
                 """)
             }
         }
+        .onAppear {
+            MyAnalytics.view(self)
+        }
     }
 }
 

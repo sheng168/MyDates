@@ -15,6 +15,9 @@ struct MyStoreView: View {
         SubscriptionStoreView(groupID: "21385947")
             .subscriptionStoreButtonLabel(.multiline)
             .storeButton(.visible, for: .policies)
+            .onAppear {
+                MyAnalytics.view(self)
+            }
     }
 }
 

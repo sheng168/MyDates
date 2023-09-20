@@ -1,7 +1,21 @@
 {
   "identifier" : "D0655CA4",
   "nonRenewingSubscriptions" : [
-
+    {
+      "displayPrice" : "6.99",
+      "familyShareable" : false,
+      "internalID" : "6467071407",
+      "localizations" : [
+        {
+          "description" : "You don't have to worry about cancelling",
+          "displayName" : "Coffee sponsor",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "non_renewing",
+      "referenceName" : "non-renewing",
+      "type" : "NonRenewingSubscription"
+    }
   ],
   "products" : [
 
@@ -10,7 +24,7 @@
     "_applicationInternalID" : "6463448697",
     "_developerTeamID" : "6GW2SW5L9X",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 716759039.54942799,
+    "_lastSynchronizedDate" : 716868596.70795095,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -72,7 +86,7 @@
         {
           "adHocOffers" : [
             {
-              "internalID" : "700857FA",
+              "internalID" : "F36BF7DA",
               "numberOfPeriods" : 1,
               "offerID" : "promo_id",
               "paymentMode" : "free",
@@ -83,11 +97,11 @@
           "codeOffers" : [
             {
               "eligibility" : [
-                "new",
                 "expired",
-                "existing"
+                "existing",
+                "new"
               ],
-              "internalID" : "90FBB8C2",
+              "internalID" : "3BD5989B",
               "isStackable" : true,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -95,12 +109,12 @@
               "subscriptionPeriod" : "P2M"
             }
           ],
-          "displayPrice" : "1.99",
+          "displayPrice" : "0.99",
           "familyShareable" : true,
           "groupNumber" : 1,
           "internalID" : "6465032685",
           "introductoryOffer" : {
-            "internalID" : "380D3AF3",
+            "internalID" : "450B4597",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P2W"
@@ -130,14 +144,14 @@
           "groupNumber" : 2,
           "internalID" : "6465032869",
           "introductoryOffer" : {
-            "internalID" : "E217AF9D",
+            "internalID" : "DCE50335",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
           },
           "localizations" : [
             {
-              "description" : "Enable creating more than 8 items",
+              "description" : "Enable creating more than 8 items ",
               "displayName" : "3 month",
               "locale" : "en_US"
             }

@@ -107,6 +107,9 @@ struct ListView: View {
 //        } detail: {
 //            Text("Select an item")
 //        }
+        .onAppear {
+            MyAnalytics.view(self)
+        }
     }
 
     private func addItem() {
