@@ -20,13 +20,11 @@
 		3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DD52A978C88002F2779 /* ModelPreview.swift */; };
 		3C56FD492AAAB3700026A2D2 /* MyStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */; };
 		3C56FD512AABDCD80026A2D2 /* KeweSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD502AABDCD70026A2D2 /* KeweSymbols.swift */; };
-		3C6F71FE2AB892390013844F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3C6F71FD2AB892390013844F /* Then */; };
-		3C7F844F2AAE4B61002B68B8 /* Umbrella in Frameworks */ = {isa = PBXBuildFile; productRef = 3C7F844E2AAE4B61002B68B8 /* Umbrella */; };
-		3C7F84512AAE4B61002B68B8 /* UmbrellaFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = 3C7F84502AAE4B61002B68B8 /* UmbrellaFirebase */; };
-		3C7F84532AAE4B61002B68B8 /* UmbrellaMixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 3C7F84522AAE4B61002B68B8 /* UmbrellaMixpanel */; };
 		3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777E82A9F793900BC8FF2 /* ListView.swift */; };
 		3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */; };
 		3CA777ED2AA0183200BC8FF2 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EC2AA0183200BC8FF2 /* StateManager.swift */; };
+		3CC79CCF2ABA833900A734CB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC79CCE2ABA833900A734CB /* FirebaseAnalyticsSwift */; };
+		3CC79CD12ABA833900A734CB /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC79CD02ABA833900A734CB /* FirebaseRemoteConfigSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,10 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C7F84532AAE4B61002B68B8 /* UmbrellaMixpanel in Frameworks */,
-				3C7F844F2AAE4B61002B68B8 /* Umbrella in Frameworks */,
-				3C7F84512AAE4B61002B68B8 /* UmbrellaFirebase in Frameworks */,
-				3C6F71FE2AB892390013844F /* Then in Frameworks */,
+				3CC79CCF2ABA833900A734CB /* FirebaseAnalyticsSwift in Frameworks */,
+				3CC79CD12ABA833900A734CB /* FirebaseRemoteConfigSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,10 +205,8 @@
 			);
 			name = MyDates;
 			packageProductDependencies = (
-				3C7F844E2AAE4B61002B68B8 /* Umbrella */,
-				3C7F84502AAE4B61002B68B8 /* UmbrellaFirebase */,
-				3C7F84522AAE4B61002B68B8 /* UmbrellaMixpanel */,
-				3C6F71FD2AB892390013844F /* Then */,
+				3CC79CCE2ABA833900A734CB /* FirebaseAnalyticsSwift */,
+				3CC79CD02ABA833900A734CB /* FirebaseRemoteConfigSwift */,
 			);
 			productName = MyDates;
 			productReference = 3C0D8D9A2A954099002F2779 /* MyDates.app */;
@@ -287,8 +281,7 @@
 			);
 			mainGroup = 3C0D8D912A954099002F2779;
 			packageReferences = (
-				3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */,
-				3C6F71FC2AB892390013844F /* XCRemoteSwiftPackageReference "Then" */,
+				3CC79CCD2ABA833900A734CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3C0D8D9B2A954099002F2779 /* Products */;
 			projectDirPath = "";
@@ -511,6 +504,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyDates/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -520,7 +514,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = us.jsy.MyDates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -544,6 +538,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyDates/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -553,7 +548,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = us.jsy.MyDates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -682,44 +677,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3C6F71FC2AB892390013844F /* XCRemoteSwiftPackageReference "Then" */ = {
+		3CC79CCD2ABA833900A734CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-		3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Umbrella";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.12.0;
+				minimumVersion = 10.15.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3C6F71FD2AB892390013844F /* Then */ = {
+		3CC79CCE2ABA833900A734CB /* FirebaseAnalyticsSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3C6F71FC2AB892390013844F /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
+			package = 3CC79CCD2ABA833900A734CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
 		};
-		3C7F844E2AAE4B61002B68B8 /* Umbrella */ = {
+		3CC79CD02ABA833900A734CB /* FirebaseRemoteConfigSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */;
-			productName = Umbrella;
-		};
-		3C7F84502AAE4B61002B68B8 /* UmbrellaFirebase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */;
-			productName = UmbrellaFirebase;
-		};
-		3C7F84522AAE4B61002B68B8 /* UmbrellaMixpanel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3C7F844D2AAE4B61002B68B8 /* XCRemoteSwiftPackageReference "Umbrella" */;
-			productName = UmbrellaMixpanel;
+			package = 3CC79CCD2ABA833900A734CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
