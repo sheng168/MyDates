@@ -113,6 +113,7 @@ struct ListView: View {
     }
 
     private func addItem() {
+        MyAnalytics.action("add")
         withAnimation {
             let newItem = Item(timestamp: Date())
             modelContext.insert(newItem)
@@ -120,6 +121,7 @@ struct ListView: View {
     }
 
     private func deleteItems(offsets: IndexSet) {
+        MyAnalytics.action("delete")
         withAnimation {
             for index in offsets {
                 modelContext.delete(items[index])
