@@ -7,17 +7,13 @@
 
 import SwiftUI
 import StoreKit
+import KeweApp
 
 struct MyStoreView: View {
 //    @Query var birdFood: [Item]
     
     var body: some View {
-        SubscriptionStoreView(groupID: "21385947")
-            .subscriptionStoreButtonLabel(.multiline)
-            .storeButton(.visible, for: .policies)
-            .onAppear {
-                MyAnalytics.view(self)
-            }
+        Store16View(groupID: "21385947")
     }
 }
 

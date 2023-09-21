@@ -12,7 +12,7 @@ import KeweApp
 enum Tabs: String {
     case List, About, Buy
     
-    func view() -> some View {
+    func view() -> AnyView {
         switch self {
         case .List:
             AnyView(ListView())
