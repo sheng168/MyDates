@@ -13,7 +13,7 @@ struct ListView: View {
     @EnvironmentObject var stateManager: StateManager
 
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Item.name, order: .forward) private var items: [Item]
+    @Query(sort: \Item.timestamp, order: .reverse) private var items: [Item]
     
     @State var currentTime = Date()
     @AppStorage("isPro") private var isPro = false
@@ -28,14 +28,6 @@ struct ListView: View {
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    let componentFormatter = {
-        let f = DateComponentsFormatter()
-        f.unitsStyle = .short
-//        f.allowedUnits = [.hour]
-        f.allowsFractionalUnits = true
-        return f
-    }()
-    
     var body: some View {
         NavigationView {
             List {
@@ -45,18 +37,7 @@ struct ListView: View {
                     NavigationLink(tag: item.id, selection: $stateManager.selection) {
                         ItemDetail(item: item)
                     } label: {
-                        LabeledContent {
-                            VStack {
-                                Text(d.year ?? 0, format: .number)
-                                Text("Year")
-                            }
-                        } label: {
-                            Text(item.name)
-                            Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                            Text(componentFormatter.string(from: d) ?? d.description).lineLimit(1)
-                        }
-                        
-                        
+                        ItemRowView(item: item, d: d)
                     }
                 }
                 .onDelete(perform: deleteItems)

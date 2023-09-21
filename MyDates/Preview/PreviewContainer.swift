@@ -21,6 +21,7 @@ let previewContainer: ModelContainer = {
             Item(name: "Son's Birthday", timestamp: Date() - 60*60*24*365*6.23),
             Item(name: "Almost a Year", timestamp: Date() - 60*60*24*360),
             Item(timestamp: Date()),
+            Item(name: "Countdown", timestamp: Date() + 60*60*24*16),
         ]
         
         for item in items {

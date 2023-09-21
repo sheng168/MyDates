@@ -18,10 +18,45 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseInit.config()
         MyAnalytics.action("load")
         
+        print(Config.shared.toJsonString()!)
+        
         return true
     }
 }
 
+extension Encodable {
+    func toJsonString() -> String? {
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.outputFormatting = .prettyPrinted
+        
+        do {
+            let jsonData = try jsonEncoder.encode(self)
+            return String(data: jsonData, encoding: .utf8)
+        } catch {
+            print("Error encoding struct to JSON: \(error)")
+            return nil
+        }
+    }
+}
+
+extension Decodable {
+    static func fromJsonString(_ jsonString: String) -> Self? {
+        guard let jsonData = jsonString.data(using: .utf8) else {
+            print("Failed to convert JSON string to data.")
+            return nil
+        }
+        
+        let jsonDecoder = JSONDecoder()
+        
+        do {
+            let decodedObject = try jsonDecoder.decode(Self.self, from: jsonData)
+            return decodedObject
+        } catch {
+            print("Error decoding JSON string to struct: \(error)")
+            return nil
+        }
+    }
+}
 
 @main
 struct MyDatesApp: App {
