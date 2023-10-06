@@ -13,8 +13,9 @@ struct Config: Codable {
     
     var tabList = [
         Tab(label: Tabs.List.rawValue, systemImage: KeweSymbols.list, tag: Tabs.List.rawValue),
-        Tab(label: Tabs.About.rawValue, systemImage: KeweSymbols.setting, tag: Tabs.About.rawValue),
+        Tab(label: Tabs.Wishlist.rawValue, systemImage: "gift", tag: Tabs.Wishlist.rawValue),
         Tab(label: Tabs.Buy.rawValue, systemImage: KeweSymbols.shop, tag: Tabs.Buy.rawValue),
+        Tab(label: Tabs.About.rawValue, systemImage: KeweSymbols.setting, tag: Tabs.About.rawValue),
     ]
     
     var about = [

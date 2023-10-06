@@ -10,16 +10,20 @@ import SwiftData
 import KeweApp
 
 enum Tabs: String {
-    case List, About, Buy
+    case List, About, Buy, Wishlist
+    //TODO: https://www.swiftbysundell.com/articles/avoiding-anyview-in-swiftui/
     
-    func view() -> AnyView {
+    @ViewBuilder
+    func view() -> some View {
         switch self {
         case .List:
-            AnyView(ListView())
+            ListView()
         case .About:
-            AnyView(AboutView())
+            AboutView()
         case .Buy:
-            AnyView(MyStoreView())
+            MyStoreView()
+        case .Wishlist:
+            WishKitView()
         }
     }
 }
