@@ -75,21 +75,40 @@ struct MyDatesApp: App {
     let container: ModelContainer = {
 //        analytics.register(provider: FirebaseProvider())
 
-#if DEBUG
-            if CommandLine.arguments.contains(testArg) {
-            //    configureAppForTesting()
-                logger.info("testing mode")
-            }
-#endif
-            // Don't force unwrap for real 👀
-//            ModelContainer(
-            return try! ModelContainer(
-                for: Item.self
+        let c = try! ModelContainer(
+            for: Item.self
 //                .init(
 //                    "iCloud.us.jsy.MyDates"
 //                )
-            )
-        }()
+        )
+#if DEBUG
+        if CommandLine.arguments.contains(testArg) {
+        //    configureAppForTesting()
+            logger.info("testing mode")
+            
+            try? c.mainContext.delete(model: Item.self)
+            
+            let items = [
+                Item(name: "Son's Birthday", timestamp: Date() - 60*60*24*365*3.93),
+                Item(name: "Daughter's Birthday", timestamp: Date() - 60*60*24*350),
+                Item(name: "Start Timer", timestamp: Date()),
+                Item(name: "Countdown", timestamp: Date() + 60*60*24*16),
+                Item(name: "My Age", timestamp: Date() - 60*60*24*365*38.93),
+            ]
+            
+            for item in items {
+                let id = item.id
+                logger.info("\(id )")
+                
+                c.mainContext.insert(item)
+            }
+
+        }
+#endif
+            // Don't force unwrap for real 👀
+//            ModelContainer(
+        return c
+    }()
 }
 
 extension Logger {

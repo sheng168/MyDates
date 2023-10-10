@@ -21,9 +21,8 @@ final class ScreenShotUITests: XCTestCase {
         // UI tests must launch the application that they test.
         setupSnapshot(app)
         
-        
+        app.launchArguments = ["enable-testing"]
         app.launch()
-        
     }
     
     override func tearDownWithError() throws {
@@ -36,19 +35,18 @@ final class ScreenShotUITests: XCTestCase {
 
 //        snapshot("01LaunchScreen")
 
-        tabBar.buttons["About"].tap()
-        snapshot("About")
-        
         tabBar.buttons["List"].tap()
-        snapshot("List")
+        snapshot("0List")
 
         tabBar.buttons["Wishlist"].tap()
-        snapshot("Wishlist")
+        snapshot("1Wishlist")
 
         tabBar.buttons["Buy"].tap()
-        snapshot("Buy")
+        snapshot("2Buy")
 
-
+        tabBar.buttons["About"].tap()
+        snapshot("3About")
+        
     }
     
 //    func testExample2() throws {

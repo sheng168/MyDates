@@ -30,6 +30,7 @@
 		3CC79CF12ABB7C7A00A734CB /* KeweApp in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC79CF02ABB7C7A00A734CB /* KeweApp */; };
 		3CC79CF52ABBAC2C00A734CB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC79CF42ABBAC2C00A734CB /* Config.swift */; };
 		3CDA43B62AD24372000FBFCA /* ScreenShotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA43B52AD24372000FBFCA /* ScreenShotUITests.swift */; };
+		3CDA43B92AD4DA9F000FBFCA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDA43B82AD4DA9F000FBFCA /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C3CD8042AD0814D0051D252 /* WishKit in Frameworks */,
+				3CDA43B92AD4DA9F000FBFCA /* Then in Frameworks */,
 				3CC79CF12ABB7C7A00A734CB /* KeweApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +224,7 @@
 			packageProductDependencies = (
 				3CC79CF02ABB7C7A00A734CB /* KeweApp */,
 				3C3CD8032AD0814D0051D252 /* WishKit */,
+				3CDA43B82AD4DA9F000FBFCA /* Then */,
 			);
 			productName = MyDates;
 			productReference = 3C0D8D9A2A954099002F2779 /* MyDates.app */;
@@ -298,6 +301,7 @@
 			packageReferences = (
 				3CC79CEF2ABB7C7A00A734CB /* XCRemoteSwiftPackageReference "KeweApp" */,
 				3C3CD8022AD0814D0051D252 /* XCRemoteSwiftPackageReference "wishkit-ios" */,
+				3CDA43B72AD4DA9F000FBFCA /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 3C0D8D9B2A954099002F2779 /* Products */;
 			projectDirPath = "";
@@ -714,6 +718,14 @@
 				kind = branch;
 			};
 		};
+		3CDA43B72AD4DA9F000FBFCA /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -726,6 +738,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3CC79CEF2ABB7C7A00A734CB /* XCRemoteSwiftPackageReference "KeweApp" */;
 			productName = KeweApp;
+		};
+		3CDA43B82AD4DA9F000FBFCA /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CDA43B72AD4DA9F000FBFCA /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
