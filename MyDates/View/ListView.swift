@@ -28,8 +28,18 @@ struct ListView: View {
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    init(searchString: String = "") {
+        _items = Query(filter: #Predicate { item in
+            if searchString.isEmpty {
+                true
+            } else {
+                item.name.localizedStandardContains(searchString)
+            }
+        })
+    }
+    
     var body: some View {
-        NavigationView {
+//        NavigationView {
             List {
                 ForEach(items) { item in
                     let d = diffs(item.timestamp, currentTime)
@@ -84,7 +94,7 @@ struct ListView: View {
                 }
 #endif
             }
-        }
+//        }
 //        } detail: {
 //            Text("Select an item")
 //        }

@@ -17,7 +17,7 @@ enum Tabs: String {
     func view() -> some View {
         switch self {
         case .List:
-            ListView()
+            QueryBuilderView()
         case .About:
             AboutView()
         case .Buy:

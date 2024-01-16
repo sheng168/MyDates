@@ -29,6 +29,7 @@
 		3CC79CD32ABAA40E00A734CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC79CD22ABAA40E00A734CB /* GoogleService-Info.plist */; };
 		3CC79CF12ABB7C7A00A734CB /* KeweApp in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC79CF02ABB7C7A00A734CB /* KeweApp */; };
 		3CC79CF52ABBAC2C00A734CB /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC79CF42ABBAC2C00A734CB /* Config.swift */; };
+		3CCFD9BA2B571F2600D0EE5F /* QueryBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCFD9B92B571F2600D0EE5F /* QueryBuilderView.swift */; };
 		3CDA43B62AD24372000FBFCA /* ScreenShotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA43B52AD24372000FBFCA /* ScreenShotUITests.swift */; };
 		3CDA43B92AD4DA9F000FBFCA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDA43B82AD4DA9F000FBFCA /* Then */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		3CA777EC2AA0183200BC8FF2 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		3CC79CD22ABAA40E00A734CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CC79CF42ABBAC2C00A734CB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		3CCFD9B92B571F2600D0EE5F /* QueryBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryBuilderView.swift; sourceTree = "<group>"; };
 		3CDA43B52AD24372000FBFCA /* ScreenShotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,14 +197,23 @@
 			isa = PBXGroup;
 			children = (
 				3C0D8D9F2A954099002F2779 /* ContentView.swift */,
+				3CCFD9B92B571F2600D0EE5F /* QueryBuilderView.swift */,
 				3CA777E82A9F793900BC8FF2 /* ListView.swift */,
 				3C48D9182ABC830F006E418C /* ItemRowView.swift */,
 				3C0D8DD02A96DD04002F2779 /* ItemDetail.swift */,
+				3CCFD9B82B571EAB00D0EE5F /* Tabs */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3CCFD9B82B571EAB00D0EE5F /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
 				3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */,
 				3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */,
 				3C3CD8052AD081E40051D252 /* WishKitView.swift */,
 			);
-			path = View;
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +366,7 @@
 				3C0D8DD62A978C88002F2779 /* ModelPreview.swift in Sources */,
 				3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */,
 				3C3CD8062AD081E40051D252 /* WishKitView.swift in Sources */,
+				3CCFD9BA2B571F2600D0EE5F /* QueryBuilderView.swift in Sources */,
 				3C0D8DA22A954099002F2779 /* Item.swift in Sources */,
 				3C0D8D9E2A954099002F2779 /* MyDatesApp.swift in Sources */,
 				3C56FD492AAAB3700026A2D2 /* MyStoreView.swift in Sources */,
