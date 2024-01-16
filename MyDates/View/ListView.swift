@@ -13,7 +13,8 @@ struct ListView: View {
     @EnvironmentObject var stateManager: StateManager
 
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Item.timestamp, order: .reverse) private var items: [Item]
+    @Query
+    private var items: [Item]
     
     @State var currentTime = Date()
     @AppStorage("isPro") private var isPro = false
@@ -28,14 +29,14 @@ struct ListView: View {
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    init(searchString: String = "") {
+    init(searchString: String = "", sortOrder: [SortDescriptor<Item>] = []) {
         _items = Query(filter: #Predicate { item in
             if searchString.isEmpty {
                 true
             } else {
                 item.name.localizedStandardContains(searchString)
             }
-        })
+        }, sort: sortOrder)
     }
     
     var body: some View {
