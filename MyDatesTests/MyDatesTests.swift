@@ -79,7 +79,7 @@ final class MyDatesTests: XCTestCase {
         
         guard let cfg else { XCTFail(); return }
         
-        guard let json = cfg.toJsonString() else { XCTFail(); return }
+        guard let _ = cfg.toJsonString() else { XCTFail(); return }
         
 //        XCTAssertEqual(empty, json)
     }

@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import AppIntents
 import SwiftData
 import StoreKit
+import FirebaseRemoteConfig
 
 struct ListView: View {
     @EnvironmentObject var stateManager: StateManager
@@ -23,7 +25,7 @@ struct ListView: View {
         if isPro {
             800
         } else {
-            8
+            18
         }
     }
     
@@ -79,9 +81,12 @@ struct ListView: View {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: addItem) {
+                    Button(intent: NewItemIntent()) {
                         Label("Add Item", systemImage: "plus")
                     }
+//                    Button(action: addItem) {
+//                        Label("Add Item", systemImage: "plus")
+//                    }
                     .disabled(items.count >= maxItems)
                 }
 #if DEBUG_
@@ -104,13 +109,13 @@ struct ListView: View {
         }
     }
 
-    private func addItem() {
-        MyAnalytics.action("add")
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
+//    private func addItem() {
+//        MyAnalytics.action("add")
+//        withAnimation {
+//            let newItem = Item(timestamp: Date())
+//            modelContext.insert(newItem)
+//        }
+//    }
 
     private func deleteItems(offsets: IndexSet) {
         MyAnalytics.action("delete")

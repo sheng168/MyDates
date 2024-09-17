@@ -68,11 +68,11 @@ struct MyDatesApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(container)
+        .modelContainer(MyDatesApp.container)
         .environmentObject(StateManager())
     }
     
-    let container: ModelContainer = {
+    static let container: ModelContainer = {
 //        analytics.register(provider: FirebaseProvider())
 
         let c = try! ModelContainer(

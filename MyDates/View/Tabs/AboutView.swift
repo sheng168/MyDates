@@ -6,13 +6,32 @@
 //
 
 import SwiftUI
+import FirebaseRemoteConfigSwift
+import FirebaseInstallations
 
 struct AboutView: View {
+    @RemoteConfigProperty(key: "updateMessage", fallback: nil) var updateMessage: String?
+    let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+    @State var installId = ""
+
     var body: some View {
         Form  {
+            if let updateMessage {
+                Section("Update") {
+                    Text(LocalizedStringKey(updateMessage))
+                }
+            }
+            
+            Section("Info") {
+                Text("Version: \(appVersion ?? "-") Build: \(buildNumber ?? "-")")
+                Text("Installation: \(installId)") // Installation: fgkRDGhTB0FCnOo2zRDvTn
+                    .textSelection(.enabled)
+            }
+            
             ForEach(Config.shared.about) { section in
                 Section(section.id) {
-                    Text(section.detail)
+                    Text(LocalizedStringKey(section.detail))
                 }
             }
             /*
@@ -40,9 +59,17 @@ struct AboutView: View {
                 """)
             }
              */
+            
         }
         .onAppear {
             MyAnalytics.view(self)
+        }
+        .task {
+            do {
+                installId = try await Installations.installations().installationID()
+            } catch {
+                installId = "<fail>"
+            }
         }
     }
 }
