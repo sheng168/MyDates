@@ -81,12 +81,12 @@ struct ListView: View {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(intent: NewItemIntent()) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-//                    Button(action: addItem) {
+//                    Button(intent: NewItemIntent()) {
 //                        Label("Add Item", systemImage: "plus")
 //                    }
+                    Button(action: addItem) {
+                        Label("Add Item", systemImage: "plus")
+                    }
                     .disabled(items.count >= maxItems)
                 }
 #if DEBUG_
@@ -109,13 +109,13 @@ struct ListView: View {
         }
     }
 
-//    private func addItem() {
-//        MyAnalytics.action("add")
-//        withAnimation {
-//            let newItem = Item(timestamp: Date())
-//            modelContext.insert(newItem)
-//        }
-//    }
+    private func addItem() {
+        MyAnalytics.action("add")
+        withAnimation {
+            let newItem = Item(timestamp: Date())
+            modelContext.insert(newItem)
+        }
+    }
 
     private func deleteItems(offsets: IndexSet) {
         MyAnalytics.action("delete")
