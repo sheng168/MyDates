@@ -5,12 +5,15 @@
 //  Created by Jin on 8/30/23.
 //
 
+import KeweApp
 import SwiftUI
 import FirebaseRemoteConfigSwift
 import FirebaseInstallations
 
 struct AboutView: View {
     @RemoteConfigProperty(key: "updateMessage", fallback: nil) var updateMessage: String?
+    @RemoteConfigProperty(key: "about", fallback: Config.shared.about) var about: [KeweApp.Section]
+    
     let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
     @State var installId = ""
@@ -29,7 +32,7 @@ struct AboutView: View {
                     .textSelection(.enabled)
             }
             
-            ForEach(Config.shared.about) { section in
+            ForEach(about) { section in
                 Section(section.id) {
                     Text(LocalizedStringKey(section.detail))
                 }

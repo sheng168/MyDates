@@ -35,6 +35,9 @@ struct ContentView: View {
     
     @RemoteConfigProperty(key: "forceAppUpdate", fallback: false) var forceAppUpdate: Bool
     @RemoteConfigProperty(key: "updateMessage", fallback: "To use this app, [download](https://apps.apple.com/app/mydates-countdown-counter/id6463448697) the latest version.") var updateMessage: String
+    
+    @RemoteConfigProperty(key: "tabList", fallback: Config.shared.tabList) var tabList: [KeweApp.Tab]
+
 
     var body: some View {
         if forceAppUpdate {
@@ -42,7 +45,7 @@ struct ContentView: View {
             // https://stackoverflow.com/questions/56892691/how-to-show-html-or-markdown-in-a-swiftui-text
         } else {
             TabView () { // selection: $stateManager.tab
-                ForEach(Config.shared.tabList) { tab in
+                ForEach(tabList) { tab in
                     if let view = Tabs(rawValue: tab.id)?.view() {
                         view
                             .tabItem {
