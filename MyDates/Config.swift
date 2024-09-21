@@ -32,9 +32,20 @@ struct Config: Codable {
         - Backup and sync to all your iPhone/iPads using your apple ID
         """),
         Section(id: "Todos", detail:"""
-            - Set image or icon with each entry
-            - Organize entries into groups
-            - Display preferences
-            """),        
+        - Set image or icon with each entry
+        - Organize entries into groups
+        - Display preferences
+        """),        
     ]
+    
+    var sampleEvents = [
+        Event(name: "Tesla CyberTaxi Event", date: dateParser(s: "2024-10-10")!),
+        Event(name: "Anniversary", date: Date(timeIntervalSince1970: 161800))
+        ]
+}
+
+func dateParser(s: String) -> Date? {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
+    return formatter.date(from: s)
 }

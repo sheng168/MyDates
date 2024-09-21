@@ -20,12 +20,16 @@ struct ListView: View {
     
     @State var currentTime = Date()
     @AppStorage("isPro") private var isPro = false
-    
+    @RemoteConfigProperty(key: "max", fallback: 8) var max: Int
+    @RemoteConfigProperty(key: "insertSamples", fallback: "Insert Samples") var insertSamples: String
+    @RemoteConfigProperty(key: "enableInsertSample", fallback: true) var enableInsertSample: Bool
+    @RemoteConfigProperty(key: "sampleEvents_", fallback: Config.shared.sampleEvents) var sampleEvents: [Event]
+
     private var maxItems: Int {
         if isPro {
             800
         } else {
-            18
+            max
         }
     }
     
@@ -54,6 +58,27 @@ struct ListView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
+                
+                if enableInsertSample {
+//                    Button("Pro \(isPro ? "Off" : "On")") {
+//                        isPro.toggle()
+//                    }
+                    HStack {
+                        Spacer() // Pushes the button to the center
+                        Button(action: {
+                            addSamples()
+                        }) {
+                            Text("\(insertSamples) \(sampleEvents.count)")
+                                .fontWeight(.bold)
+                                .frame(width: 150, height: 40)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 5)
+                        }
+                        Spacer() // Pushes the button to the center
+                    }
+                }
             }
             .navigationTitle("\(items.count) Events")
             .onInAppPurchaseCompletion { (product: Product, result: Result<Product.PurchaseResult, Error>) in
@@ -116,6 +141,17 @@ struct ListView: View {
             modelContext.insert(newItem)
         }
     }
+    
+    private func addSamples() {
+        MyAnalytics.action("addSamples")
+        withAnimation {
+            for event in sampleEvents {
+                let newItem = Item(name: event.name, timestamp: event.date)
+                modelContext.insert(newItem)
+            }
+            
+        }
+    }
 
     private func deleteItems(offsets: IndexSet) {
         MyAnalytics.action("delete")
@@ -125,6 +161,11 @@ struct ListView: View {
             }
         }
     }
+}
+
+struct Event: Codable {
+    var name: String
+    var date: Date
 }
 
 #Preview {
