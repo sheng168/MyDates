@@ -14,6 +14,9 @@ struct MyStoreView: View {
     
     var body: some View {
         Store16View(groupID: "21385947")
+            .onAppear {
+                MyAnalytics.view(self)
+            }
     }
 }
 

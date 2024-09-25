@@ -20,6 +20,7 @@ struct ItemDetail: View {
                     Text("Select a date")
                 }
 //                .datePickerStyle(.compact)
+                TextField("Notes", text: $item.notes)
             }
             #if DEBUG_
             Section("Debug") {
@@ -44,6 +45,9 @@ struct ItemDetail: View {
                 }
             }
             #endif
+        }
+        .onAppear {
+            MyAnalytics.view(self)
         }
     }
     

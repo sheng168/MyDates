@@ -13,6 +13,7 @@ class Item: Identifiable {
     var id = UUID().uuidString
     var timestamp = Date()
     var name: String = "New Event"
+    var notes: String = ""
 //    var count: Int
 //    var icon: String?
 //    var stalls: Int?

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QueryBuilderView: View {
     @State var searchText = ""
-    @State private var sortOrder = [SortDescriptor(\Item.timestamp, order: .reverse)]
+    @State var sortOrder = [SortDescriptor(\Item.timestamp, order: .reverse)]
     
     var body: some View {
         NavigationView {
@@ -32,7 +32,6 @@ struct QueryBuilderView: View {
                     }
                 }
         }
-
     }
 }
 

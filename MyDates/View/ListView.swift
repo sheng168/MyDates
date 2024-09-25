@@ -22,6 +22,7 @@ struct ListView: View {
     @AppStorage("isPro") private var isPro = false
     @RemoteConfigProperty(key: "maxFreeItems", fallback: 8) var max: Int
     @RemoteConfigProperty(key: "insertSamples", fallback: "Insert Samples") var insertSamples: String
+    @RemoteConfigProperty(key: "uiTitle", fallback: "Events") var uiTitle: String
     
     @RemoteConfigProperty(key: "enableInsertSample", fallback: true) var enableInsertSample: Bool
     @RemoteConfigProperty(key: "sampleEvents", fallback: Config.shared.sampleEvents) var sampleEvents: [Event]
@@ -81,7 +82,7 @@ struct ListView: View {
                     }
                 }
             }
-            .navigationTitle("\(items.count) Events")
+            .navigationTitle("\(items.count) \(uiTitle)")
             .onInAppPurchaseCompletion { (product: Product, result: Result<Product.PurchaseResult, Error>) in
                 if case .success(.success(let transaction)) = result {
                     logger.info("iap: \(transaction.debugDescription)")
