@@ -41,13 +41,24 @@ struct MyDatesWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .date)
-        Text(entry.date, style: .time)
-        Text(entry.date, style: .relative)
-        Text(entry.date, style: .offset) //*
-        Text(entry.date, style: .timer)
+        LabeledContent {
+            EmptyView()
+        } label: {
+            
+            Text(entry.date, style: .relative)
+//            Text(entry.date, style: .offset) //*
+            Text(entry.configuration.favoriteEmoji)
 
-        Text(entry.configuration.favoriteEmoji)
+            Text("")
+            Text(entry.date, style: .date)
+            Text(entry.date, style: .time)
+
+//            Text(entry.date, style: .timer)
+//            Text("")
+            Text("Date Radar")
+        }
+
+        
     }
 }
 
@@ -65,7 +76,7 @@ struct MyDatesWidget: Widget {
 extension ConfigurationAppIntent {
     fileprivate static var smiley: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
+        intent.favoriteEmoji = "Tesla CyberTaxis Event 🤖🚖"
         return intent
     }
     
@@ -76,9 +87,12 @@ extension ConfigurationAppIntent {
     }
 }
 
-#Preview(as: .systemMedium) {
+#Preview(as: .systemSmall
+
+) {
     MyDatesWidget()
 } timeline: {
-    SimpleEntry(date: .now.addingTimeInterval(50000), configuration: .smiley)
+    SimpleEntry(date: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 10))!,
+                configuration: .smiley)
     SimpleEntry(date: .now, configuration: .starEyes)
 }
