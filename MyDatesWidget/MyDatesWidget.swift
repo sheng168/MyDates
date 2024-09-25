@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import SwiftData
 
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -39,14 +40,21 @@ struct SimpleEntry: TimelineEntry {
 
 struct MyDatesWidgetEntryView : View {
     var entry: Provider.Entry
+    
+    @Query
+    private var items: [Item]
 
     var body: some View {
-        var date = entry.configuration.character.date
+        let date = entry.configuration.character.date
         
         LabeledContent {
             EmptyView()
         } label: {
             
+//            ForEach(items) { item in
+//                Text(item.name)
+//            }
+//            
 //            Text(date, style: .relative)
             Text(date, style: .offset) //*
 //            Text(entry.configuration.favoriteEmoji)
@@ -73,6 +81,7 @@ struct MyDatesWidget: Widget {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             MyDatesWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
+                .modelContainer(for: Item.self)
         }
     }
 }

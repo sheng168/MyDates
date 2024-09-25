@@ -26,6 +26,6 @@ class Item: Identifiable {
         self.name = name
 //        self.icon = "-"
         
-        logger.info("id \(self.id)")
+//        logger.info("id \(self.id)")
     }
 }

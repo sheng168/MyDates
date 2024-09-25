@@ -43,6 +43,7 @@
 		3CCFD9BA2B571F2600D0EE5F /* QueryBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCFD9B92B571F2600D0EE5F /* QueryBuilderView.swift */; };
 		3CDA43B62AD24372000FBFCA /* ScreenShotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA43B52AD24372000FBFCA /* ScreenShotUITests.swift */; };
 		3CDA43B92AD4DA9F000FBFCA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDA43B82AD4DA9F000FBFCA /* Then */; };
+		3CDAEBFB2CA4C5DB003F956A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DA12A954099002F2779 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -513,6 +514,7 @@
 				3C5594312B69FB4400D3D757 /* MyDatesWidgetBundle.swift in Sources */,
 				3C5594332B69FB4400D3D757 /* MyDatesWidget.swift in Sources */,
 				3C5594352B69FB4400D3D757 /* AppIntent.swift in Sources */,
+				3CDAEBFB2CA4C5DB003F956A /* Item.swift in Sources */,
 				3C5594412B69FE7B00D3D757 /* StartDriveIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
