@@ -80,14 +80,14 @@ struct MyDatesWidget: Widget {
 extension ConfigurationAppIntent {
     fileprivate static var smiley: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "Tesla CyberTaxis Event 🤖🚖"
+//        intent.favoriteEmoji = "Tesla CyberTaxis Event 🤖🚖"
         intent.character = CharacterDetail.allCharacters.first!
         return intent
     }
     
     fileprivate static var starEyes: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
+//        intent.favoriteEmoji = "🤩"
         intent.character = CharacterDetail.allCharacters.last!
         return intent
     }
@@ -98,7 +98,6 @@ extension ConfigurationAppIntent {
 ) {
     MyDatesWidget()
 } timeline: {
-    SimpleEntry(date: .now,
-                configuration: .smiley)
+    SimpleEntry(date: .now, configuration: .smiley)
     SimpleEntry(date: .now, configuration: .starEyes)
 }
