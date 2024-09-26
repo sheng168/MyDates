@@ -46,7 +46,7 @@ struct CharacterDetail: AppEntity {
 
     static let allCharacters: [CharacterDetail] = [
         CharacterDetail(id: "🤖 Tesla CyberTaxis Event 🚖", avatar: "", healthLevel: 0.14, date: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 10, hour: 10))!),
-        CharacterDetail(id: "🔋 Tesla 100M 4680 Cells", avatar: "", healthLevel: 0.67, date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 14, hour: 14))!, isAvailable: false),
+        CharacterDetail(id: "🔋 Tesla 100M 4680 Cells", avatar: "", healthLevel: 0.67, date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 14, hour: 14))!, isAvailable: true),
 //        CharacterDetail(id: "Power Panda", avatar: "🐼", healthLevel: 0.14, date: "Forest Dweller"),
 //        CharacterDetail(id: "Unipony", avatar: "🦄", healthLevel: 0.67, date: "Free Rangers"),
 //        CharacterDetail(id: "Spouty", avatar: "🐳", healthLevel: 0.83, date: "Deep Sea Goer")
@@ -62,11 +62,11 @@ struct CharacterQuery: EntityQuery {
     }
     
     func suggestedEntities() async throws -> [CharacterDetail] {
-        if false {
+//        if true {
             CharacterDetail.allCharacters.filter { $0.isAvailable }
-        } else {
-            try await suggestedEntities_()
-        }
+//        } else {
+            + (try await suggestedEntities_())
+//        }
     }
     
     func defaultResult() async -> CharacterDetail? {
