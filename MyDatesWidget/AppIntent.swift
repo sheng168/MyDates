@@ -30,6 +30,7 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
 }
 
 // ERROR: not sendable
+/*
 extension Item: AppEntity {
     static var defaultQuery = ItemQuery()
     
@@ -58,6 +59,7 @@ struct ItemQuery: EntityQuery {
         try? await suggestedEntities().first
     }
 }
+*/
 
 struct CharacterDetail: AppEntity {
     let id: String
