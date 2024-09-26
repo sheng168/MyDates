@@ -29,9 +29,39 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     }
 }
 
+// ERROR: not sendable
+extension Item: AppEntity {
+    static var defaultQuery = ItemQuery()
+    
+    var displayRepresentation: DisplayRepresentation {
+        DisplayRepresentation(title: "\(name) \(id) \(timestamp, format: .dateTime)")
+    }
+    
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Event"
+}
+
+struct ItemQuery: EntityQuery {
+//    @Query
+    static var items: [Item] = []
+
+    func entities(for identifiers: [Item.ID]) async throws -> [Item] {
+        ItemQuery.items.filter { identifiers.contains($0.id) }
+    }
+    
+    func suggestedEntities() async throws -> [Item] {
+        ItemQuery.items = try fetchTasks(context: ModelContext(SharedModelContainer.sharedModelContainer))
+        
+        return ItemQuery.items
+    }
+    
+    func defaultResult() async -> Item? {
+        try? await suggestedEntities().first
+    }
+}
+
 struct CharacterDetail: AppEntity {
     let id: String
-    let avatar: String
+    let name: String
     let healthLevel: Double
     let date: Date
     var isAvailable = true
@@ -40,14 +70,14 @@ struct CharacterDetail: AppEntity {
     static var defaultQuery = CharacterQuery()
             
     var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(id) \(date, format: .dateTime)")
+        DisplayRepresentation(title: "\(name) \(date, format: .dateTime)")
     }
 
     static var allCharacters: [CharacterDetail] = []
 
     static let allCharacters_: [CharacterDetail] = [
-        CharacterDetail(id: "🤖 Tesla CyberTaxis Event 🚖", avatar: "", healthLevel: 0.14, date: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 10, hour: 10))!),
-        CharacterDetail(id: "🔋 Tesla 100M 4680 Cells", avatar: "", healthLevel: 0.67, date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 14, hour: 14))!, isAvailable: true),
+        CharacterDetail(id: "🤖 Tesla CyberTaxis Event 🚖", name: "🤖 Tesla CyberTaxis Event 🚖", healthLevel: 0.14, date: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 10, hour: 10))!),
+        CharacterDetail(id: "🔋 Tesla 100M 4680 Cells", name: "🔋 Tesla 100M 4680 Cells", healthLevel: 0.67, date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 14, hour: 14))!, isAvailable: true),
 //        CharacterDetail(id: "Power Panda", avatar: "🐼", healthLevel: 0.14, date: "Forest Dweller"),
 //        CharacterDetail(id: "Unipony", avatar: "🦄", healthLevel: 0.67, date: "Free Rangers"),
 //        CharacterDetail(id: "Spouty", avatar: "🐳", healthLevel: 0.83, date: "Deep Sea Goer")
@@ -80,7 +110,7 @@ struct CharacterQuery: EntityQuery {
 
 func suggestedEntities_() async throws -> [CharacterDetail] {
     try fetchTasks(context: ModelContext(SharedModelContainer.sharedModelContainer)).map { item in
-        CharacterDetail(id: item.name, avatar: "", healthLevel: 0.14, date: item.timestamp)
+        CharacterDetail(id: item.id, name: item.name, healthLevel: 0.14, date: item.timestamp)
     }
 }
 

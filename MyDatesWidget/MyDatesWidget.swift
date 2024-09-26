@@ -59,7 +59,7 @@ struct MyDatesWidgetEntryView : View {
             Text(date, style: .offset) //*
 //            Text(entry.configuration.favoriteEmoji)
 
-            Text(entry.configuration.character?.id ?? "-")
+            Text(entry.configuration.character?.name ?? "-")
             
             Text("")
             Text(date, style: .date)
