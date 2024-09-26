@@ -45,7 +45,7 @@ struct MyDatesWidgetEntryView : View {
     private var items: [Item]
 
     var body: some View {
-        let date = entry.configuration.character.date
+        let date = entry.configuration.character?.date ?? entry.date
         
         LabeledContent {
             EmptyView()
@@ -59,7 +59,7 @@ struct MyDatesWidgetEntryView : View {
             Text(date, style: .offset) //*
 //            Text(entry.configuration.favoriteEmoji)
 
-            Text(entry.configuration.character.id)
+            Text(entry.configuration.character?.id ?? "-")
             
             Text("")
             Text(date, style: .date)

@@ -10,6 +10,7 @@ import AppIntents
 import SwiftData
 import StoreKit
 import FirebaseRemoteConfig
+import WidgetKit
 
 struct ListView: View {
     @EnvironmentObject var stateManager: StateManager
@@ -142,6 +143,7 @@ struct ListView: View {
             let newItem = Item(timestamp: Date())
             modelContext.insert(newItem)
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func addSamples() {
@@ -151,8 +153,8 @@ struct ListView: View {
                 let newItem = Item(name: event.name, timestamp: event.date)
                 modelContext.insert(newItem)
             }
-            
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     private func deleteItems(offsets: IndexSet) {
@@ -162,6 +164,7 @@ struct ListView: View {
                 modelContext.delete(items[index])
             }
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 
