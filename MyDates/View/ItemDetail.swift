@@ -7,10 +7,13 @@
 
 import SwiftUI
 import os
+import FirebaseRemoteConfig
 
 struct ItemDetail: View {
     @EnvironmentObject var stateManager: StateManager
     @Bindable var item: Item
+    
+    @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
     
     var body: some View {
         Form {
@@ -22,29 +25,33 @@ struct ItemDetail: View {
 //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
             }
-            #if DEBUG_
-            Section("Debug") {
-                Text(diffs(item.timestamp, .now).description)
-                Text("\(item.timestamp - 60*60*23, style: .timer)")
-                Text("Debug ID: \(item.id.storeIdentifier ?? "-")")
-                Button {
-                    stateManager.selection = nil
-                } label: {
-                    Text("Go Back")
-                }
-                Button {
-                    stateManager.selection = "Alex"
-                } label: {
-                    Text("Alex")
-                }
-
-                Button {
-                    stateManager.tab = .About
-                } label: {
-                    Text("About")
+            
+            if showDebug {
+                Section("Debug") {
+                    Text(Event(name: item.name, date: item.timestamp).toJsonString() ?? "{}")
+                        .textSelection(.enabled)
+                    Text(item.timestamp, style: .relative)
+                    Text(diffs(item.timestamp, .now).description)
+                    Text("\(item.timestamp - 60*60*23, style: .timer)")
+                    Text("Debug ID: \(item.id.storeIdentifier ?? "-")")
+                    Button {
+                        stateManager.selection = nil
+                    } label: {
+                        Text("Go Back")
+                    }
+                    Button {
+                        stateManager.selection = "Alex"
+                    } label: {
+                        Text("Alex")
+                    }
+                    
+                    Button {
+                        stateManager.tab = .About
+                    } label: {
+                        Text("About")
+                    }
                 }
             }
-            #endif
         }
         .onAppear {
             MyAnalytics.view(self)

@@ -55,17 +55,15 @@ struct MyDatesWidgetEntryView : View {
 //                Text(item.name)
 //            }
 //            
-//            Text(date, style: .relative)
-            Text(date, style: .offset) //*
-//            Text(entry.configuration.favoriteEmoji)
+            Text(date, style: .relative) // 2 units
+//            Text(date, style: .offset) // +/- 1 unit
 
             Text(entry.configuration.character?.name ?? "-")
             
             Text("")
             Text(date, style: .date)
             Text(date, style: .time)
-
-//            Text(entry.date, style: .timer)
+            Text(date, style: .timer)
 //            Text("")
 //            Text("Date Radar")
         }

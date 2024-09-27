@@ -78,8 +78,8 @@ struct CharacterDetail: AppEntity {
     static var allCharacters: [CharacterDetail] = []
 
     static let allCharacters_: [CharacterDetail] = [
-        CharacterDetail(id: "🤖 Tesla CyberTaxis Event 🚖", name: "🤖 Tesla CyberTaxis Event 🚖", healthLevel: 0.14, date: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 10, hour: 10))!),
-        CharacterDetail(id: "🔋 Tesla 100M 4680 Cells", name: "🔋 Tesla 100M 4680 Cells", healthLevel: 0.67, date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 14, hour: 14))!, isAvailable: true),
+//        CharacterDetail(id: "🤖 Tesla CyberTaxis Event 🚖", name: "🤖 Tesla CyberTaxis Event 🚖", healthLevel: 0.14, date: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 10, hour: 10))!),
+//        CharacterDetail(id: "🔋 Tesla 100M 4680 Cells", name: "🔋 Tesla 100M 4680 Cells", healthLevel: 0.67, date: Calendar.current.date(from: DateComponents(year: 2024, month: 9, day: 14, hour: 14))!, isAvailable: true),
 //        CharacterDetail(id: "Power Panda", avatar: "🐼", healthLevel: 0.14, date: "Forest Dweller"),
 //        CharacterDetail(id: "Unipony", avatar: "🦄", healthLevel: 0.67, date: "Free Rangers"),
 //        CharacterDetail(id: "Spouty", avatar: "🐳", healthLevel: 0.83, date: "Deep Sea Goer")
@@ -117,14 +117,14 @@ func suggestedEntities_() async throws -> [CharacterDetail] {
 }
 
 func fetchTasks(context: ModelContext) throws -> [Item] {
-    let _ = FetchDescriptor<Item>(
+    let fd = FetchDescriptor<Item>(
         predicate: #Predicate<Item> { task in
             task.name.isEmpty == false
         },
         sortBy: [SortDescriptor(\Item.name)]
     )
     
-    return try context.fetch(FetchDescriptor<Item>())
+    return try context.fetch(fd)
 }
 
 struct SharedModelContainer {
