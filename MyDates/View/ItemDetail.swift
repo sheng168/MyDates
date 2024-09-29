@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
-import os
+//import os
 import FirebaseRemoteConfig
+import WidgetKit
 
 struct ItemDetail: View {
     @EnvironmentObject var stateManager: StateManager
@@ -55,6 +56,9 @@ struct ItemDetail: View {
         }
         .onAppear {
             MyAnalytics.view(self)
+        }
+        .onDisappear {
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
     
