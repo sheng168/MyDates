@@ -44,6 +44,8 @@
 		3CDA43B62AD24372000FBFCA /* ScreenShotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA43B52AD24372000FBFCA /* ScreenShotUITests.swift */; };
 		3CDA43B92AD4DA9F000FBFCA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDA43B82AD4DA9F000FBFCA /* Then */; };
 		3CDAEBFB2CA4C5DB003F956A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DA12A954099002F2779 /* Item.swift */; };
+		3CDAEBFD2CA99E34003F956A /* KeweApp in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDAEBFC2CA99E34003F956A /* KeweApp */; };
+		3CDAEBFE2CA9A7DF003F956A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC79CD22ABAA40E00A734CB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CDAEBFD2CA99E34003F956A /* KeweApp in Frameworks */,
 				3C55942E2B69FB4400D3D757 /* SwiftUI.framework in Frameworks */,
 				3C55942C2B69FB4400D3D757 /* WidgetKit.framework in Frameworks */,
 			);
@@ -458,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C5594372B69FB4600D3D757 /* Assets.xcassets in Resources */,
+				3CDAEBFE2CA9A7DF003F956A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,6 +981,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3CDA43B72AD4DA9F000FBFCA /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		3CDAEBFC2CA99E34003F956A /* KeweApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CC79CEF2ABB7C7A00A734CB /* XCRemoteSwiftPackageReference "KeweApp" */;
+			productName = KeweApp;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

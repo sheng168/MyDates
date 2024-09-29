@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import SwiftData
+import FirebaseRemoteConfig
 
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -43,6 +44,9 @@ struct MyDatesWidgetEntryView : View {
     
     @Query
     private var items: [Item]
+    
+    @RemoteConfigProperty(key: "showTimer", fallback: false) var showDebug: Bool
+
 
     var body: some View {
         let date = entry.configuration.character?.date ?? entry.date
@@ -63,12 +67,15 @@ struct MyDatesWidgetEntryView : View {
             Text("")
             Text(date, style: .date)
             Text(date, style: .time)
-            Text(date, style: .timer)
+            if showDebug {
+                Text(date, style: .timer)
+            }
 //            Text("")
 //            Text("Date Radar")
         }
-
-        
+        .onAppear {
+            print("Widget appear...")
+        }
     }
 }
 
@@ -88,14 +95,14 @@ extension ConfigurationAppIntent {
     fileprivate static var smiley: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
 //        intent.favoriteEmoji = "Tesla CyberTaxis Event 🤖🚖"
-        intent.character = CharacterDetail.allCharacters.first!
+        intent.character = CharacterDetail(id: "🤖 Tesla CyberTaxi Event 🚖", name: "🤖 Tesla CyberTaxi Event 🚖", healthLevel: 0.14, date: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 10, hour: 17))!)
         return intent
     }
     
     fileprivate static var starEyes: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
 //        intent.favoriteEmoji = "🤩"
-        intent.character = CharacterDetail.allCharacters.last!
+        intent.character = CharacterDetail(id: "🤖 Tesla CyberTaxis Event 🚖", name: "🤖 Tesla CyberTaxis Event 🚖", healthLevel: 0.14, date: Calendar.current.date(from: DateComponents(year: 2024, month: 10, day: 10, hour: 10))!)
         return intent
     }
 }
