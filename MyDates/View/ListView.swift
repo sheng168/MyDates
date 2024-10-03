@@ -136,13 +136,13 @@ struct ListView: View {
         .onAppear {
             MyAnalytics.view(self)
 //            UIApplication.shared.applicationIconBadgeNumber = 3
-            UNUserNotificationCenter.current().setBadgeCount(18)
+//            UNUserNotificationCenter.current().setBadgeCount(18)
 
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
                 if success {
                     print("All set!")
                     
-                    UNUserNotificationCenter.current().setBadgeCount(7)
+                    UNUserNotificationCenter.current().setBadgeCount(items.count)
                 } else if let error {
                     print(error.localizedDescription)
                 }
