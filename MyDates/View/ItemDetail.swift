@@ -20,6 +20,8 @@ struct ItemDetail: View {
         Form {
             Section("Edit") {
                 TextField("Name", text: $item.name)
+                    .autocapitalization(.words)
+                
                 DatePicker(selection: $item.timestamp, displayedComponents: [.date, .hourAndMinute]) {
                     Text("Select a date")
                 }

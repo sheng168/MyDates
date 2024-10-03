@@ -12,22 +12,25 @@ struct NewItemIntent: AppIntent {
 //        
 //    }
     
-    static var title: LocalizedStringResource = "New date"
+    static var title: LocalizedStringResource = "New item (title)"
     static var openAppWhenRun: Bool = true
     
+    @Parameter(title: "Name", default: "⏰ New Event")
+    var name: String
+
     var date = Date()
     
     @MainActor
-    func perform() async throws -> some IntentResult {
+    func perform() async throws -> some IntentResult & ProvidesDialog {
         print("perform New date")
 //        withAnimation {
-//            let newItem = Item(timestamp: Date())
-//            MyDatesApp.container.mainContext.insert(newItem)
+        let newItem = Item(name: name, timestamp: date)
+        await MyDatesApp.container.mainContext.insert(newItem)
 //        }
-        return .result(dialog: "Started Drive")
+        return .result(dialog: "\(newItem.name) created")
     }
 }
-
+/*
 struct OpenFrunkIntent: AppIntent {
     static var title: LocalizedStringResource = "Open Frunk"
     
@@ -52,7 +55,7 @@ struct VehicleCommandIntent: AppIntent {
         return .result(dialog: "Open Frunk")
     }
 }
-
+*/
 //enum Command: AppEnum {
 //    typealias RawValue = <#type#>
 //
