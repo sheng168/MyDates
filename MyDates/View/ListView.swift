@@ -27,6 +27,8 @@ struct ListView: View {
     @RemoteConfigProperty(key: "uiTitle", fallback: "Events") var uiTitle: String
     
     @RemoteConfigProperty(key: "enableInsertSample", fallback: true) var enableInsertSample: Bool
+    @RemoteConfigProperty(key: "showBadge", fallback: true) var showBadge: Bool
+    
     @RemoteConfigProperty(key: "sampleEvents", fallback: Config.shared.sampleEvents) var sampleEvents: [Event]
 
     private var maxItems: Int {
@@ -138,13 +140,15 @@ struct ListView: View {
 //            UIApplication.shared.applicationIconBadgeNumber = 3
 //            UNUserNotificationCenter.current().setBadgeCount(18)
 
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                if success {
-                    print("All set!")
-                    
-                    UNUserNotificationCenter.current().setBadgeCount(items.count)
-                } else if let error {
-                    print(error.localizedDescription)
+            if showBadge && items.count > 1 {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        print("All set!")
+                        
+                        UNUserNotificationCenter.current().setBadgeCount(items.count)
+                    } else if let error {
+                        print(error.localizedDescription)
+                    }
                 }
             }
         }
