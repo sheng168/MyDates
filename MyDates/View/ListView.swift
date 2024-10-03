@@ -21,6 +21,7 @@ struct ListView: View {
     
     @State var currentTime = Date()
     @AppStorage("isPro") private var isPro = false
+    
     @RemoteConfigProperty(key: "maxFreeItems", fallback: 8) var max: Int
     @RemoteConfigProperty(key: "insertSamples", fallback: "Insert Samples") var insertSamples: String
     @RemoteConfigProperty(key: "uiTitle", fallback: "Events") var uiTitle: String
@@ -134,6 +135,18 @@ struct ListView: View {
 //        }
         .onAppear {
             MyAnalytics.view(self)
+//            UIApplication.shared.applicationIconBadgeNumber = 3
+            UNUserNotificationCenter.current().setBadgeCount(18)
+
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                if success {
+                    print("All set!")
+                    
+                    UNUserNotificationCenter.current().setBadgeCount(7)
+                } else if let error {
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 
