@@ -12,7 +12,7 @@ struct MyAppShortcutsProvider: AppShortcutsProvider {
         AppShortcut(
             intent: NewItemIntent(),
             phrases: ["create new item with \(.applicationName)"],
-            shortTitle: "New item",
+            shortTitle: "New item (st)",
             systemImageName: "plus")
     }
 }
