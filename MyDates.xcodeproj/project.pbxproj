@@ -31,8 +31,6 @@
 		3C5594352B69FB4400D3D757 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5594342B69FB4400D3D757 /* AppIntent.swift */; };
 		3C5594372B69FB4600D3D757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C5594362B69FB4600D3D757 /* Assets.xcassets */; };
 		3C55943C2B69FB4600D3D757 /* MyDatesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3C55942A2B69FB4300D3D757 /* MyDatesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3C5594412B69FE7B00D3D757 /* StartDriveIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0B76292B66A8FA0056F6A6 /* StartDriveIntent.swift */; };
-		3C5594422B69FE9200D3D757 /* MyAppShortcutsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0B762B2B66A93C0056F6A6 /* MyAppShortcutsProvider.swift */; };
 		3C56FD492AAAB3700026A2D2 /* MyStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */; };
 		3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777E82A9F793900BC8FF2 /* ListView.swift */; };
 		3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */; };
@@ -514,12 +512,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C5594422B69FE9200D3D757 /* MyAppShortcutsProvider.swift in Sources */,
 				3C5594312B69FB4400D3D757 /* MyDatesWidgetBundle.swift in Sources */,
 				3C5594332B69FB4400D3D757 /* MyDatesWidget.swift in Sources */,
 				3C5594352B69FB4400D3D757 /* AppIntent.swift in Sources */,
 				3CDAEBFB2CA4C5DB003F956A /* Item.swift in Sources */,
-				3C5594412B69FE7B00D3D757 /* StartDriveIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,7 +684,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.12;
 				PRODUCT_BUNDLE_IDENTIFIER = us.jsy.MyDates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -724,7 +720,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.11;
+				MARKETING_VERSION = 1.0.12;
 				PRODUCT_BUNDLE_IDENTIFIER = us.jsy.MyDates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
