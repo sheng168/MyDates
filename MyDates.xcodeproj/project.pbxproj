@@ -948,8 +948,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sheng168/KeweApp.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		3CDA43B72AD4DA9F000FBFCA /* XCRemoteSwiftPackageReference "Then" */ = {
