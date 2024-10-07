@@ -138,8 +138,7 @@ struct ListView: View {
 //        }
         .onAppear {
             MyAnalytics.view(self)
-//            UIApplication.shared.applicationIconBadgeNumber = 3
-//            UNUserNotificationCenter.current().setBadgeCount(18)
+//            UIApplication.shared.applicationIconBadgeNumber = 3 // deprecated
             
             Analytics.setUserProperty(String(items.count), forName: "ItemCount")
             let badge = items.count { item in
