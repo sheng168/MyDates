@@ -24,7 +24,7 @@ struct PizzaDeliveryActivityWidget: Widget {
             VStack(alignment: .leading) {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Your \(context.state.driverName) is on the way!")
+                        Text("\(context.state.driverName)")
                             .font(.headline)
                         ZStack {
                             RoundedRectangle(cornerRadius: 15)
@@ -56,18 +56,18 @@ struct PizzaDeliveryActivityWidget: Widget {
                             }
                         }
                     }
-                    Spacer()
-                    VStack {
-                        Text("\(context.attributes.numberOfPizzas) 🍕")
-                            .font(.title)
-                            .bold()
-                        Spacer()
-                    }
+//                    Spacer()
+//                    VStack {
+//                        Text("\(context.attributes.numberOfPizzas) 🍕")
+//                            .font(.title)
+//                            .bold()
+//                        Spacer()
+//                    }
                 }.padding(5)
-                Text("You've already paid: \(context.attributes.totalAmount) + $9.9 Delivery Fee 💸")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal, 5)
+//                Text("You've already paid: \(context.attributes.totalAmount) + $9.9 Delivery Fee 💸")
+//                    .font(.caption)
+//                    .foregroundColor(.secondary)
+//                    .padding(.horizontal, 5)
             }.padding(15)
             // MARK: - For Dynamic Island
         } dynamicIsland: { context in
