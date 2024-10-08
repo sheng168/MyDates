@@ -73,7 +73,7 @@ struct PizzaDeliveryActivityWidget: Widget {
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    Label("\(context.attributes.numberOfPizzas) Pizza", systemImage: "bag")
+                    Label("", systemImage: "bag")
                         .font(.title3)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
@@ -89,7 +89,7 @@ struct PizzaDeliveryActivityWidget: Widget {
                     .font(.title2)
                 }
                 DynamicIslandExpandedRegion(.center) {
-                    Text("\(context.state.driverName) is on the way!")
+                    Text("\(context.state.driverName)")
                         .lineLimit(1)
                         .font(.caption)
                         .foregroundColor(.secondary)
@@ -98,14 +98,14 @@ struct PizzaDeliveryActivityWidget: Widget {
                     // Deep Linking
                     HStack {
                         Link(destination: URL(string: "pizza://contact+TIM")!) {
-                             Label("Contact driver", systemImage: "phone.circle.fill")
+                             Label("Open", systemImage: "phone.circle.fill")
                                 .font(.caption)
                                 .padding()
                          }.background(Color.accentColor)
                          .clipShape(RoundedRectangle(cornerRadius: 15))
                         Spacer()
                         Link(destination: URL(string: "pizza://cancelOrder")!) {
-                             Label("Cancel Order", systemImage: "xmark.circle.fill")
+                             Label("Clear", systemImage: "xmark.circle.fill")
                                 .font(.caption)
                                 .padding()
                          }.background(Color.red)
@@ -114,7 +114,7 @@ struct PizzaDeliveryActivityWidget: Widget {
                 }
             } compactLeading: {
                 Label {
-                    Text("\(context.attributes.numberOfPizzas) Pizza")
+                    Text("\(context.state.driverName)")
                 } icon: {
                     Image(systemName: "bag")
                 }
@@ -126,7 +126,7 @@ struct PizzaDeliveryActivityWidget: Widget {
                     .font(.caption2)
             } minimal: {
                 VStack(alignment: .center) {
-                    Image(systemName: "timer")
+//                    Image(systemName: "timer")
                     Text(timerInterval: context.state.estimatedDeliveryTime, countsDown: true)
                         .multilineTextAlignment(.center)
                         .monospacedDigit()
