@@ -9,6 +9,7 @@ import SwiftUI
 //import os
 import FirebaseRemoteConfig
 import WidgetKit
+import ActivityKit
 
 struct ItemDetail: View {
     @EnvironmentObject var stateManager: StateManager
@@ -31,6 +32,12 @@ struct ItemDetail: View {
             
             if showDebug {
                 Section("Debug") {
+                    Button {
+                        startDeliveryPizza()
+                    } label: {
+                        Text("Start Activity")
+                    }
+                    
                     Text(Event(name: item.name, date: item.timestamp).toJsonString() ?? "{}")
                         .textSelection(.enabled)
                     Text(item.timestamp, style: .relative)
@@ -64,6 +71,41 @@ struct ItemDetail: View {
         }
     }
     
+    func startDeliveryPizza() {
+//        startingEvent = true
+        
+        print(ActivityAuthorizationInfo().areActivitiesEnabled)
+        
+        let pizzaDeliveryAttributes = PizzaDeliveryAttributes(numberOfPizzas: 3, totalAmount:"$8")
+
+        let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(driverName: "\(item.name) 👨🏻‍🍳", estimatedDeliveryTime: Date()...Date().addingTimeInterval(15 * 60))
+                                                  
+        do {
+            let deliveryActivity = try Activity<PizzaDeliveryAttributes>.request(
+                attributes: pizzaDeliveryAttributes,
+                contentState: initialContentState,
+                pushType: .token)   // Enable Push Notification Capability First (from pushType: nil)
+            
+            print("Requested a pizza delivery Live Activity \(deliveryActivity.id)")
+
+            // Send the push token to server
+            Task {
+                for await pushToken in deliveryActivity.pushTokenUpdates {
+                    let pushTokenString = pushToken.reduce("") { $0 + String(format: "%02x", $1) }
+                    print(pushTokenString)
+                    
+//                    alertMsg = "Requested a pizza delivery Live Activity \(deliveryActivity.id)\n\nPush Token: \(pushTokenString)"
+//                    showAlert = true
+//                    startingEvent = false
+                }
+            }
+        } catch (let error) {
+            print("Error requesting pizza delivery Live Activity \(error.localizedDescription)")
+//            alertMsg = "Error requesting pizza delivery Live Activity \(error.localizedDescription)"
+//            showAlert = true
+//            startingEvent = false
+        }
+    }
 }
 
 func diffs(_ date: Date, _ date2: Date) -> DateComponents {
