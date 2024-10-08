@@ -22,6 +22,6 @@ struct MyDatesWidgetBundle: WidgetBundle {
         
         // activity
         PizzaDeliveryActivityWidget()
-        PizzaAdActivityWidget()
+//        PizzaAdActivityWidget()
     }
 }

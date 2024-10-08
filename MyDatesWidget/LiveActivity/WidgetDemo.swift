@@ -73,64 +73,66 @@ struct PizzaDeliveryActivityWidget: Widget {
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    Label("", systemImage: "bag")
-                        .font(.title3)
+//                    Label("", systemImage: "bag")
+                    Text("\(context.state.driverName)")
+//                        .font(.title3)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     Label {
                         Text(timerInterval: context.state.estimatedDeliveryTime, countsDown: true)
                             .multilineTextAlignment(.trailing)
-                            .frame(width: 50)
+//                            .frame(width: 50)
                             .monospacedDigit()
-                            .font(.caption2)
+//                            .font(.caption2)
                     } icon: {
-                        Image(systemName: "timer")
+//                        Image(systemName: "timer")
                     }
                     .font(.title2)
                 }
                 DynamicIslandExpandedRegion(.center) {
-                    Text("\(context.state.driverName)")
-                        .lineLimit(1)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                    EmptyView()
+//                    Text("\(context.state.driverName)")
+//                        .lineLimit(1)
+//                        .font(.caption)
+//                        .foregroundColor(.secondary)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     // Deep Linking
-                    HStack {
-                        Link(destination: URL(string: "pizza://contact+TIM")!) {
-                             Label("Open", systemImage: "phone.circle.fill")
-                                .font(.caption)
-                                .padding()
-                         }.background(Color.accentColor)
-                         .clipShape(RoundedRectangle(cornerRadius: 15))
-                        Spacer()
-                        Link(destination: URL(string: "pizza://cancelOrder")!) {
-                             Label("Clear", systemImage: "xmark.circle.fill")
-                                .font(.caption)
-                                .padding()
-                         }.background(Color.red)
-                         .clipShape(RoundedRectangle(cornerRadius: 15))
-                    }
+//                    HStack {
+//                        Link(destination: URL(string: "https://www.apple.com/")!) {
+//                             Label("Open", systemImage: "phone.circle.fill")
+//                                .font(.caption)
+//                                .padding()
+//                         }.background(Color.accentColor)
+//                         .clipShape(RoundedRectangle(cornerRadius: 15))
+//                        Spacer()
+//                        Link(destination: URL(string: "pizza://cancelOrder")!) {
+//                             Label("Clear", systemImage: "xmark.circle.fill")
+//                                .font(.caption)
+//                                .padding()
+//                         }.background(Color.red)
+//                         .clipShape(RoundedRectangle(cornerRadius: 15))
+//                    }
                 }
             } compactLeading: {
                 Label {
                     Text("\(context.state.driverName)")
                 } icon: {
-                    Image(systemName: "bag")
+//                    Image(systemName: "bag")
                 }
                 .font(.caption2)
             } compactTrailing: {
                 Text(timerInterval: context.state.estimatedDeliveryTime, countsDown: true)
-                    .multilineTextAlignment(.center)
-                    .frame(width: 40)
-                    .font(.caption2)
+//                    .multilineTextAlignment(.center)
+//                    .frame(width: 40)
+//                    .font(.caption2)
             } minimal: {
                 VStack(alignment: .center) {
 //                    Image(systemName: "timer")
                     Text(timerInterval: context.state.estimatedDeliveryTime, countsDown: true)
-                        .multilineTextAlignment(.center)
+//                        .multilineTextAlignment(.center)
                         .monospacedDigit()
-                        .font(.caption2)
+//                        .font(.caption2)
                 }
             }
             .keylineTint(.accentColor)
@@ -138,7 +140,7 @@ struct PizzaDeliveryActivityWidget: Widget {
     }
 }
 
-struct PizzaAdActivityWidget: Widget {
+struct PizzaAdActivityWidget_: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: PizzaAdAttributes.self) { context in
             HStack {
