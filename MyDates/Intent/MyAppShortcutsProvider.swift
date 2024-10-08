@@ -11,8 +11,8 @@ struct MyAppShortcutsProvider: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
             intent: NewItemIntent(),
-            phrases: ["create new item with \(.applicationName)"],
-            shortTitle: "New item (st)",
+            phrases: ["create new date with \(.applicationName)"],
+            shortTitle: "New date",
             systemImageName: "plus")
     }
 }

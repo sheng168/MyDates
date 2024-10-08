@@ -138,18 +138,24 @@ struct ListView: View {
 //        }
         .onAppear {
             MyAnalytics.view(self)
-//            UIApplication.shared.applicationIconBadgeNumber = 3
-//            UNUserNotificationCenter.current().setBadgeCount(18)
+//            UIApplication.shared.applicationIconBadgeNumber = 3 // deprecated
             
             Analytics.setUserProperty(String(items.count), forName: "ItemCount")
+            let badge = items.count { item in
+                item.timestamp > Date()
+            }
 
             if showBadge && items.count > 1 {
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                UNUserNotificationCenter.current().requestAuthorization(options: [
+//                    .alert,
+                    .badge,
+//                    .sound
+                ]) { success, error in
                     var permission = ""
                     if success {
                         print("All set!")
                         
-                        UNUserNotificationCenter.current().setBadgeCount(items.count)
+                        UNUserNotificationCenter.current().setBadgeCount(badge)
                         permission = "yes"
                     } else if let error {
                         print(error.localizedDescription)

@@ -26,17 +26,18 @@ struct AboutView: View {
                 }
             }
             
-            Section("Info") {
-                Text("Version: \(appVersion ?? "-") Build: \(buildNumber ?? "-")")
-                Text("Installation: \(installId)") // Installation: fgkRDGhTB0FCnOo2zRDvTn
-                    .textSelection(.enabled)
-            }
-            
             ForEach(about) { section in
                 Section(section.id) {
                     Text(LocalizedStringKey(section.detail))
                 }
             }
+            
+            Section("Info") {
+                Text("Version: \(appVersion ?? "-") Build: \(buildNumber ?? "-")")
+                Text("Installation: \(installId)") // Installation: fgkRDGhTB0FCnOo2zRDvTn
+                    .textSelection(.enabled)
+            }
+
             /*
             Section("Features") {
                 Text("""
