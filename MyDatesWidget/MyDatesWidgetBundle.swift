@@ -19,5 +19,9 @@ struct MyDatesWidgetBundle: WidgetBundle {
     }
     var body: some Widget {
         MyDatesWidget()
+        
+        // activity
+        PizzaDeliveryActivityWidget()
+        PizzaAdActivityWidget()
     }
 }
