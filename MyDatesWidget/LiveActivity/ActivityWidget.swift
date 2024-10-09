@@ -8,6 +8,7 @@
 import ActivityKit
 import WidgetKit
 import SwiftUI
+import AppIntents
 
 //@main
 //struct Widgets: WidgetBundle {
@@ -16,6 +17,8 @@ import SwiftUI
 //       PizzaAdActivityWidget()
 //   }
 //}
+
+
 
 struct PizzaDeliveryActivityWidget: Widget {
     var body: some WidgetConfiguration {
@@ -89,30 +92,33 @@ struct PizzaDeliveryActivityWidget: Widget {
                     }
                     .font(.title2)
                 }
-                DynamicIslandExpandedRegion(.center) {
-                    EmptyView()
+//                DynamicIslandExpandedRegion(.center) {
+//                    EmptyView()
 //                    Text("\(context.state.driverName)")
 //                        .lineLimit(1)
 //                        .font(.caption)
 //                        .foregroundColor(.secondary)
-                }
+//                }
                 DynamicIslandExpandedRegion(.bottom) {
                     // Deep Linking
-//                    HStack {
+                    HStack {
+                        Button("Cancel", intent: CancelIntent(id: "Cancel"))
 //                        Link(destination: URL(string: "https://www.apple.com/")!) {
 //                             Label("Open", systemImage: "phone.circle.fill")
 //                                .font(.caption)
 //                                .padding()
 //                         }.background(Color.accentColor)
 //                         .clipShape(RoundedRectangle(cornerRadius: 15))
-//                        Spacer()
+                        Spacer()
+                        
+                        Toggle("Clear", isOn: true, intent: CancelIntent(id: "Clear"))
 //                        Link(destination: URL(string: "pizza://cancelOrder")!) {
 //                             Label("Clear", systemImage: "xmark.circle.fill")
 //                                .font(.caption)
 //                                .padding()
 //                         }.background(Color.red)
 //                         .clipShape(RoundedRectangle(cornerRadius: 15))
-//                    }
+                    }
                 }
             } compactLeading: {
                 Label {

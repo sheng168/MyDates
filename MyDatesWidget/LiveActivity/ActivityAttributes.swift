@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ActivityKit
+import AppIntents
 
 struct PizzaDeliveryAttributes: ActivityAttributes {
     public typealias PizzaDeliveryStatus = ContentState
@@ -28,4 +29,24 @@ struct PizzaAdAttributes_: ActivityAttributes {
         var showTime: Date
     }
     var discount: String
+}
+
+struct CancelIntent: LiveActivityIntent {
+    static var title: LocalizedStringResource = "Cancel"
+    
+    init() {
+    }
+    
+    init(id: String) {
+        self.id = id
+    }
+    
+    @Parameter(title: "VIN", default: "😃")
+    var id: String
+    
+    func perform() async throws -> some IntentResult {
+        print(self, id)
+        
+        return .result()
+    }
 }
