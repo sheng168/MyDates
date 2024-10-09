@@ -24,7 +24,7 @@ struct PizzaDeliveryActivityWidget: Widget {
             VStack(alignment: .leading) {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("\(context.state.driverName)")
+                        Text("\(context.state.name)")
                             .font(.headline)
                         ZStack {
                             RoundedRectangle(cornerRadius: 15)
@@ -74,7 +74,7 @@ struct PizzaDeliveryActivityWidget: Widget {
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
 //                    Label("", systemImage: "bag")
-                    Text("\(context.state.driverName)")
+                    Text("\(context.state.name)")
 //                        .font(.title3)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
@@ -116,7 +116,7 @@ struct PizzaDeliveryActivityWidget: Widget {
                 }
             } compactLeading: {
                 Label {
-                    Text("\(context.state.driverName)")
+                    Text("\(context.state.name)")
                 } icon: {
 //                    Image(systemName: "bag")
                 }
@@ -136,10 +136,11 @@ struct PizzaDeliveryActivityWidget: Widget {
                 }
             }
             .keylineTint(.accentColor)
+            .widgetURL(URL(string: "widget://item/\(context.attributes.id)")!)
         }
     }
 }
-
+/*
 struct PizzaAdActivityWidget_: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: PizzaAdAttributes.self) { context in
@@ -215,12 +216,12 @@ struct PizzaAdActivityWidget_: Widget {
         }
     }
 }
-
+*/
 // Preview available on iOS 16.2 or above
 @available(iOSApplicationExtension 16.2, *)
 struct PizzaDeliveryActivityWidget_Previews: PreviewProvider {
-    static let activityAttributes = PizzaDeliveryAttributes(numberOfPizzas: 2, totalAmount: "1000")
-    static let activityState = PizzaDeliveryAttributes.ContentState(driverName: "Tim", estimatedDeliveryTime: Date()...Date().addingTimeInterval(15 * 60))
+    static let activityAttributes = PizzaDeliveryAttributes(numberOfPizzas: 2, id: "1000")
+    static let activityState = PizzaDeliveryAttributes.ContentState(name: "Tim", estimatedDeliveryTime: Date()...Date().addingTimeInterval(15 * 60))
     
     static var previews: some View {
         activityAttributes

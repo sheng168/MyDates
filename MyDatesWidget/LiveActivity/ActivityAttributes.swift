@@ -12,15 +12,15 @@ struct PizzaDeliveryAttributes: ActivityAttributes {
     public typealias PizzaDeliveryStatus = ContentState
 
     public struct ContentState: Codable, Hashable {
-        var driverName: String
+        var name: String
         var estimatedDeliveryTime: ClosedRange<Date>
     }
 
     var numberOfPizzas: Int
-    var totalAmount: String
+    let id: String
 }
 
-struct PizzaAdAttributes: ActivityAttributes {
+struct PizzaAdAttributes_: ActivityAttributes {
     public typealias PizzaAdStatus = ContentState
 
     public struct ContentState: Codable, Hashable {

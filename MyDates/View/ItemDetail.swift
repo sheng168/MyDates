@@ -76,13 +76,13 @@ struct ItemDetail: View {
         
         print(ActivityAuthorizationInfo().areActivitiesEnabled)
         
-        let pizzaDeliveryAttributes = PizzaDeliveryAttributes(numberOfPizzas: 3, totalAmount:"$8")
+        let pizzaDeliveryAttributes = PizzaDeliveryAttributes(numberOfPizzas: 3, id: item.id)
 
         let date = item.timestamp
         let now = Date()
         let range = now < date ? now...date : date...now.addingTimeInterval(10 * 60)
         
-        let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(driverName: "\(item.name)", estimatedDeliveryTime: range)
+        let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "\(item.name)", estimatedDeliveryTime: range)
                                                   
         do {
             let deliveryActivity = try Activity<PizzaDeliveryAttributes>.request(
