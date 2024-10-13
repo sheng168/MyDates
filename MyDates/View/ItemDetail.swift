@@ -17,7 +17,7 @@ struct ItemDetail: View {
     
     @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
     @RemoteConfigProperty(key: "enableActivity", fallback: true) var enableActivity: Bool
-
+    
     var body: some View {
         Form {
             Section("Edit") {
@@ -27,7 +27,7 @@ struct ItemDetail: View {
                 DatePicker(selection: $item.timestamp, displayedComponents: [.date, .hourAndMinute]) {
                     Text("Select a date")
                 }
-//                .datePickerStyle(.compact)
+                //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
                 
                 if enableActivity {
@@ -75,18 +75,18 @@ struct ItemDetail: View {
     }
     
     func startDeliveryPizza() {
-//        startingEvent = true
+        //        startingEvent = true
         
         print(ActivityAuthorizationInfo().areActivitiesEnabled)
         
         let pizzaDeliveryAttributes = PizzaDeliveryAttributes(numberOfPizzas: 3, id: item.id)
-
+        
         let date = item.timestamp
         let now = Date()
         let range = now < date ? now...date : date...now.addingTimeInterval(10 * 60)
         
         let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "\(item.name)", estimatedDeliveryTime: range)
-                                                  
+        
         do {
             let deliveryActivity = try Activity<PizzaDeliveryAttributes>.request(
                 attributes: pizzaDeliveryAttributes,
@@ -94,25 +94,64 @@ struct ItemDetail: View {
                 pushType: .token)   // Enable Push Notification Capability First (from pushType: nil)
             
             print("Requested a pizza delivery Live Activity \(deliveryActivity.id)")
-
+            
             // Send the push token to server
             Task {
                 for await pushToken in deliveryActivity.pushTokenUpdates {
                     let pushTokenString = pushToken.reduce("") { $0 + String(format: "%02x", $1) }
                     print(pushTokenString)
                     
-//                    alertMsg = "Requested a pizza delivery Live Activity \(deliveryActivity.id)\n\nPush Token: \(pushTokenString)"
-//                    showAlert = true
-//                    startingEvent = false
+                    //                    alertMsg = "Requested a pizza delivery Live Activity \(deliveryActivity.id)\n\nPush Token: \(pushTokenString)"
+                    //                    showAlert = true
+                    //                    startingEvent = false
                 }
             }
         } catch (let error) {
             print("Error requesting pizza delivery Live Activity \(error.localizedDescription)")
-//            alertMsg = "Error requesting pizza delivery Live Activity \(error.localizedDescription)"
-//            showAlert = true
-//            startingEvent = false
+            //            alertMsg = "Error requesting pizza delivery Live Activity \(error.localizedDescription)"
+            //            showAlert = true
+            //            startingEvent = false
         }
     }
+    func updateDeliveryPizza() {
+        Task {
+            let updatedDeliveryStatus = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "TIM 👨🏻‍🍳", estimatedDeliveryTime: Date()...Date().addingTimeInterval(60 * 60))
+            
+            for activity in Activity<PizzaDeliveryAttributes>.activities{
+                await activity.update(using: updatedDeliveryStatus)
+            }
+
+            print("Updated pizza delivery Live Activity")
+            
+//            showAlert = true
+//            alertMsg = "Updated pizza delivery Live Activity"
+        }
+    }
+    func stopDeliveryPizza() {
+        Task {
+            for activity in Activity<PizzaDeliveryAttributes>.activities{
+                await activity.end(dismissalPolicy: .immediate)
+            }
+
+            print("Cancelled all pizza delivery Live Activity")
+
+//            showAlert = true
+//            alertMsg = "Cancelled pizza delivery Live Activity"
+        }
+    }
+    func showAllDeliveries() {
+        Task {
+            var orders = ""
+            for activity in Activity<PizzaDeliveryAttributes>.activities {
+                print("Pizza delivery details: \(activity.id) -> \(activity.attributes)")
+                orders.append("\n\(activity.id) -> \(activity.attributes)\n")
+            }
+
+//            showAlert = true
+//            alertMsg = orders
+        }
+    }
+
 }
 
 func diffs(_ date: Date, _ date2: Date) -> DateComponents {
