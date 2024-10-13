@@ -28,16 +28,17 @@ struct ItemDetail: View {
                 }
 //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
+                
+                Button {
+                    startDeliveryPizza()
+                } label: {
+                    Text("Add to Lock Screen")
+                }
+
             }
             
             if showDebug {
                 Section("Debug") {
-                    Button {
-                        startDeliveryPizza()
-                    } label: {
-                        Text("Start Activity")
-                    }
-                    
                     Text(Event(name: item.name, date: item.timestamp).toJsonString() ?? "{}")
                         .textSelection(.enabled)
                     Text(item.timestamp, style: .relative)
