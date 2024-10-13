@@ -16,7 +16,8 @@ struct ItemDetail: View {
     @Bindable var item: Item
     
     @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
-    
+    @RemoteConfigProperty(key: "enableActivity", fallback: true) var enableActivity: Bool
+
     var body: some View {
         Form {
             Section("Edit") {
@@ -29,12 +30,13 @@ struct ItemDetail: View {
 //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
                 
-                Button {
-                    startDeliveryPizza()
-                } label: {
-                    Text("Add to Lock Screen")
+                if enableActivity {
+                    Button {
+                        startDeliveryPizza()
+                    } label: {
+                        Text("Add to Lock Screen")
+                    }
                 }
-
             }
             
             if showDebug {
