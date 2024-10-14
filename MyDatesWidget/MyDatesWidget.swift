@@ -73,6 +73,7 @@ struct MyDatesWidgetEntryView : View {
 //            Text("")
 //            Text("Date Radar")
         }
+        .widgetURL(URL(string: "widget://item/\(entry.configuration.character?.id ?? "-")")!)
         .onAppear {
             print("Widget appear...")
         }

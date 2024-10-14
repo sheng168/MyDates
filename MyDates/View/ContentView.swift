@@ -30,7 +30,7 @@ enum Tabs: String {
 }
 
 struct ContentView: View {
-    var tab = Tabs.List
+//    var tab = Tabs.List
     @EnvironmentObject var stateManager: StateManager
     
     @RemoteConfigProperty(key: "forceAppUpdate", fallback: false) var forceAppUpdate: Bool
@@ -44,14 +44,14 @@ struct ContentView: View {
             Text(LocalizedStringKey(updateMessage))
             // https://stackoverflow.com/questions/56892691/how-to-show-html-or-markdown-in-a-swiftui-text
         } else {
-            TabView () { // selection: $stateManager.tab
+            TabView(selection: $stateManager.tab) { // selection: $stateManager.tab
                 ForEach(tabList) { tab in
-                    if let view = Tabs(rawValue: tab.id)?.view() {
-                        view
+                    if let tabEnum = Tabs(rawValue: tab.id) {
+                        tabEnum.view()
                             .tabItem {
                                 Label(tab.label, systemImage: tab.systemImage)
                             }
-                            .tag(tab.id)
+                            .tag(tabEnum)
                     }
                 }
                 
