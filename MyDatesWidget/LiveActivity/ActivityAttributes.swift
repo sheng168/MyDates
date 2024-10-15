@@ -14,10 +14,18 @@ struct PizzaDeliveryAttributes: ActivityAttributes {
 
     public struct ContentState: Codable, Hashable {
         var name: String
-        var dateRange: ClosedRange<Date>
+        var timestamp: Date
+        
+        var dateRange: ClosedRange<Date> {
+            let date = timestamp
+            let now = Date()
+            let range = now < date ? now...date : date...now.addingTimeInterval(10 * 60)
+
+            return range
+        }
     }
 
-    var numberOfPizzas: Int
+//    var numberOfPizzas: Int
     let id: String
 }
 

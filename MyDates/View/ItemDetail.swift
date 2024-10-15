@@ -79,13 +79,9 @@ struct ItemDetail: View {
         
         print(ActivityAuthorizationInfo().areActivitiesEnabled)
         
-        let pizzaDeliveryAttributes = PizzaDeliveryAttributes(numberOfPizzas: 3, id: item.id)
-        
-        let date = item.timestamp
-        let now = Date()
-        let range = now < date ? now...date : date...now.addingTimeInterval(10 * 60)
-        
-        let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "\(item.name)", dateRange: range)
+        let pizzaDeliveryAttributes = PizzaDeliveryAttributes(id: item.id)
+                
+        let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "\(item.name)", timestamp: item.timestamp)
         
         do {
             let deliveryActivity = try Activity<PizzaDeliveryAttributes>.request(
@@ -115,7 +111,7 @@ struct ItemDetail: View {
     }
     func updateDeliveryPizza() {
         Task {
-            let updatedDeliveryStatus = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "TIM 👨🏻‍🍳", dateRange: Date()...Date().addingTimeInterval(60 * 60))
+            let updatedDeliveryStatus = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "TIM 👨🏻‍🍳", timestamp: Date().addingTimeInterval(60 * 60))
             
             for activity in Activity<PizzaDeliveryAttributes>.activities{
                 await activity.update(using: updatedDeliveryStatus)
