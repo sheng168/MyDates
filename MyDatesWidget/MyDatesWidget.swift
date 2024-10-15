@@ -42,8 +42,8 @@ struct SimpleEntry: TimelineEntry {
 struct MyDatesWidgetEntryView : View {
     var entry: Provider.Entry
     
-    @Query
-    private var items: [Item]
+//    @Query
+//    private var items: [Item]
     
     @RemoteConfigProperty(key: "showTimer", fallback: false) var showDebug: Bool
 

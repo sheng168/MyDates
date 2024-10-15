@@ -43,7 +43,7 @@ struct PizzaDeliveryActivityWidget: Widget {
                                     .foregroundColor(.white.opacity(0.5))
                                 Image(systemName: "ellipsis")
                                     .foregroundColor(.white.opacity(0.5))
-                                Text(timerInterval: context.state.estimatedDeliveryTime, countsDown: true)
+                                Text(timerInterval: context.state.dateRange, countsDown: true)
                                     .bold()
                                     .font(.caption)
                                     .foregroundColor(.white.opacity(0.8))
@@ -82,7 +82,7 @@ struct PizzaDeliveryActivityWidget: Widget {
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     Label {
-                        Text(timerInterval: context.state.estimatedDeliveryTime, countsDown: true)
+                        Text(timerInterval: context.state.dateRange, countsDown: true)
                             .multilineTextAlignment(.trailing)
 //                            .frame(width: 50)
                             .monospacedDigit()
@@ -128,14 +128,14 @@ struct PizzaDeliveryActivityWidget: Widget {
                 }
                 .font(.caption2)
             } compactTrailing: {
-                Text(timerInterval: context.state.estimatedDeliveryTime, countsDown: true)
+                Text(timerInterval: context.state.dateRange, countsDown: true)
 //                    .multilineTextAlignment(.center)
 //                    .frame(width: 40)
 //                    .font(.caption2)
             } minimal: {
                 VStack(alignment: .center) {
 //                    Image(systemName: "timer")
-                    Text(timerInterval: context.state.estimatedDeliveryTime, countsDown: true)
+                    Text(timerInterval: context.state.dateRange, countsDown: true)
 //                        .multilineTextAlignment(.center)
                         .monospacedDigit()
 //                        .font(.caption2)
@@ -227,7 +227,7 @@ struct PizzaAdActivityWidget_: Widget {
 @available(iOSApplicationExtension 16.2, *)
 struct PizzaDeliveryActivityWidget_Previews: PreviewProvider {
     static let activityAttributes = PizzaDeliveryAttributes(numberOfPizzas: 2, id: "1000")
-    static let activityState = PizzaDeliveryAttributes.ContentState(name: "Tim", estimatedDeliveryTime: Date()...Date().addingTimeInterval(15 * 60))
+    static let activityState = PizzaDeliveryAttributes.ContentState(name: "Tim", dateRange: Date()...Date().addingTimeInterval(15 * 60))
     
     static var previews: some View {
         activityAttributes
