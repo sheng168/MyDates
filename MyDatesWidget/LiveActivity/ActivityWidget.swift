@@ -99,6 +99,87 @@ struct PizzaDeliveryActivityWidget: Widget {
         }
     }
 }
+
+struct LockScreenView: View { // or no island
+    let state: PizzaDeliveryAttributes.ContentState
+    
+    var body: some View {
+        let date = state.timestamp
+        
+        VStack(alignment: .leading) {
+            HStack {
+                VStack(alignment: .leading) {
+                    LabeledContent {
+                        
+                    } label: {
+                        Text("\(state.name)")
+//                            .font(.headline)
+                        HStack {
+                            Text(date, format: Date.FormatStyle(date: .numeric, time: .standard)).lineLimit(1)
+                            Spacer()
+                            Text(date, style: .relative)
+                        }
+                        
+//                        Text(date, style: .timer)
+//
+//                        Text(date, style: .offset)
+//
+//                        Text(timerInterval: state.dateRange, countsDown: true)
+                    }
+
+                    
+                    
+                    
+                    if true {
+                        
+                    } else {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(.secondary)
+                            HStack {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(.blue)
+                                    .frame(width: 50)
+                                Image(systemName: "shippingbox.circle.fill")
+                                    .foregroundColor(.white)
+                                    .padding(.leading, -25)
+                                Image(systemName: "arrow.forward")
+                                    .foregroundColor(.white.opacity(0.5))
+                                Image(systemName: "ellipsis")
+                                    .foregroundColor(.white.opacity(0.5))
+                                Text(timerInterval: state.dateRange, countsDown: true)
+                                    .bold()
+                                    .font(.caption)
+                                    .foregroundColor(.white.opacity(0.8))
+                                    .multilineTextAlignment(.center)
+                                Image(systemName: "ellipsis")
+                                    .foregroundColor(.white.opacity(0.5))
+                                Image(systemName: "arrow.forward")
+                                    .foregroundColor(.white.opacity(0.5))
+                                Image(systemName: "house.circle.fill")
+                                    .foregroundColor(.green)
+                                    .background(.white)
+                                    .clipShape(Circle())
+                            }
+                        }
+                    }
+                }
+                //                    Spacer()
+                //                    VStack {
+                //                        Text("\(context.attributes.numberOfPizzas) 🍕")
+                //                            .font(.title)
+                //                            .bold()
+                //                        Spacer()
+                //                    }
+            }.padding(5)
+            //                Text("You've already paid: \(context.attributes.totalAmount) + $9.9 Delivery Fee 💸")
+            //                    .font(.caption)
+            //                    .foregroundColor(.secondary)
+            //                    .padding(.horizontal, 5)
+        }.padding(15)
+    }
+}
+
 /*
 struct PizzaAdActivityWidget_: Widget {
     var body: some WidgetConfiguration {
@@ -198,85 +279,5 @@ struct PizzaDeliveryActivityWidget_Previews: PreviewProvider {
         activityAttributes
             .previewContext(activityState, viewKind: .dynamicIsland(.minimal))
             .previewDisplayName("Minimal")
-    }
-}
-
-struct LockScreenView: View {
-    let state: PizzaDeliveryAttributes.ContentState
-    
-    var body: some View {
-        let date = state.timestamp
-        
-        VStack(alignment: .leading) {
-            HStack {
-                VStack(alignment: .leading) {
-                    LabeledContent {
-                        
-                    } label: {
-                        Text("\(state.name)")
-//                            .font(.headline)
-                        HStack {
-                            Text(date, format: Date.FormatStyle(date: .numeric, time: .standard)).lineLimit(1)
-                            Spacer()
-                            Text(date, style: .relative)
-                        }
-                        
-//                        Text(date, style: .timer)
-//                        
-//                        Text(date, style: .offset)
-//                        
-//                        Text(timerInterval: state.dateRange, countsDown: true)
-                    }
-
-                    
-                    
-                    
-                    if true {
-                        
-                    } else {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(.secondary)
-                            HStack {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(.blue)
-                                    .frame(width: 50)
-                                Image(systemName: "shippingbox.circle.fill")
-                                    .foregroundColor(.white)
-                                    .padding(.leading, -25)
-                                Image(systemName: "arrow.forward")
-                                    .foregroundColor(.white.opacity(0.5))
-                                Image(systemName: "ellipsis")
-                                    .foregroundColor(.white.opacity(0.5))
-                                Text(timerInterval: state.dateRange, countsDown: true)
-                                    .bold()
-                                    .font(.caption)
-                                    .foregroundColor(.white.opacity(0.8))
-                                    .multilineTextAlignment(.center)
-                                Image(systemName: "ellipsis")
-                                    .foregroundColor(.white.opacity(0.5))
-                                Image(systemName: "arrow.forward")
-                                    .foregroundColor(.white.opacity(0.5))
-                                Image(systemName: "house.circle.fill")
-                                    .foregroundColor(.green)
-                                    .background(.white)
-                                    .clipShape(Circle())
-                            }
-                        }
-                    }
-                }
-                //                    Spacer()
-                //                    VStack {
-                //                        Text("\(context.attributes.numberOfPizzas) 🍕")
-                //                            .font(.title)
-                //                            .bold()
-                //                        Spacer()
-                //                    }
-            }//.padding(5)
-            //                Text("You've already paid: \(context.attributes.totalAmount) + $9.9 Delivery Fee 💸")
-            //                    .font(.caption)
-            //                    .foregroundColor(.secondary)
-            //                    .padding(.horizontal, 5)
-        }//.padding(15)
     }
 }

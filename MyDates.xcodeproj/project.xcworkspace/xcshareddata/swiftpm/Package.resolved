@@ -87,8 +87,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sheng168/KeweApp.git",
       "state" : {
-        "revision" : "c1679dfce5c546c2016f9e5de6c5b2fca8b99504",
-        "version" : "1.0.0"
+        "branch" : "main",
+        "revision" : "13cb06fe1b28bb7d365f16e9ac1dcf7de9998222"
       }
     },
     {
@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/wishkit/wishkit-ios.git",
       "state" : {
-        "revision" : "430a2da77108aef193091772b8323fc773220b34",
-        "version" : "4.3.1"
+        "revision" : "2ba88a0cd6b3fac782234d74ef96167a08162959",
+        "version" : "4.4.0"
       }
     },
     {

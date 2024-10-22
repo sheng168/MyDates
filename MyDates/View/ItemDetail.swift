@@ -10,6 +10,7 @@ import SwiftUI
 import FirebaseRemoteConfig
 import WidgetKit
 import ActivityKit
+import KeweApp
 
 struct ItemDetail: View {
     @EnvironmentObject var stateManager: StateManager
@@ -29,6 +30,19 @@ struct ItemDetail: View {
                 }
                 //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
+                
+                if enableActivity {
+                    Button {
+                        let d = diffs(item.timestamp, .now).description
+                        send(tweet: """
+                            \(d) until \(item.name)
+                            
+                            Sent using @Date_Radar
+                            """)
+                    } label: {
+                        Text("Tweet/X")
+                    }
+                }
                 
                 if enableActivity {
                     Button {
