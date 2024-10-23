@@ -32,15 +32,16 @@ struct ItemDetail: View {
                 TextField("Notes", text: $item.notes)
                 
                 if enableActivity {
+                    let d = relativeTimeString(for: item.timestamp)
                     Button {
-                        let d = diffs(item.timestamp, .now).description
                         send(tweet: """
-                            \(d) until \(item.name)
+                            \(item.name)
+                            \(d)
                             
                             Sent using @Date_Radar
                             """)
                     } label: {
-                        Text("Tweet/X")
+                        Text("Tweet/X \(d)")
                     }
                 }
                 
@@ -86,6 +87,13 @@ struct ItemDetail: View {
         .onDisappear {
             WidgetCenter.shared.reloadAllTimelines()
         }
+    }
+    
+    // Function to get the relative time as a string
+    func relativeTimeString(for date: Date) -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full // You can customize the style (.short, .full, etc.)
+        return formatter.localizedString(for: date, relativeTo: Date())
     }
     
     func startDeliveryPizza() {
