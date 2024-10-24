@@ -12,16 +12,19 @@ import WidgetKit
 import ActivityKit
 import KeweApp
 
+
 struct ItemDetail: View {
     @EnvironmentObject var stateManager: StateManager
     @Bindable var item: Item
     
-    @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
-    @RemoteConfigProperty(key: "enableActivity", fallback: true) var enableActivity: Bool
+//    @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
+//    @RemoteConfigProperty(key: "enableActivity", fallback: true) var enableActivity: Bool
     
     var body: some View {
         Form {
             let message = Text(item.timestamp, style: .relative) + Text("\n\(item.name)\n") + Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+            
+            
             
             Section("Edit") {
                 TextField("Name", text: $item.name)
@@ -33,7 +36,9 @@ struct ItemDetail: View {
                 //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
                 
-                ShareLink(item: URL(string: "https://x.com/Date_Radar")!, subject: Text("\(item.name)"), message: message)
+                RemoteConfigConditional(name: "enableShare") {
+                    ShareLink(item: URL(string: "https://x.com/Date_Radar")!, subject: Text("\(item.name)"), message: message)
+                }
                 
 //                let example = Image(.example)
 //
@@ -41,7 +46,7 @@ struct ItemDetail: View {
 //                    Label("Click to share", systemImage: "airplane")
 //                }
                 
-                if enableActivity {
+                RemoteConfigConditional(name: "enableTwitter", fallback: false) {
                     let d = relativeTimeString(for: item.timestamp)
                     Button {
                         send(tweet: """
@@ -55,7 +60,7 @@ struct ItemDetail: View {
                     }
                 }
                 
-                if enableActivity {
+                RemoteConfigConditional(name: "enableActivity") {
                     Button {
                         startDeliveryPizza()
                     } label: {
@@ -64,7 +69,7 @@ struct ItemDetail: View {
                 }
             }
             
-            if showDebug {
+            RemoteConfigConditional(name: "showDebug") {
                 Section("Debug") {
                     message
                     
