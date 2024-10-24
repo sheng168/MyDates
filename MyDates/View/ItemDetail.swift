@@ -21,6 +21,8 @@ struct ItemDetail: View {
     
     var body: some View {
         Form {
+            let message = Text(item.timestamp, style: .relative) + Text("\n\(item.name)\n") + Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+            
             Section("Edit") {
                 TextField("Name", text: $item.name)
                     .autocapitalization(.words)
@@ -30,6 +32,14 @@ struct ItemDetail: View {
                 }
                 //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
+                
+                ShareLink(item: URL(string: "https://x.com/Date_Radar")!, subject: Text("\(item.name)"), message: message)
+                
+//                let example = Image(.example)
+//
+//                ShareLink(item: example, preview: SharePreview("Singapore Airport", image: example)) {
+//                    Label("Click to share", systemImage: "airplane")
+//                }
                 
                 if enableActivity {
                     let d = relativeTimeString(for: item.timestamp)
@@ -56,6 +66,8 @@ struct ItemDetail: View {
             
             if showDebug {
                 Section("Debug") {
+                    message
+                    
                     Text(Event(name: item.name, date: item.timestamp).toJsonString() ?? "{}")
                         .textSelection(.enabled)
                     Text(item.timestamp, style: .relative)
