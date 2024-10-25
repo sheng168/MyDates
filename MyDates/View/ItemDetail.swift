@@ -31,20 +31,15 @@ struct ItemDetail: View {
                     .autocapitalization(.words)
                 
                 DatePicker(selection: $item.timestamp, displayedComponents: [.date, .hourAndMinute]) {
-                    Text("Select a date")
+                    RemoteText("Select a date")
                 }
                 //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
                 
                 RemoteConfigConditional(name: "enableShare") {
-                    ShareLink(item: URL(string: "https://x.com/Date_Radar")!, subject: Text("\(item.name)"), message: message)
+                    // https://www.hackingwithswift.com/books/ios-swiftui/how-to-let-the-user-share-content-with-sharelink
+                    ShareLink(item: URL(string: "https://apps.apple.com/us/app/date-radar-countdown-stopwatch/id6463448697")!, subject: Text("\(item.name)"), message: message)
                 }
-                
-//                let example = Image(.example)
-//
-//                ShareLink(item: example, preview: SharePreview("Singapore Airport", image: example)) {
-//                    Label("Click to share", systemImage: "airplane")
-//                }
                 
                 RemoteConfigConditional(name: "enableTwitter", fallback: false) {
                     let d = relativeTimeString(for: item.timestamp)
@@ -64,7 +59,7 @@ struct ItemDetail: View {
                     Button {
                         startDeliveryPizza()
                     } label: {
-                        Text("Add to Lock Screen")
+                        RemoteText("Add to Lock Screen")
                     }
                 }
             }
@@ -82,18 +77,18 @@ struct ItemDetail: View {
                     Button {
                         stateManager.selection = nil
                     } label: {
-                        Text("Go Back")
+                        RemoteText("Go Back")
                     }
                     Button {
                         stateManager.selection = "Alex"
                     } label: {
-                        Text("Alex")
+                        RemoteText("Alex")
                     }
                     
                     Button {
                         stateManager.tab = .About
                     } label: {
-                        Text("About")
+                        RemoteText("About")
                     }
                 }
             }
