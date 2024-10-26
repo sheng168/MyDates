@@ -41,6 +41,14 @@ struct ItemDetail: View {
                     ShareLink(item: URL(string: "https://apps.apple.com/us/app/date-radar-countdown-stopwatch/id6463448697")!, subject: Text("\(item.name)"), message: message)
                 }
                 
+                RemoteConfigConditional(name: "enableRestart") {
+                    Button {
+                        item.timestamp = .now
+                    } label: {
+                        RemoteText("Restart")
+                    }
+                }
+
                 RemoteConfigConditional(name: "enableTwitter", fallback: false) {
                     let d = relativeTimeString(for: item.timestamp)
                     Button {
