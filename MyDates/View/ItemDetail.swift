@@ -10,33 +10,71 @@ import SwiftUI
 import FirebaseRemoteConfig
 import WidgetKit
 import ActivityKit
+import KeweApp
+
 
 struct ItemDetail: View {
     @EnvironmentObject var stateManager: StateManager
     @Bindable var item: Item
     
-    @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
+//    @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
+//    @RemoteConfigProperty(key: "enableActivity", fallback: true) var enableActivity: Bool
     
     var body: some View {
         Form {
+            let message = Text(item.timestamp, style: .relative) + Text("\n\(item.name)\n") + Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+            
+            
+            
             Section("Edit") {
                 TextField("Name", text: $item.name)
                     .autocapitalization(.words)
                 
                 DatePicker(selection: $item.timestamp, displayedComponents: [.date, .hourAndMinute]) {
-                    Text("Select a date")
+                    RemoteText("Select a date")
                 }
-//                .datePickerStyle(.compact)
+                //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
-            }
-            
-            if showDebug {
-                Section("Debug") {
+                
+                RemoteConfigConditional(name: "enableShare") {
+                    // https://www.hackingwithswift.com/books/ios-swiftui/how-to-let-the-user-share-content-with-sharelink
+                    ShareLink(item: URL(string: "https://apps.apple.com/us/app/date-radar-countdown-stopwatch/id6463448697")!, subject: Text("\(item.name)"), message: message)
+                }
+                
+                RemoteConfigConditional(name: "enableRestart") {
+                    Button {
+                        item.timestamp = .now
+                    } label: {
+                        RemoteText("Restart")
+                    }
+                }
+
+                RemoteConfigConditional(name: "enableTwitter", fallback: false) {
+                    let d = relativeTimeString(for: item.timestamp)
+                    Button {
+                        send(tweet: """
+                            \(item.name)
+                            \(d)
+                            
+                            Sent using @Date_Radar
+                            """)
+                    } label: {
+                        Text("Tweet/X \(d)")
+                    }
+                }
+                
+                RemoteConfigConditional(name: "enableActivity") {
                     Button {
                         startDeliveryPizza()
                     } label: {
-                        Text("Start Activity")
+                        RemoteText("Add to Lock Screen")
                     }
+                }
+            }
+            
+            RemoteConfigConditional(name: "showDebug") {
+                Section("Debug") {
+                    message
                     
                     Text(Event(name: item.name, date: item.timestamp).toJsonString() ?? "{}")
                         .textSelection(.enabled)
@@ -47,18 +85,18 @@ struct ItemDetail: View {
                     Button {
                         stateManager.selection = nil
                     } label: {
-                        Text("Go Back")
+                        RemoteText("Go Back")
                     }
                     Button {
                         stateManager.selection = "Alex"
                     } label: {
-                        Text("Alex")
+                        RemoteText("Alex")
                     }
                     
                     Button {
                         stateManager.tab = .About
                     } label: {
-                        Text("About")
+                        RemoteText("About")
                     }
                 }
             }
@@ -71,19 +109,22 @@ struct ItemDetail: View {
         }
     }
     
+    // Function to get the relative time as a string
+    func relativeTimeString(for date: Date) -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full // You can customize the style (.short, .full, etc.)
+        return formatter.localizedString(for: date, relativeTo: Date())
+    }
+    
     func startDeliveryPizza() {
-//        startingEvent = true
+        //        startingEvent = true
         
         print(ActivityAuthorizationInfo().areActivitiesEnabled)
         
-        let pizzaDeliveryAttributes = PizzaDeliveryAttributes(numberOfPizzas: 3, totalAmount:"$8")
-
-        let date = item.timestamp
-        let now = Date()
-        let range = now < date ? now...date : date...now.addingTimeInterval(10 * 60)
+        let pizzaDeliveryAttributes = PizzaDeliveryAttributes(id: item.id)
+                
+        let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "\(item.name)", timestamp: item.timestamp)
         
-        let initialContentState = PizzaDeliveryAttributes.PizzaDeliveryStatus(driverName: "\(item.name)", estimatedDeliveryTime: range)
-                                                  
         do {
             let deliveryActivity = try Activity<PizzaDeliveryAttributes>.request(
                 attributes: pizzaDeliveryAttributes,
@@ -91,25 +132,64 @@ struct ItemDetail: View {
                 pushType: .token)   // Enable Push Notification Capability First (from pushType: nil)
             
             print("Requested a pizza delivery Live Activity \(deliveryActivity.id)")
-
+            
             // Send the push token to server
             Task {
                 for await pushToken in deliveryActivity.pushTokenUpdates {
                     let pushTokenString = pushToken.reduce("") { $0 + String(format: "%02x", $1) }
                     print(pushTokenString)
                     
-//                    alertMsg = "Requested a pizza delivery Live Activity \(deliveryActivity.id)\n\nPush Token: \(pushTokenString)"
-//                    showAlert = true
-//                    startingEvent = false
+                    //                    alertMsg = "Requested a pizza delivery Live Activity \(deliveryActivity.id)\n\nPush Token: \(pushTokenString)"
+                    //                    showAlert = true
+                    //                    startingEvent = false
                 }
             }
         } catch (let error) {
             print("Error requesting pizza delivery Live Activity \(error.localizedDescription)")
-//            alertMsg = "Error requesting pizza delivery Live Activity \(error.localizedDescription)"
-//            showAlert = true
-//            startingEvent = false
+            //            alertMsg = "Error requesting pizza delivery Live Activity \(error.localizedDescription)"
+            //            showAlert = true
+            //            startingEvent = false
         }
     }
+    func updateDeliveryPizza() {
+        Task {
+            let updatedDeliveryStatus = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "TIM 👨🏻‍🍳", timestamp: Date().addingTimeInterval(60 * 60))
+            
+            for activity in Activity<PizzaDeliveryAttributes>.activities{
+                await activity.update(using: updatedDeliveryStatus)
+            }
+
+            print("Updated pizza delivery Live Activity")
+            
+//            showAlert = true
+//            alertMsg = "Updated pizza delivery Live Activity"
+        }
+    }
+    func stopDeliveryPizza() {
+        Task {
+            for activity in Activity<PizzaDeliveryAttributes>.activities{
+                await activity.end(dismissalPolicy: .immediate)
+            }
+
+            print("Cancelled all pizza delivery Live Activity")
+
+//            showAlert = true
+//            alertMsg = "Cancelled pizza delivery Live Activity"
+        }
+    }
+    func showAllDeliveries() {
+        Task {
+            var orders = ""
+            for activity in Activity<PizzaDeliveryAttributes>.activities {
+                print("Pizza delivery details: \(activity.id) -> \(activity.attributes)")
+                orders.append("\n\(activity.id) -> \(activity.attributes)\n")
+            }
+
+//            showAlert = true
+//            alertMsg = orders
+        }
+    }
+
 }
 
 func diffs(_ date: Date, _ date2: Date) -> DateComponents {

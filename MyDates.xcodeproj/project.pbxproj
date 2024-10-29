@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		3C3CD8062AD081E40051D252 /* WishKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CD8052AD081E40051D252 /* WishKitView.swift */; };
 		3C3CD8082AD18A760051D252 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CD8072AD18A760051D252 /* SnapshotHelper.swift */; };
 		3C48D9192ABC830F006E418C /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C48D9182ABC830F006E418C /* ItemRowView.swift */; };
+		3C54542F2CC3F31E00CB831C /* Test16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54542E2CC3F31E00CB831C /* Test16.swift */; };
 		3C55942C2B69FB4400D3D757 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55942B2B69FB4400D3D757 /* WidgetKit.framework */; };
 		3C55942E2B69FB4400D3D757 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55942D2B69FB4400D3D757 /* SwiftUI.framework */; };
 		3C5594312B69FB4400D3D757 /* MyDatesWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5594302B69FB4400D3D757 /* MyDatesWidgetBundle.swift */; };
@@ -44,9 +45,6 @@
 		3CDAEBFB2CA4C5DB003F956A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D8DA12A954099002F2779 /* Item.swift */; };
 		3CDAEBFD2CA99E34003F956A /* KeweApp in Frameworks */ = {isa = PBXBuildFile; productRef = 3CDAEBFC2CA99E34003F956A /* KeweApp */; };
 		3CDAEBFE2CA9A7DF003F956A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC79CD22ABAA40E00A734CB /* GoogleService-Info.plist */; };
-		3CDAEC002CB524C3003F956A /* WidgetDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDAEBFF2CB524C3003F956A /* WidgetDemo.swift */; };
-		3CDAEC022CB524E7003F956A /* ActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDAEC012CB524E7003F956A /* ActivityAttributes.swift */; };
-		3CDAEC032CB52623003F956A /* ActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDAEC012CB524E7003F956A /* ActivityAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +107,7 @@
 		3C3CD8052AD081E40051D252 /* WishKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishKitView.swift; sourceTree = "<group>"; };
 		3C3CD8072AD18A760051D252 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		3C48D9182ABC830F006E418C /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
+		3C54542E2CC3F31E00CB831C /* Test16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test16.swift; sourceTree = "<group>"; };
 		3C55942A2B69FB4300D3D757 /* MyDatesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyDatesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C55942B2B69FB4400D3D757 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
 		3C55942D2B69FB4400D3D757 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
@@ -127,9 +126,21 @@
 		3CC79CF42ABBAC2C00A734CB /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		3CCFD9B92B571F2600D0EE5F /* QueryBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryBuilderView.swift; sourceTree = "<group>"; };
 		3CDA43B52AD24372000FBFCA /* ScreenShotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotUITests.swift; sourceTree = "<group>"; };
-		3CDAEBFF2CB524C3003F956A /* WidgetDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDemo.swift; sourceTree = "<group>"; };
-		3CDAEC012CB524E7003F956A /* ActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAttributes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3CE2B5232CB5D51C00AC4F16 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ActivityAttributes.swift,
+			);
+			target = 3C0D8D992A954099002F2779 /* MyDates */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3CE2B5222CB5D51C00AC4F16 /* LiveActivity */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (3CE2B5232CB5D51C00AC4F16 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = LiveActivity; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3C0D8D972A954099002F2779 /* Frameworks */ = {
@@ -224,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				3C0D8DB22A95409C002F2779 /* MyDatesTests.swift */,
+				3C54542E2CC3F31E00CB831C /* Test16.swift */,
 			);
 			path = MyDatesTests;
 			sourceTree = "<group>";
@@ -254,8 +266,7 @@
 				3C5594302B69FB4400D3D757 /* MyDatesWidgetBundle.swift */,
 				3C5594322B69FB4400D3D757 /* MyDatesWidget.swift */,
 				3C5594342B69FB4400D3D757 /* AppIntent.swift */,
-				3CDAEC012CB524E7003F956A /* ActivityAttributes.swift */,
-				3CDAEBFF2CB524C3003F956A /* WidgetDemo.swift */,
+				3CE2B5222CB5D51C00AC4F16 /* LiveActivity */,
 				3C5594362B69FB4600D3D757 /* Assets.xcassets */,
 				3C5594382B69FB4600D3D757 /* Info.plist */,
 				3C5594392B69FB4600D3D757 /* MyDatesWidget.entitlements */,
@@ -379,6 +390,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				3CE2B5222CB5D51C00AC4F16 /* LiveActivity */,
+			);
 			name = MyDatesWidgetExtension;
 			productName = MyDatesWidgetExtension;
 			productReference = 3C55942A2B69FB4300D3D757 /* MyDatesWidgetExtension.appex */;
@@ -392,7 +406,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					3C0D8D992A954099002F2779 = {
 						CreatedOnToolsVersion = 15.0;
@@ -493,7 +507,6 @@
 				3C0D8D9E2A954099002F2779 /* MyDatesApp.swift in Sources */,
 				3C56FD492AAAB3700026A2D2 /* MyStoreView.swift in Sources */,
 				3C0D8DD32A977DE4002F2779 /* PreviewContainer.swift in Sources */,
-				3CDAEC032CB52623003F956A /* ActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C54542F2CC3F31E00CB831C /* Test16.swift in Sources */,
 				3C0D8DB32A95409C002F2779 /* MyDatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,9 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C5594312B69FB4400D3D757 /* MyDatesWidgetBundle.swift in Sources */,
-				3CDAEC002CB524C3003F956A /* WidgetDemo.swift in Sources */,
 				3C5594332B69FB4400D3D757 /* MyDatesWidget.swift in Sources */,
-				3CDAEC022CB524E7003F956A /* ActivityAttributes.swift in Sources */,
 				3C5594352B69FB4400D3D757 /* AppIntent.swift in Sources */,
 				3CDAEBFB2CA4C5DB003F956A /* Item.swift in Sources */,
 			);
@@ -672,7 +684,6 @@
 		3C0D8DC32A95409C002F2779 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyDates/MyDates.entitlements;
@@ -694,7 +705,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.13;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = us.jsy.MyDates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -708,7 +719,6 @@
 		3C0D8DC42A95409C002F2779 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyDates/MyDates.entitlements;
@@ -730,7 +740,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.13;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = us.jsy.MyDates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -744,7 +754,6 @@
 		3C0D8DC62A95409C002F2779 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -764,7 +773,6 @@
 		3C0D8DC72A95409C002F2779 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -784,7 +792,6 @@
 		3C0D8DC92A95409C002F2779 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6GW2SW5L9X;
@@ -802,7 +809,6 @@
 		3C0D8DCA2A95409C002F2779 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6GW2SW5L9X;
@@ -825,6 +831,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyDatesWidget/MyDatesWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6GW2SW5L9X;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -843,7 +850,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = us.jsy.MyDates.MyDatesWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -864,6 +871,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyDatesWidget/MyDatesWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 6GW2SW5L9X;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -882,7 +890,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = us.jsy.MyDates.MyDatesWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -958,8 +966,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sheng168/KeweApp.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		3CDA43B72AD4DA9F000FBFCA /* XCRemoteSwiftPackageReference "Then" */ = {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeweApp
 
 struct QueryBuilderView: View {
     @State var searchText = ""
@@ -19,13 +20,13 @@ struct QueryBuilderView: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Menu("Sort", systemImage: "arrow.up.arrow.down") {
                             Picker("Sort", selection: $sortOrder) {
-                                Text("Name (A-Z)")
+                                RemoteText("Name (A-Z)")
                                     .tag([SortDescriptor(\Item.name)])
-                                Text("Name (Z-A)")
+                                RemoteText("Name (Z-A)")
                                     .tag([SortDescriptor(\Item.name,
                                         order: .reverse)])
 
-                                Text("Date")
+                                RemoteText("Date")
                                     .tag([SortDescriptor(\Item.timestamp, order: .reverse)])
                             }
                         }
