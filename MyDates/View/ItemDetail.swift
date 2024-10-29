@@ -39,6 +39,13 @@ struct ItemDetail: View {
                 RemoteConfigConditional(name: "enableShare") {
                     // https://www.hackingwithswift.com/books/ios-swiftui/how-to-let-the-user-share-content-with-sharelink
                     ShareLink(item: URL(string: "https://apps.apple.com/us/app/date-radar-countdown-stopwatch/id6463448697")!, subject: Text("\(item.name)"), message: message)
+//                        .onSubmit {
+//                            print("Shared")
+//                        }
+                        .onTapGesture {
+                            print("Tap")
+                            MyAnalytics.action("Share")
+                        }
                 }
                 
                 RemoteConfigConditional(name: "enableRestart") {
