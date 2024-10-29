@@ -42,8 +42,8 @@ struct SimpleEntry: TimelineEntry {
 struct MyDatesWidgetEntryView : View {
     var entry: Provider.Entry
     
-    @Query
-    private var items: [Item]
+//    @Query
+//    private var items: [Item]
     
     @RemoteConfigProperty(key: "showTimer", fallback: false) var showDebug: Bool
 
@@ -73,6 +73,7 @@ struct MyDatesWidgetEntryView : View {
 //            Text("")
 //            Text("Date Radar")
         }
+        .widgetURL(URL(string: "widget://item/\(entry.configuration.character?.id ?? "-")")!)
         .onAppear {
             print("Widget appear...")
         }

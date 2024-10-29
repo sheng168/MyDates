@@ -88,6 +88,18 @@ struct ListView: View {
                 }
             }
             .navigationTitle("\(items.count) \(uiTitle)")
+            .onOpenURL(perform: { url in
+                logger.info("open url: \(url.absoluteString)")
+                
+                let prefix = "widget://item/"
+                if url.absoluteString.hasPrefix(prefix) {
+                    let id = url.absoluteString.split(separator: prefix).last
+                    guard let id else { return }
+                    
+                    logger.info("open item: \(id)")
+                    stateManager.openItem(name: String(id))
+                }
+            })
             .onInAppPurchaseCompletion { (product: Product, result: Result<Product.PurchaseResult, Error>) in
                 if case .success(.success(let transaction)) = result {
                     logger.info("iap: \(transaction.debugDescription)")

@@ -13,7 +13,11 @@ class StateManager: ObservableObject {
             logger.info("selection: \(self.selection ?? "nil")")
         }
     }
-    @Published var tab: Tabs = .List
+    @Published var tab: Tabs = .List {
+        didSet {
+            logger.info("tab: \(self.tab.rawValue)")
+        }
+    }
     
     func openItem(name: String) {
         tab = .List
