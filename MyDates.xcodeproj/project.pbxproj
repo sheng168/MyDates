@@ -23,6 +23,7 @@
 		3C3CD8042AD0814D0051D252 /* WishKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C3CD8032AD0814D0051D252 /* WishKit */; };
 		3C3CD8062AD081E40051D252 /* WishKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CD8052AD081E40051D252 /* WishKitView.swift */; };
 		3C3CD8082AD18A760051D252 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CD8072AD18A760051D252 /* SnapshotHelper.swift */; };
+		3C3EC2A12CE7B6DD00D0CF3F /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3EC2A02CE7B6DD00D0CF3F /* ActivityKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3C48D9192ABC830F006E418C /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C48D9182ABC830F006E418C /* ItemRowView.swift */; };
 		3C54542F2CC3F31E00CB831C /* Test16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54542E2CC3F31E00CB831C /* Test16.swift */; };
 		3C55942C2B69FB4400D3D757 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C55942B2B69FB4400D3D757 /* WidgetKit.framework */; };
@@ -106,6 +107,7 @@
 		3C0D8DD52A978C88002F2779 /* ModelPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreview.swift; sourceTree = "<group>"; };
 		3C3CD8052AD081E40051D252 /* WishKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishKitView.swift; sourceTree = "<group>"; };
 		3C3CD8072AD18A760051D252 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		3C3EC2A02CE7B6DD00D0CF3F /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = SDKROOT; };
 		3C48D9182ABC830F006E418C /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
 		3C54542E2CC3F31E00CB831C /* Test16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test16.swift; sourceTree = "<group>"; };
 		3C55942A2B69FB4300D3D757 /* MyDatesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyDatesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C3EC2A12CE7B6DD00D0CF3F /* ActivityKit.framework in Frameworks */,
 				3C3CD8042AD0814D0051D252 /* WishKit in Frameworks */,
 				3CDA43B92AD4DA9F000FBFCA /* Then in Frameworks */,
 				3CC79CF12ABB7C7A00A734CB /* KeweApp in Frameworks */,
@@ -277,6 +280,7 @@
 		3C56FD592AABE3800026A2D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C3EC2A02CE7B6DD00D0CF3F /* ActivityKit.framework */,
 				3C55942B2B69FB4400D3D757 /* WidgetKit.framework */,
 				3C55942D2B69FB4400D3D757 /* SwiftUI.framework */,
 			);
