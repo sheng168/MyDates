@@ -182,7 +182,7 @@ struct ListView: View {
     private func addItem() {
         MyAnalytics.action("add")
         withAnimation {
-            let newItem = Item(timestamp: Date())
+            let newItem = Item(name: "", timestamp: Date())
             modelContext.insert(newItem)
         }
         WidgetCenter.shared.reloadAllTimelines()
