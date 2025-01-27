@@ -184,7 +184,10 @@ struct ListView: View {
         withAnimation {
             let newItem = Item(name: "", timestamp: Date())
             modelContext.insert(newItem)
+            
+            stateManager.openItem(name: newItem.id)
         }
+        
         WidgetCenter.shared.reloadAllTimelines()
     }
     
