@@ -39,9 +39,9 @@ struct ItemDetail: View {
                 RemoteConfigConditional(name: "enableShare") {
                     // https://www.hackingwithswift.com/books/ios-swiftui/how-to-let-the-user-share-content-with-sharelink
                     ShareLink(item: URL(string: "https://apps.apple.com/us/app/date-radar-countdown-stopwatch/id6463448697")!, subject: Text("\(item.name)"), message: message)
-//                        .onSubmit {
-//                            print("Shared")
-//                        }
+                    //                        .onSubmit {
+                    //                            print("Shared")
+                    //                        }
                         .onTapGesture {
                             print("Tap")
                             MyAnalytics.action("Share")
@@ -52,11 +52,11 @@ struct ItemDetail: View {
                     Button {
                         item.timestamp = .now
                     } label: {
-                        RemoteText("Restart")
+                        RemoteText("Reset to now")
                     }
                 }
-
-                RemoteConfigConditional(name: "enableTwitter", fallback: false) {
+                
+                RemoteConfigConditional(name: "enableTwitter", fallback: true) {
                     let d = relativeTimeString(for: item.timestamp)
                     Button {
                         send(tweet: """
@@ -66,17 +66,21 @@ struct ItemDetail: View {
                             Sent using @Date_Radar
                             """)
                     } label: {
-                        Text("Tweet/X \(d)")
+                        Text("Tweet/X") //  \(d)
                     }
                 }
                 
-                RemoteConfigConditional(name: "enableActivity") {
+                RemoteConfigConditional(name: "enableActivity", fallback: false) {
                     Button {
                         startDeliveryPizza()
                     } label: {
                         RemoteText("Add to Lock Screen")
                     }
                 }
+            }
+            
+            Section("Widget Preview") {
+                MyWidgetView(date: item.timestamp, name: item.name)
             }
             
             RemoteConfigConditional(name: "showDebug") {

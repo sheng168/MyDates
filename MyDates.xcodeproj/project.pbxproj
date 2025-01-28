@@ -131,6 +131,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3CDA2C152D497D31000476BE /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MyWidgetView.swift,
+			);
+			target = 3C5594292B69FB4300D3D757 /* MyDatesWidgetExtension */;
+		};
 		3CE2B5232CB5D51C00AC4F16 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -141,6 +148,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		3CDA2C142D497D26000476BE /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (3CDA2C152D497D31000476BE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
 		3CE2B5222CB5D51C00AC4F16 /* LiveActivity */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (3CE2B5232CB5D51C00AC4F16 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = LiveActivity; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -299,6 +307,7 @@
 		3CA777E72A9F790200BC8FF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3CDA2C142D497D26000476BE /* Shared */,
 				3C0D8D9F2A954099002F2779 /* ContentView.swift */,
 				3CCFD9B92B571F2600D0EE5F /* QueryBuilderView.swift */,
 				3CA777E82A9F793900BC8FF2 /* ListView.swift */,
@@ -335,6 +344,9 @@
 			);
 			dependencies = (
 				3C55943B2B69FB4600D3D757 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3CDA2C142D497D26000476BE /* Shared */,
 			);
 			name = MyDates;
 			packageProductDependencies = (

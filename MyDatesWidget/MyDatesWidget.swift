@@ -51,28 +51,8 @@ struct MyDatesWidgetEntryView : View {
     var body: some View {
         let date = entry.configuration.character?.date ?? entry.date
         
-        LabeledContent {
-            EmptyView()
-        } label: {
-            
-//            ForEach(items) { item in
-//                Text(item.name)
-//            }
-//            
-            Text(date, style: .relative) // 2 units
-//            Text(date, style: .offset) // +/- 1 unit
-
-            Text(entry.configuration.character?.name ?? "-")
-            
-            Text("")
-            Text(date, style: .date)
-            Text(date, style: .time)
-            if showDebug {
-                Text(date, style: .timer)
-            }
-//            Text("")
-//            Text("Date Radar")
-        }
+        MyWidgetView(date: entry.date, name: entry.configuration.character?.name ?? "-")
+        
         .widgetURL(URL(string: "widget://item/\(entry.configuration.character?.id ?? "-")")!)
         .onAppear {
             print("Widget appear...")
