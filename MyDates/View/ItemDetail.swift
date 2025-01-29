@@ -33,21 +33,6 @@ struct ItemDetail: View {
                 DatePicker(selection: $item.timestamp, displayedComponents: [.date, .hourAndMinute]) {
                     RemoteText("Select a date")
                 }
-                //                .datePickerStyle(.compact)
-                TextField("Notes", text: $item.notes)
-                
-                RemoteConfigConditional(name: "enableShare") {
-                    // https://www.hackingwithswift.com/books/ios-swiftui/how-to-let-the-user-share-content-with-sharelink
-                    ShareLink(item: URL(string: "https://apps.apple.com/us/app/date-radar-countdown-stopwatch/id6463448697")!, subject: Text("\(item.name)"), message: message)
-                    //                        .onSubmit {
-                    //                            print("Shared")
-                    //                        }
-                        .onTapGesture {
-                            print("Tap")
-                            MyAnalytics.action("Share")
-                        }
-                }
-                
                 RemoteConfigConditional(name: "enableRestart") {
                     Button {
                         item.timestamp = .now
@@ -55,7 +40,23 @@ struct ItemDetail: View {
                         RemoteText("Reset to now")
                     }
                 }
+
+                //                .datePickerStyle(.compact)
+                TextField("Notes", text: $item.notes)
                 
+                RemoteConfigConditional(name: "enableShare") {
+                    // https://www.hackingwithswift.com/books/ios-swiftui/how-to-let-the-user-share-content-with-sharelink
+                    ShareLink(item: URL(string: "https://apps.apple.com/us/app/date-radar-countdown-stopwatch/id6463448697")!, subject: Text("\(item.name)"), message: message)
+                        .onSubmit {
+//                            print("Shared")
+                            MyAnalytics.action("Share")
+                        }
+//                        .onTapGesture {
+//                            print("Tap")
+//                            MyAnalytics.action("Share")
+//                        }
+                }
+                                
                 RemoteConfigConditional(name: "enableTwitter", fallback: true) {
                     let d = relativeTimeString(for: item.timestamp)
                     Button {
@@ -63,7 +64,7 @@ struct ItemDetail: View {
                             \(item.name)
                             \(d)
                             
-                            Sent using @Date_Radar
+                            Sent using @DateRadarApp
                             """)
                     } label: {
                         Text("Tweet/X") //  \(d)
