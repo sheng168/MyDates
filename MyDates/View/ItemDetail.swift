@@ -14,11 +14,12 @@ import KeweApp
 
 
 struct ItemDetail: View {
+    @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var stateManager: StateManager
     @Bindable var item: Item
     
-//    @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
-//    @RemoteConfigProperty(key: "enableActivity", fallback: true) var enableActivity: Bool
+    //    @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
+    //    @RemoteConfigProperty(key: "enableActivity", fallback: true) var enableActivity: Bool
     
     var body: some View {
         Form {
@@ -36,11 +37,12 @@ struct ItemDetail: View {
                 RemoteConfigConditional(name: "enableRestart") {
                     Button {
                         item.timestamp = .now
+                        modelContext.insert(Reset(item: item))
                     } label: {
                         RemoteText("Reset to now")
                     }
                 }
-
+                
                 //                .datePickerStyle(.compact)
                 TextField("Notes", text: $item.notes)
                 
@@ -48,15 +50,15 @@ struct ItemDetail: View {
                     // https://www.hackingwithswift.com/books/ios-swiftui/how-to-let-the-user-share-content-with-sharelink
                     ShareLink(item: URL(string: "https://apps.apple.com/us/app/date-radar-countdown-stopwatch/id6463448697")!, subject: Text("\(item.name)"), message: message)
                         .onSubmit {
-//                            print("Shared")
+                            //                            print("Shared")
                             MyAnalytics.action("Share")
                         }
-//                        .onTapGesture {
-//                            print("Tap")
-//                            MyAnalytics.action("Share")
-//                        }
+                    //                        .onTapGesture {
+                    //                            print("Tap")
+                    //                            MyAnalytics.action("Share")
+                    //                        }
                 }
-                                
+                
                 RemoteConfigConditional(name: "enableTwitter", fallback: true) {
                     let d = relativeTimeString(for: item.timestamp)
                     Button {
@@ -71,7 +73,7 @@ struct ItemDetail: View {
                     }
                 }
                 
-                RemoteConfigConditional(name: "enableActivity", fallback: false) {
+                RemoteConfigConditional(name: "enableActivity", fallback: true) {
                     Button {
                         startDeliveryPizza()
                     } label: {
@@ -80,8 +82,21 @@ struct ItemDetail: View {
                 }
             }
             
+            if let resets = item.resets {
+                Section("Resets") {
+                    ForEach(resets.reversed()) { r in
+                        Text("\(r.timestamp, style: .relative)")
+                    }
+                }
+            }
+            
             Section("Widget Preview") {
                 MyWidgetView(date: item.timestamp, name: item.name)
+            }
+            
+            Section("Lock Screen Preview") {
+                Text("Coming soon...")
+                //                MyWidgetView(date: item.timestamp, name: item.name)
             }
             
             RemoteConfigConditional(name: "showDebug") {
@@ -127,6 +142,9 @@ struct ItemDetail: View {
         formatter.unitsStyle = .full // You can customize the style (.short, .full, etc.)
         return formatter.localizedString(for: date, relativeTo: Date())
     }
+}
+
+extension ItemDetail { // activity
     
     func startDeliveryPizza() {
         //        startingEvent = true
