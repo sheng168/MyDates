@@ -83,8 +83,8 @@ struct ItemDetail: View {
             }
             
             if let resets = item.resets {
-                Section("Resets") {
-                    ForEach(resets.reversed()) { r in
+                Section("Resets (\(resets.count))") {
+                    ForEach(resets.reversed().prefix(5)) { r in
                         Text("\(r.timestamp, style: .relative)")
                     }
                 }
