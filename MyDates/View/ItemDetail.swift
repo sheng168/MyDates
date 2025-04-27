@@ -17,6 +17,7 @@ struct ItemDetail: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var stateManager: StateManager
     @Bindable var item: Item
+    @State private var showAllResets = false
     
     //    @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
     //    @RemoteConfigProperty(key: "enableActivity", fallback: true) var enableActivity: Bool
@@ -37,7 +38,7 @@ struct ItemDetail: View {
                 RemoteConfigConditional(name: "enableRestart") {
                     Button {
                         item.timestamp = .now
-                        modelContext.insert(Reset(item: item))
+                        modelContext.insert(Log(item: item))
                     } label: {
                         RemoteText("Reset to now")
                     }
@@ -84,8 +85,14 @@ struct ItemDetail: View {
             
             if let resets = item.resets {
                 Section("Resets (\(resets.count))") {
-                    ForEach(resets.reversed().prefix(5)) { r in
+                    ForEach(showAllResets ? resets.reversed().prefix(50) : resets.reversed().prefix(5)) { r in
                         Text("\(r.timestamp, style: .relative)")
+                    }
+                    
+                    if resets.count > 5 {
+                        Button(showAllResets ? "Show Less" : "Show More") {
+                            showAllResets.toggle()
+                        }
                     }
                 }
             }

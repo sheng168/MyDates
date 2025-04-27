@@ -18,8 +18,8 @@ class Item: Identifiable {
 //    var icon: String?
 //    var stalls: Int?
     
-    @Relationship(deleteRule: .cascade, inverse: \Reset.item)
-    var resets: [Reset]? = []
+    @Relationship(deleteRule: .cascade, inverse: \Log.item)
+    var resets: [Log]? = []
     
     @Transient var distance: Double = 0
     
@@ -34,8 +34,8 @@ class Item: Identifiable {
 }
 
 @Model
-class Reset: Identifiable {
-    var id = UUID().uuidString
+class Log {
+//    var id = UUID().uuidString
     var timestamp = Date()
     var item: Item?
     
