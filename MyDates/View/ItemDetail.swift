@@ -51,13 +51,9 @@ struct ItemDetail: View {
                     // https://www.hackingwithswift.com/books/ios-swiftui/how-to-let-the-user-share-content-with-sharelink
                     ShareLink(item: URL(string: "https://apps.apple.com/us/app/date-radar-countdown-stopwatch/id6463448697")!, subject: Text("\(item.name)"), message: message)
                         .onSubmit {
-                            //                            print("Shared")
+                            modelContext.insert(Log(item: item, label: .share))
                             MyAnalytics.action("Share")
                         }
-                    //                        .onTapGesture {
-                    //                            print("Tap")
-                    //                            MyAnalytics.action("Share")
-                    //                        }
                 }
                 
                 RemoteConfigConditional(name: "enableTwitter", fallback: true) {

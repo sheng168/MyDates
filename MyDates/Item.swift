@@ -38,10 +38,19 @@ class Log {
 //    var id = UUID().uuidString
     var timestamp = Date()
     var item: Item?
+    var label = LogType.reset
     
-    init(item: Item, timestamp: Date = Date()) {
+    init(item: Item, timestamp: Date = Date(), label: LogType = .reset) {
         self.item = item
         self.timestamp = timestamp
+        self.label = label
     }
+}
+
+enum LogType: String, Codable {
+    case reset
+    case edit
+    case delete
+    case share
 }
 
