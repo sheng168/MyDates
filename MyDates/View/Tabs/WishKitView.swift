@@ -17,7 +17,7 @@ struct WishKitView: View {
     }
     
     var body: some View {
-        WishKit.view.withNavigation()
+        WishKit.FeedbackListView().withNavigation()
             .onAppear {
                 MyAnalytics.view(self)
             }

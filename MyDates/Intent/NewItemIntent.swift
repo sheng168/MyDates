@@ -25,7 +25,7 @@ struct NewItemIntent: AppIntent {
         print("perform New date")
 //        withAnimation {
         let newItem = Item(name: name, timestamp: date)
-        await MyDatesApp.container.mainContext.insert(newItem)
+        MyDatesApp.container.mainContext.insert(newItem)
 //        }
         return .result(dialog: "\(newItem.name) created")
     }
