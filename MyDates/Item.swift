@@ -14,9 +14,13 @@ class Item: Identifiable {
     var timestamp = Date()
     var name: String = "New Event"
     var notes: String = ""
-//    var count: Int
+    var offset: TimeInterval = 0
+    
+    func targetDate() -> Date {
+        return timestamp.addingTimeInterval(offset)
+    }
+    
 //    var icon: String?
-//    var stalls: Int?
     
     @Relationship(deleteRule: .cascade, inverse: \Log.item)
     var resets: [Log]? = []
