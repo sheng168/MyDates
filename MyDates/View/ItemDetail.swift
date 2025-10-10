@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 //import os
 import FirebaseRemoteConfig
 import WidgetKit
@@ -17,14 +18,16 @@ struct ItemDetail: View {
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject var stateManager: StateManager
     @Bindable var item: Item
+    @Query private var allTags: [Tag]
     @State private var showAllResets = false
+    @State private var newTagName: String = ""
     
     //    @RemoteConfigProperty(key: "showDebug", fallback: true) var showDebug: Bool
     //    @RemoteConfigProperty(key: "enableActivity", fallback: true) var enableActivity: Bool
     
     var body: some View {
         Form {
-            let message = Text(item.timestamp, style: .relative) + Text("\n\(item.name)\n") + Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+            let message = Text(item.targetDate(), style: .relative) + Text("\n\(item.name)\n") + Text(item.targetDate(), format: Date.FormatStyle(date: .numeric, time: .standard))
             
             
             
@@ -35,6 +38,15 @@ struct ItemDetail: View {
                 DatePicker(selection: $item.timestamp, displayedComponents: [.date, .hourAndMinute]) {
                     RemoteText("Select a date")
                 }
+                
+                Stepper(value: $item.offset, in: -24*60*60...24*60*60, step: 60*60) {
+                    LabeledContent {
+                        Text("\(Int(item.offset/3600))h")
+                    } label: {
+                        Text("Offset")
+                    }
+                }
+                
                 RemoteConfigConditional(name: "enableRestart") {
                     Button {
                         item.timestamp = .now
@@ -60,7 +72,7 @@ struct ItemDetail: View {
                 }
                 
                 RemoteConfigConditional(name: "enableTwitter", fallback: true) {
-                    let d = relativeTimeString(for: item.timestamp)
+                    let d = relativeTimeString(for: item.targetDate())
                     Button {
                         send(tweet: """
                             \(item.name)
@@ -79,6 +91,46 @@ struct ItemDetail: View {
                     } label: {
                         RemoteText("Add to Lock Screen")
                     }
+                }
+            }
+            
+            Section("Tags") {
+                HStack {
+                    TextField("New tag...", text: $newTagName)
+                    Button(action: {
+                        let trimmed = newTagName.trimmingCharacters(in: .whitespacesAndNewlines)
+                        guard !trimmed.isEmpty else { return }
+                        let newTag = Tag(name: trimmed)
+                        modelContext.insert(newTag)
+                        newTagName = ""
+
+                        // Add to this item's tags
+                        if item.tags == nil {
+                            item.tags = [newTag]
+                        } else {
+                            item.tags?.append(newTag)
+                        }
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .foregroundColor(.accentColor)
+                    }
+                    .disabled(newTagName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                }
+                ForEach(allTags) { tag in
+                    let isSelected = (item.tags ?? []).contains(where: { $0.id == tag.id })
+                    Toggle(tag.name, isOn: Binding(
+                        get: { isSelected },
+                        set: { newValue in
+                            if newValue {
+                                if !isSelected {
+                                    if item.tags == nil { item.tags = [] }
+                                    item.tags?.append(tag)
+                                }
+                            } else {
+                                item.tags?.removeAll { $0.id == tag.id }
+                            }
+                        }
+                    ))
                 }
             }
             
@@ -102,7 +154,7 @@ struct ItemDetail: View {
             }
             
             Section("Widget Preview") {
-                MyWidgetView(date: item.timestamp, name: item.name)
+                MyWidgetView(date: item.targetDate(), name: item.name)
             }
             
             Section("Lock Screen Preview") {
@@ -114,11 +166,11 @@ struct ItemDetail: View {
                 Section("Debug") {
                     message
                     
-                    Text(Event(name: item.name, date: item.timestamp).toJsonString() ?? "{}")
+                    Text(Event(name: item.name, date: item.targetDate()).toJsonString() ?? "{}")
                         .textSelection(.enabled)
-                    Text(item.timestamp, style: .relative)
-                    Text(diffs(item.timestamp, .now).description)
-                    Text("\(item.timestamp - 60*60*23, style: .timer)")
+                    Text(item.targetDate(), style: .relative)
+                    Text(diffs(item.targetDate(), .now).description)
+                    Text("\(item.targetDate() - 60*60*23, style: .timer)")
                     Text("Debug ID: \(item.id.storeIdentifier ?? "-")")
                     Button {
                         stateManager.selection = nil
@@ -268,3 +320,4 @@ func diffs(_ date: Date, _ date2: Date) -> DateComponents {
     }
 //    Text("TODO")
 }
+

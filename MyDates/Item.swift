@@ -9,12 +9,29 @@ import Foundation
 import SwiftData
 
 @Model
+class Tag: Identifiable {
+    var id = UUID().uuidString
+    var name: String = "New Tag"
+    
+    // Inverse relationship to Items (many-to-many)
+    @Relationship(inverse: \Item.tags)
+    var items: [Item]? = []
+    
+    init(name: String = "New Tag") {
+        self.name = name
+    }
+}
+
+@Model
 class Item: Identifiable { 
     var id = UUID().uuidString
     var timestamp = Date()
     var name: String = "New Event"
     var notes: String = ""
     var offset: TimeInterval = 0
+    
+//    @Relationship(inverse: \Tag.items)
+    var tags: [Tag]? = []
     
     func targetDate() -> Date {
         return timestamp.addingTimeInterval(offset)

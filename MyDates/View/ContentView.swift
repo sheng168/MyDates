@@ -11,7 +11,7 @@ import KeweApp
 import FirebaseRemoteConfigSwift
 
 enum Tabs: String {
-    case List, About, Buy, Wishlist
+    case List, About, Buy, Wishlist, Tags
     //TODO: https://www.swiftbysundell.com/articles/avoiding-anyview-in-swiftui/
     
     @ViewBuilder
@@ -25,6 +25,8 @@ enum Tabs: String {
             MyStoreView()
         case .Wishlist:
             WishKitView()
+        case .Tags:
+            TagsListView()
         }
     }
 }
@@ -36,7 +38,7 @@ struct ContentView: View {
     @RemoteConfigProperty(key: "forceAppUpdate", fallback: false) var forceAppUpdate: Bool
     @RemoteConfigProperty(key: "updateMessage", fallback: "To use this app, [download](https://apps.apple.com/app/mydates-countdown-counter/id6463448697) the latest version.") var updateMessage: String
     
-    @RemoteConfigProperty(key: "tabList", fallback: Config.shared.tabList) var tabList: [KeweApp.Tab]
+    @RemoteConfigProperty(key: "tabList_", fallback: Config.shared.tabList) var tabList: [KeweApp.Tab]
 
 
     var body: some View {
