@@ -9,44 +9,55 @@ struct TagsListView: View {
     @State private var newTagName: String = ""
     @State private var isPresentingNewTagSheet = false
     @State private var expandedTagIDs: Set<String> = []
+    @State private var expanded: [String: Bool] = [:]
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(allTags) { tag in
-                    Section(header:
-                        HStack {
-                            Button(action: {
-                                if expandedTagIDs.contains(tag.id) {
-                                    expandedTagIDs.remove(tag.id)
-                                } else {
-                                    expandedTagIDs.insert(tag.id)
+                Section(
+                    isExpanded: Binding(
+                        get: { expanded["__untagged__", default: true] },
+                        set: { expanded["__untagged__"] = $0 }
+                    ),
+                    content: {
+                        let untagged = allItems.filter { ($0.tags ?? []).isEmpty }
+                        if !untagged.isEmpty {
+                            ForEach(untagged) { item in
+                                let d = diffs(item.targetDate(), Date())
+                                NavigationLink(destination: ItemDetail(item: item)) {
+                                    ItemRowView(item: item, d: d)
                                 }
-                            }) {
-                                Image(systemName: expandedTagIDs.contains(tag.id) ? "chevron.down" : "chevron.right")
-                            }
-                            .buttonStyle(.plain)
-                            Text(tag.name).font(.headline)
-                        }
-                    ) {
-                        if expandedTagIDs.contains(tag.id) {
-                            if let items = tag.items, !items.isEmpty {
-                                ForEach(items) { item in
-                                    NavigationLink(destination: ItemDetail(item: item)) {
-                                        Text(item.name)
-                                    }
-                                }
-                            } else {
-                                Text("No items with this tag").foregroundColor(.secondary)
                             }
                         } else {
-                            if let items = tag.items {
-                                Text("(\(items.count)) items").foregroundColor(.secondary)
-                            }
+                            Text("No untagged items").foregroundColor(.secondary)
                         }
-                    }
+                    },
+                    header: { Text("Untagged").font(.headline) }
+                )
+                ForEach(allTags) { tag in
+                    Section(
+                        isExpanded: Binding(
+                            get: { expanded[tag.id, default: true] },
+                            set: { expanded[tag.id] = $0 }
+                        ),
+                        content: {
+                                if let items = tag.items, !items.isEmpty {
+                                    ForEach(items) { item in
+                                        let d = diffs(item.targetDate(), Date())
+                                        NavigationLink(destination: ItemDetail(item: item)) {
+                                            ItemRowView(item: item, d: d)
+                                        }
+                                    }
+                                } else {
+                                    Text("No items with this tag").foregroundColor(.secondary)
+                                }
+                        },
+                        header:
+                            { Text(tag.name).font(.headline) }
+                    )
                 }
             }
+            .listStyle(.sidebar)
             .navigationTitle("Tags")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -84,6 +95,16 @@ struct TagsListView: View {
                             }
                         }
                     }
+                }
+            }
+            .onAppear {
+                for tag in allTags {
+                    if expanded[tag.id] == nil {
+                        expanded[tag.id] = true
+                    }
+                }
+                if expanded["__untagged__"] == nil {
+                    expanded["__untagged__"] = true
                 }
             }
         }
