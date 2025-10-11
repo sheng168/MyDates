@@ -3,7 +3,7 @@ import SwiftData
 
 struct TagsListView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var allTags: [Tag]
+    @Query(sort: [SortDescriptor(\Tag.name, order: .forward)]) private var allTags: [Tag]
     @Query private var allItems: [Item]
     @EnvironmentObject var stateManager: StateManager
     @State private var newTagName: String = ""
@@ -20,7 +20,14 @@ struct TagsListView: View {
                         set: { expanded["__untagged__"] = $0 }
                     ),
                     content: {
-                        let untagged = allItems.filter { ($0.tags ?? []).isEmpty }
+                        let untagged = allItems
+                            .filter { ($0.tags ?? []).isEmpty }
+                            .sorted(by: { lhs, rhs in
+                                let lDate = lhs.targetDate()
+                                let rDate = rhs.targetDate()
+                                if lDate != rDate { return lDate < rDate }
+                                return lhs.name < rhs.name
+                            })
                         if !untagged.isEmpty {
                             ForEach(untagged) { item in
                                 let d = diffs(item.targetDate(), Date())
@@ -44,7 +51,12 @@ struct TagsListView: View {
                             set: { expanded[tag.id] = $0 }
                         ),
                         content: {
-                                if let items = tag.items, !items.isEmpty {
+                                if let items = tag.items?.sorted(by: { lhs, rhs in
+                                    let lDate = lhs.targetDate()
+                                    let rDate = rhs.targetDate()
+                                    if lDate != rDate { return lDate < rDate }
+                                    return lhs.name < rhs.name
+                                }), !items.isEmpty {
                                     ForEach(items) { item in
                                         let d = diffs(item.targetDate(), Date())
                                         NavigationLink(destination: ItemDetail(item: item)) {
