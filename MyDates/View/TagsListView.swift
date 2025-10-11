@@ -32,7 +32,10 @@ struct TagsListView: View {
                             Text("No untagged items").foregroundColor(.secondary)
                         }
                     },
-                    header: { Text("Untagged").font(.headline) }
+                    header: {
+                        let untaggedCount = allItems.filter { ($0.tags ?? []).isEmpty }.count
+                        Text("Untagged (\(untaggedCount))").font(.headline)
+                    }
                 )
                 ForEach(allTags) { tag in
                     Section(
@@ -52,8 +55,10 @@ struct TagsListView: View {
                                     Text("No items with this tag").foregroundColor(.secondary)
                                 }
                         },
-                        header:
-                            { Text(tag.name).font(.headline) }
+                        header: {
+                            let count = (tag.items ?? []).count
+                            Text("\(tag.name) (\(count))").font(.headline)
+                        }
                     )
                 }
             }
