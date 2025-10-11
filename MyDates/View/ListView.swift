@@ -56,7 +56,7 @@ struct ListView: View {
 //        NavigationView {
             List {
                 ForEach(items) { item in
-                    let d = diffs(item.timestamp, currentTime)
+                    let d = diffs(item.targetDate(), currentTime)
                     
                     NavigationLink(tag: item.id, selection: $stateManager.selection) {
                         ItemDetail(item: item)

@@ -95,11 +95,13 @@ struct ItemDetail: View {
             }
             
             Section("Tags") {
+                let trimmedTagName = newTagName.trimmingCharacters(in: .whitespacesAndNewlines)
+                let isDuplicateTag = allTags.contains { $0.name.caseInsensitiveCompare(trimmedTagName) == .orderedSame }
                 HStack {
                     TextField("New tag...", text: $newTagName)
                     Button(action: {
                         let trimmed = newTagName.trimmingCharacters(in: .whitespacesAndNewlines)
-                        guard !trimmed.isEmpty else { return }
+                        guard !trimmed.isEmpty, !isDuplicateTag else { return }
                         let newTag = Tag(name: trimmed)
                         modelContext.insert(newTag)
                         newTagName = ""
@@ -114,7 +116,12 @@ struct ItemDetail: View {
                         Image(systemName: "plus.circle.fill")
                             .foregroundColor(.accentColor)
                     }
-                    .disabled(newTagName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                    .disabled(trimmedTagName.isEmpty || isDuplicateTag)
+                }
+                if isDuplicateTag && !trimmedTagName.isEmpty {
+                    Text("A tag with this name already exists.")
+                        .foregroundColor(.red)
+                        .font(.caption)
                 }
                 ForEach(allTags) { tag in
                     let isSelected = (item.tags ?? []).contains(where: { $0.id == tag.id })
