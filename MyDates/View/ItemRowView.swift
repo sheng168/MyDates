@@ -39,7 +39,7 @@ struct ItemRowView: View {
         } label: {
             Text(item.name)
             Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-            Text(componentFormatter.string(from: d) ?? d.description).lineLimit(1)
+            Text(componentFormatter.string(from: d) ?? d.description)//.lineLimit(1)
         }
     }
 }
