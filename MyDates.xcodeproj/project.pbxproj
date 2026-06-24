@@ -34,6 +34,7 @@
 		3C5594372B69FB4600D3D757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C5594362B69FB4600D3D757 /* Assets.xcassets */; };
 		3C55943C2B69FB4600D3D757 /* MyDatesWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3C55942A2B69FB4300D3D757 /* MyDatesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3C56FD492AAAB3700026A2D2 /* MyStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */; };
+		3C6F2B182FEAB21F00D664FE /* TimeTravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6F2B172FEAB21F00D664FE /* TimeTravelView.swift */; };
 		3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777E82A9F793900BC8FF2 /* ListView.swift */; };
 		3CA777EB2A9FDE6800BC8FF2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */; };
 		3CA777ED2AA0183200BC8FF2 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA777EC2AA0183200BC8FF2 /* StateManager.swift */; };
@@ -122,6 +123,7 @@
 		3C5594392B69FB4600D3D757 /* MyDatesWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyDatesWidget.entitlements; sourceTree = "<group>"; };
 		3C56FD482AAAB3700026A2D2 /* MyStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStoreView.swift; sourceTree = "<group>"; };
 		3C56FD4A2AAAB9160026A2D2 /* Store.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Store.storekit; sourceTree = "<group>"; };
+		3C6F2B172FEAB21F00D664FE /* TimeTravelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTravelView.swift; sourceTree = "<group>"; };
 		3CA777E82A9F793900BC8FF2 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		3CA777EA2A9FDE6800BC8FF2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		3CA777EC2AA0183200BC8FF2 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				3C0D8DD02A96DD04002F2779 /* ItemDetail.swift */,
 				3CCFD9B82B571EAB00D0EE5F /* Tabs */,
 				3CEFF8A32E99596600028AEA /* TagsListView.swift */,
+				3C6F2B172FEAB21F00D664FE /* TimeTravelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				3CA777E92A9F793900BC8FF2 /* ListView.swift in Sources */,
 				3C0B762C2B66A93C0056F6A6 /* MyAppShortcutsProvider.swift in Sources */,
 				3C3CD8062AD081E40051D252 /* WishKitView.swift in Sources */,
+				3C6F2B182FEAB21F00D664FE /* TimeTravelView.swift in Sources */,
 				3CCFD9BA2B571F2600D0EE5F /* QueryBuilderView.swift in Sources */,
 				3C0D8DA22A954099002F2779 /* Item.swift in Sources */,
 				3C0B762A2B66A8FA0056F6A6 /* NewItemIntent.swift in Sources */,

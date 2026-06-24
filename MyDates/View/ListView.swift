@@ -21,7 +21,15 @@ struct ListView: View {
     private var items: [Item]
     
     @State var currentTime = Date()
+    @State private var travelDate: Date? = nil
+    @State private var showTimeTravel = false
     @AppStorage("isPro") private var isPro = false
+
+    /// The reference "now" used for every countdown. Falls back to the live
+    /// clock unless the user is time traveling to a virtual date.
+    private var referenceTime: Date {
+        travelDate ?? currentTime
+    }
     
     @RemoteConfigProperty(key: "maxFreeItems", fallback: 8) var max: Int
     @RemoteConfigProperty(key: "insertSamples", fallback: "Insert Samples") var insertSamples: String
@@ -55,8 +63,29 @@ struct ListView: View {
     var body: some View {
 //        NavigationView {
             List {
+                if let travelDate {
+                    Section {
+                        HStack {
+                            Image(systemName: "clock.arrow.circlepath")
+                                .foregroundStyle(.tint)
+                            VStack(alignment: .leading) {
+                                Text("Time Traveling")
+                                    .font(.headline)
+                                Text(travelDate, format: Date.FormatStyle(date: .complete, time: .shortened))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Button("Now") {
+                                self.travelDate = nil
+                            }
+                            .buttonStyle(.borderedProminent)
+                        }
+                    }
+                }
+
                 ForEach(items) { item in
-                    let d = diffs(item.targetDate(), currentTime)
+                    let d = diffs(item.targetDate(), referenceTime)
                     
                     NavigationLink(tag: item.id, selection: $stateManager.selection) {
                         ItemDetail(item: item)
@@ -125,6 +154,13 @@ struct ListView: View {
                     EditButton()
                 }
                 ToolbarItem {
+                    Button {
+                        showTimeTravel = true
+                    } label: {
+                        Label("Time Travel", systemImage: travelDate == nil ? "clock.arrow.circlepath" : "clock.badge.checkmark")
+                    }
+                }
+                ToolbarItem {
 //                    Button(intent: NewItemIntent()) {
 //                        Label("Add Item", systemImage: "plus")
 //                    }
@@ -148,6 +184,9 @@ struct ListView: View {
 //        } detail: {
 //            Text("Select an item")
 //        }
+        .sheet(isPresented: $showTimeTravel) {
+            TimeTravelView(travelDate: $travelDate)
+        }
         .onAppear {
             MyAnalytics.view(self)
 //            UIApplication.shared.applicationIconBadgeNumber = 3 // deprecated

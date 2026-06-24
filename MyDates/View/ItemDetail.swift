@@ -39,12 +39,26 @@ struct ItemDetail: View {
                     RemoteText("Select a date")
                 }
                 
-                Stepper(value: $item.offset, in: -24*60*60...24*60*60, step: 60*60) {
-                    LabeledContent {
-                        Text("\(Int(item.offset/3600))h")
+                // NOTE: SwiftUI's Stepper recurses infinitely in the style resolver
+                // under "My Mac (Designed for iPhone)", so it's replaced with a pair
+                // of buttons that clamp the offset to ±24h.
+                HStack {
+                    Text("Offset")
+                    Spacer()
+                    Text("\(Int(item.offset/3600))h")
+                        .foregroundStyle(.secondary)
+                    Button {
+                        item.offset = max(item.offset - 60*60, -24*60*60)
                     } label: {
-                        Text("Offset")
+                        Image(systemName: "minus.circle")
                     }
+                    .buttonStyle(.borderless)
+                    Button {
+                        item.offset = min(item.offset + 60*60, 24*60*60)
+                    } label: {
+                        Image(systemName: "plus.circle")
+                    }
+                    .buttonStyle(.borderless)
                 }
                 
                 RemoteConfigConditional(name: "enableRestart") {
@@ -93,7 +107,7 @@ struct ItemDetail: View {
                     }
                 }
             }
-            
+
             Section("Tags") {
                 let trimmedTagName = newTagName.trimmingCharacters(in: .whitespacesAndNewlines)
                 let isDuplicateTag = allTags.contains { $0.name.caseInsensitiveCompare(trimmedTagName) == .orderedSame }
