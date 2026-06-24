@@ -11,31 +11,6 @@ struct TagsListView: View {
     @State private var expandedTagIDs: Set<String> = []
     @State private var expanded: [String: Bool] = [:]
 
-    /// Formats the duration between two adjacent rows.
-    private let gapFormatter: DateComponentsFormatter = {
-        let f = DateComponentsFormatter()
-        f.unitsStyle = .abbreviated
-        f.allowedUnits = [.year, .month, .day, .hour, .minute]
-        f.maximumUnitCount = 2
-        return f
-    }()
-
-    /// A subtle separator row showing the time gap between two adjacent events.
-    @ViewBuilder
-    private func adjacentDiffRow(from: Item, to: Item) -> some View {
-        let start = Swift.min(from.targetDate(), to.targetDate())
-        let end = Swift.max(from.targetDate(), to.targetDate())
-
-        HStack(spacing: 4) {
-            Image(systemName: "arrow.up.and.down")
-            Text(gapFormatter.string(from: start, to: end) ?? "")
-        }
-        .font(.caption2)
-        .foregroundStyle(.secondary)
-        .frame(maxWidth: .infinity, alignment: .center)
-        .listRowBackground(Color.clear)
-    }
-
     var body: some View {
         NavigationView {
             List {
@@ -62,7 +37,7 @@ struct TagsListView: View {
 
                                 // Show the time difference to the adjacent (next) row.
                                 if index < untagged.count - 1 {
-                                    adjacentDiffRow(from: item, to: untagged[index + 1])
+                                    AdjacentDiffRow(from: item, to: untagged[index + 1])
                                 }
                             }
                         } else {
@@ -95,7 +70,7 @@ struct TagsListView: View {
 
                                         // Show the time difference to the adjacent (next) row.
                                         if index < items.count - 1 {
-                                            adjacentDiffRow(from: item, to: items[index + 1])
+                                            AdjacentDiffRow(from: item, to: items[index + 1])
                                         }
                                     }
                                 } else {
