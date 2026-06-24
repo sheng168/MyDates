@@ -85,6 +85,7 @@ struct TagsListView: View {
                 }
             }
             .listStyle(.sidebar)
+            .environment(\.defaultMinListRowHeight, 0)
             .navigationTitle("Tags")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

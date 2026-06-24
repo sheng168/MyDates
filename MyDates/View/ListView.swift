@@ -123,6 +123,7 @@ struct ListView: View {
                     }
                 }
             }
+            .environment(\.defaultMinListRowHeight, 0)
             .navigationTitle("\(items.count) \(uiTitle)")
             .onOpenURL(perform: { url in
                 logger.info("open url: \(url.absoluteString)")
