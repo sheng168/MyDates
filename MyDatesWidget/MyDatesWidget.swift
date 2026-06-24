@@ -49,8 +49,6 @@ struct MyDatesWidgetEntryView : View {
 
 
     var body: some View {
-        let date = entry.configuration.character?.date ?? entry.date
-        
         MyWidgetView(date: entry.date, name: entry.configuration.character?.name ?? "-")
         
         .widgetURL(URL(string: "widget://item/\(entry.configuration.character?.id ?? "-")")!)

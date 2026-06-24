@@ -35,10 +35,8 @@ struct ModelPreview<Model: PersistentModel, Content: View>: View {
                 ContentUnavailableView("Could not load model for previews", systemImage: "xmark")
                     .opacity(waitedToShowIssue ? 1 : 0)
                     .task {
-                        Task {
-                            try await Task.sleep(for: .seconds(1))
-                            waitedToShowIssue = true
-                        }
+                        try? await Task.sleep(for: .seconds(1))
+                        waitedToShowIssue = true
                     }
                 
             }

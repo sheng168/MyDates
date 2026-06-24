@@ -242,7 +242,7 @@ extension ItemDetail { // activity
         do {
             let deliveryActivity = try Activity<PizzaDeliveryAttributes>.request(
                 attributes: pizzaDeliveryAttributes,
-                contentState: initialContentState,
+                content: ActivityContent(state: initialContentState, staleDate: nil),
                 pushType: .token)   // Enable Push Notification Capability First (from pushType: nil)
             
             print("Requested a pizza delivery Live Activity \(deliveryActivity.id)")
@@ -270,7 +270,7 @@ extension ItemDetail { // activity
             let updatedDeliveryStatus = PizzaDeliveryAttributes.PizzaDeliveryStatus(name: "TIM 👨🏻‍🍳", timestamp: Date().addingTimeInterval(60 * 60))
             
             for activity in Activity<PizzaDeliveryAttributes>.activities{
-                await activity.update(using: updatedDeliveryStatus)
+                await activity.update(ActivityContent(state: updatedDeliveryStatus, staleDate: nil))
             }
 
             print("Updated pizza delivery Live Activity")
@@ -282,7 +282,7 @@ extension ItemDetail { // activity
     func stopDeliveryPizza() {
         Task {
             for activity in Activity<PizzaDeliveryAttributes>.activities{
-                await activity.end(dismissalPolicy: .immediate)
+                await activity.end(nil, dismissalPolicy: .immediate)
             }
 
             print("Cancelled all pizza delivery Live Activity")
